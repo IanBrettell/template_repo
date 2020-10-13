@@ -26,6 +26,40 @@ cd DeepLabCut
 conda env create -f conda-environments/DLC-CPU.yaml
 # activate env
 conda activate DLC-CPU
+# upgrade to version 2.2b8
+pip install deeplabcut==2.2b8 # NOTE: this didn't work, but rather I re-created the env having edited the YAML to specify this version
+# activate python to start GUI
+pythonw
+```
+
+Start GUI
+
+```{python}
+# import
+import deeplabcut
+# check version
+deeplabcut.__version__
+# launch GUI
+deeplabcut.launch_dlc()
+```
+
+## Import 10 videos for training
+
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+* 
+
+
+```{bash}
 
 ```
+
+
 
