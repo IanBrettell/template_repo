@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+*20200924* 
+
+# Train with DLC
+
+Pilot videos here: `/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/`
+
+## Install DeepLabCut on local
+
+Following tutorial here: <https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/installation.md>
+
+```{bash}
+# move to repo directory
+cd ~/Documents/Repositories
+# clone repo
+git clone https://github.com/AlexEMG/DeepLabCut.git
+# move into repo
+cd DeepLabCut
+# create environment - note creating CPU version
+conda env create -f conda-environments/DLC-CPU.yaml
+# activate env
+conda activate DLC-CPU
+
+```
+
