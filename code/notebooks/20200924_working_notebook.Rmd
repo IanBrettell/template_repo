@@ -45,21 +45,93 @@ deeplabcut.launch_dlc()
 
 ## Import 10 videos for training
 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
-* 
+Saved here: `data/20201019_training_vids.txt`
 
+* 20190611_1628_icab_hdr_R.avi
+* 20190612_0952_icab_icab_R.avi
+* 20190613_1024_icab_hni_R.avi
+* 20190614_1208_icab_icab_L.avi
+* 20190614_1456_icab_ho5_R.avi
+* 20190614_1553_icab_hni_L.avi
+* 20190615_1051_icab_hdr_L.avi
+* 20190615_1518_icab_kaga_L.avi
+* 20190616_1017_icab_kaga_R.avi
+* 20190616_1622_icab_ho5_L.avi
 
 ```{bash}
+for i in $( cat data/20201019_training_vids.txt ) ; do
+  scp brettell@ebi:/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all/$i \
+  ~/Documents/Data/20201019_pilot_dlc_training ;
+done  
+```
+
+## Project admin
+
+* Project name: `~/Documents/pilot_paper`
+* 10 videos loaded from `~/Documents/Data/20201019_pilot_dlc_training`
+* config.yaml: `~/Documents/pilot_paper-ian_brettell-2020-10-21/config.yaml`
+### Extract frames
+* Use `uniform` not `kmeans` to extract frames, because the latter takes empty frames and ones with my arm in it. 
+
+### Skeleton
+
+```{r}
+# Create vector of all body parts
+bparts = c("nose", "head", "left_eye", "right_eye","spine_1", "spine_2", "spine_3", "spine_4", "spine_5", "tail_fin")
+# Create pair-wise combinations
+bpart_combs = t(combn(bparts, 2))
+
+write.table(bpart_combs, here("data", "20201022_body_part_combinations.txt"),
+            row.names = F,
+            col.names = F,
+            quote = F,
+            sep = "\t")
+# Then manually adjusted file on text editor
+```
+
+# Create conda environments for project
+
+```{bash}
+# Python env
+## Create env
+conda create -n pilot_env_py python=3.6 biopython
+## Activate env
+conda activate pilot_env_py
+## List current packages
+conda list
+## Install packages
+conda install -c anaconda opencv
+conda install -c anaconda pandas
+conda install -c conda-forge mamba # to install snakemake
+
+# R env
+conda create -n pilot_env_r
+conda activate pilot_env_r
+## Install packages
+conda config --add channels conda-forge
+conda config --add channels defaults
+conda config --add channels r
+conda config --add channels bioconda
+conda install r
+conda install rstudio
+conda install r-tidyverse
+
+# Snakemake env
+
 
 ```
 
 
+# Edit videos with Python
+
+Tutorial: <https://docs.opencv.org/4.5.0/dd/d43/tutorial_py_video_display.html>
+
+```{python}
+# Import libraries
+import numpy as np
+import cv2 as cv
+
+# Read video from file
+cap = 
+```
 
