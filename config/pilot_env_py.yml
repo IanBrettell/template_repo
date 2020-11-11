@@ -1,92 +1,13 @@
 name: pilot_env_py
 channels:
-  - anaconda
   - bioconda
   - r
   - defaults
   - conda-forge
 dependencies:
-  - biopython=1.78=py36haf1e3a3_0
-  - blas=1.0=mkl
-  - brotlipy=0.7.0=py36ha3de816_1001
-  - bzip2=1.0.8=h1de35cc_0
-  - c-ares=1.16.1=haf1e3a3_3
-  - ca-certificates=2020.6.20=hecda079_0
-  - cairo=1.14.12=hc4e6be7_4
-  - certifi=2020.6.20=py36h2432673_2
-  - cffi=1.14.3=py36hed5b41f_0
-  - chardet=3.0.4=py36h2432673_1008
-  - conda=4.9.0=py36h2432673_1
-  - conda-package-handling=1.7.2=py36ha3de816_0
-  - cryptography=3.2.1=py36h564ae50_0
-  - ffmpeg=4.0=h01ea3c9_0
-  - fontconfig=2.13.0=h5d5b041_1
-  - freetype=2.10.4=ha233b18_0
-  - gettext=0.19.8.1=h15daf44_3
-  - glib=2.56.2=hd9629dc_0
-  - graphite2=1.3.14=h38d11af_0
-  - harfbuzz=1.8.8=hb8d4a28_0
-  - hdf5=1.10.2=hfa1e0ec_1
-  - icu=58.2=h0a44026_3
-  - idna=2.10=pyh9f0ad1d_0
-  - intel-openmp=2019.4=233
-  - jasper=2.0.14=h636a363_1
-  - jpeg=9b=he5867d9_2
-  - krb5=1.17.1=h75d18d8_3
-  - libarchive=3.3.3=h02796b4_1008
-  - libcurl=7.71.1=h9bf37e3_8
-  - libcxx=11.0.0=h439d374_0
-  - libedit=3.1.20191231=h1de35cc_1
-  - libev=4.33=haf1e3a3_1
-  - libffi=3.3=hb1e8313_2
-  - libgfortran=3.0.1=h93005f0_2
-  - libiconv=1.16=h1de35cc_0
-  - libnghttp2=1.41.0=h7580e61_2
-  - libopencv=3.4.2=h7c891bd_1
-  - libopus=1.3.1=h1de35cc_0
-  - libpng=1.6.37=ha441bb4_0
-  - libsolv=0.7.16=hab81aa3_0
-  - libssh2=1.9.0=h8a08a2b_5
-  - libtiff=4.1.0=hcb84e12_1
-  - libvpx=1.7.0=h378b8a2_0
-  - libxml2=2.9.10=h7cdb67c_3
-  - lz4-c=1.9.2=h79c402e_3
-  - lzo=2.10=haf1e3a3_1000
-  - mamba=0.6.4=py36hcfd07db_0
-  - mkl=2019.4=233
-  - mkl-service=2.3.0=py36hfbe908c_0
-  - mkl_fft=1.2.0=py36hc64f4ea_0
-  - mkl_random=1.1.1=py36h959d312_0
-  - ncurses=6.2=h0a44026_1
-  - numpy=1.19.2=py36h456fd55_0
-  - numpy-base=1.19.2=py36hcfb5961_0
-  - opencv=3.4.2=py36h6fd60c2_1
-  - openssl=1.1.1h=haf1e3a3_0
-  - pandas=1.1.3=py36hb1e8313_0
-  - pcre=8.44=hb1e8313_0
-  - pip=20.2.4=py36hecd8cb5_0
-  - pixman=0.40.0=haf1e3a3_0
-  - py-opencv=3.4.2=py36h7c891bd_1
-  - pycosat=0.6.3=py36ha3de816_1005
-  - pycparser=2.20=pyh9f0ad1d_2
-  - pyopenssl=19.1.0=py_1
-  - pysocks=1.7.1=py36h2432673_2
-  - python=3.6.12=h26836e1_2
-  - python-dateutil=2.8.1=py_0
-  - python_abi=3.6=1_cp36m
-  - pytz=2020.1=py_0
-  - readline=8.0=h1de35cc_0
-  - requests=2.24.0=pyh9f0ad1d_0
-  - ruamel_yaml=0.15.80=py36ha3de816_1003
-  - setuptools=50.3.0=py36hecd8cb5_1
-  - six=1.15.0=py_0
-  - sqlite=3.33.0=hffcf06c_0
-  - tk=8.6.10=hb0a8c7a_0
-  - tqdm=4.51.0=pyh9f0ad1d_0
-  - urllib3=1.25.11=py_0
-  - wheel=0.35.1=py_0
-  - xz=5.2.5=h1de35cc_0
-  - yaml=0.2.5=haf1e3a3_0
-  - zlib=1.2.11=h1de35cc_3
-  - zstd=1.4.4=h1990bb4_3
+  - python=3.6
+  - biopython
+  - opencv
+  - pandas
+  - mamba
 prefix: /Users/brettell/opt/anaconda3/envs/pilot_env_py
