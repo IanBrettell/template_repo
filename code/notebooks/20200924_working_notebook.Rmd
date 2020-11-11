@@ -9,7 +9,7 @@ editor_options:
 
 # Train with DLC
 
-Pilot videos here: `/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/`
+Pilot videos here: `/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all`
 
 ## Install DeepLabCut on local
 
@@ -139,6 +139,9 @@ conda env create -f pilot_paper/config/pilot_env_py.yml
 conda create -n pilot_py python=3.6 biopython
 conda install -c anaconda opencv
 conda install -c anaconda pandas
+# Export to config
+conda env export -n pilot_py -f config/pilot_py.yml --from-history
+
 ```
 
 
@@ -159,7 +162,7 @@ dat.head()
 <https://stackoverflow.com/questions/2869281/how-to-determine-video-codec-of-a-file-with-ffmpeg>
 ```{bash}
 ffprobe -v error -select_streams v:0 -show_entries stream=codec_name \
-  -of default=noprint_wrappers=1:nokey=1 video.mkv
+  -of default=noprint_wrappers=1:nokey=1 /Users/brettell/Documents/Data/20201019_pilot_dlc_training/20190613_1024_icab_hni_R.avi
 ```
 
 
@@ -467,11 +470,23 @@ cv.waitKey(1)
 ## Put in script and test
 
 ```{bash}
+# On local
 code/scripts/20201111_split_videos.py \
   --in_file /Users/brettell/Documents/Data/20201019_pilot_dlc_training/20190613_1024_icab_hni_R.avi \
   --start 2889\
   --end 22790\
   --quadrant q1 \
-  --out_dir 
+  --out_dir /Users/brettell/Documents/Data/20201019_pilot_dlc_training_processed
+  
+# On cluster
+conda activate pilot_py
+
+pilot_paper/code/scripts/20201111_split_videos.py \
+  --in_file /nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all/20190613_1024_icab_hni_R.avi \
+  --start 2889\
+  --end 22790\
+  --quadrant q1 \
+  --out_dir tmp
+  
 ```
 
