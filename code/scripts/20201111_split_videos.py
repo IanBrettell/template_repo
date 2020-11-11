@@ -9,7 +9,7 @@ import sys
 
 # Get key variables
 
-parser = argparse.ArgumentParser(description = 'Split video into quadrant.')
+parser = argparse.ArgumentParser(description = 'Split video by quadrant.')
 parser.add_argument("--in_file", help="Input file")
 parser.add_argument("--start", help="Start frame")
 parser.add_argument("--end", help="End frame")
@@ -46,11 +46,7 @@ test_line = meta_list[3]
 tank_side = meta_list[4]
 
 # Output file
-out_file = os.path.join(out_dir, in_file_pref + '_' + quadrant + '.mp4')
-
-# Loop over
-#for i in range(start,end):
-#cap.set(cv.CAP_PROP_POS_FRAMES, i)
+out_file = os.path.join(out_dir, in_file_pref + '_' + quadrant + '.avi')
 
 # Get bounding box coords for target quadrant
 if quadrant == 'q1':
@@ -80,6 +76,7 @@ else:
 size = (right - left, bottom - top)
 
 # Define the codec and create VideoWriter object
+# Works on local Mac:
 fourcc = cv.VideoWriter_fourcc('m', 'p', '4', 'v')
 out = cv.VideoWriter(out_file, fourcc, fps, size, isColor=True)
 
@@ -105,13 +102,13 @@ while i in range(start,end):
     # Add to counter
     i += 1
     # Press 'esc' to close video
-    if cv.waitKey(1) == 27:
-        cv.destroyAllWindows()
-        cv.waitKey(1)
-        break
+#    if cv.waitKey(1) == 27:
+#        cv.destroyAllWindows()
+#        cv.waitKey(1)
+#        break
 
 cap.release()
 out.release()
 out = None
-cv.destroyAllWindows()
-cv.waitKey(1)
+#cv.destroyAllWindows()
+#cv.waitKey(1)
