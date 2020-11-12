@@ -1,28 +1,30 @@
 #!/usr/bin/env python3
 
 # Import libraries
-import argparse
 import numpy as np
 import cv2 as cv
 import os
 import sys
 
+# Read samples_file
+
+samples_df = pd.read_csv(snakemake.params.samples_file, comment="#", skip_blank_lines=True, index_col=0)
+
+## Get start and end frames
+
+if snakemake.wildcards.assay == "open_field":
+    start = int(samples_df.loc[snakemake.wildcards.sample, "of_start"])
+    end = int(samples_df.loc[snakemake.wildcards.sample, "of_end"])
+elif snakemake.wildcards.assay == "novel_object":
+    start = int(samples_df.loc[snakemake.wildcards.sample, "no_start"])
+    end = int(samples_df.loc[snakemake.wildcards.sample, "no_end"])
+
 # Get key variables
-
-parser = argparse.ArgumentParser(description = 'Split video by quadrant.')
-parser.add_argument("--in_file", help="Input file")
-parser.add_argument("--start", help="Start frame")
-parser.add_argument("--end", help="End frame")
-parser.add_argument("--quadrant", help="Target quadrant")
-parser.add_argument("--out_file", help="Output file")
-
-args = parser.parse_args()
-
-in_file = args.in_file
-start = int(args.start)
-end = int(args.end)
-quadrant = args.quadrant
-out_file = args.out_file
+in_file = snakemake.input[0]
+#start = int(snakemake.params.start)
+#end = int(snakemake.params.end)
+quadrant = snakemake.quadrant
+out_file = snakemake.output[0]
 
 # Read video from file
 cap = cv.VideoCapture(in_file)
