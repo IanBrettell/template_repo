@@ -1,0 +1,40 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Working directory
+
+`/hps/research1/birney/users/ian/pilot`
+
+# Snakemake conda env setup
+
+```{bash}
+# install mamba
+conda install -c conda-forge mamba
+# create snakemake environment
+mamba create -c conda-forge -c bioconda -n snakemake snakemake
+# activate snakemake environment
+conda activate snakemake
+# add other required packages
+conda install -c anaconda opencv
+```
+
+# Bash script
+
+```{bash}
+snakemake \
+  --jobs 5000 \
+  --latency-wait 100 \
+  --cluster-config pilot_paper/snmk/config/cluster.json \
+  --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
+  --keep-going \
+  --rerun-incomplete \
+  --use-conda \
+  -s pilot_paper/snmk/snakefile.py \
+  -p
+  
+
+```

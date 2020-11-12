@@ -130,6 +130,7 @@ conda env export > config/pilot_env_r.yml
 
 ## Create envs on cluster
 ```{bash}
+# PYTHON ENV
 conda env create -f pilot_paper/config/pilot_env_py.yml
 # doesn't work beccuse of cross-platform issues between macos and linux
 #Solving environment: failed
@@ -137,10 +138,14 @@ conda env create -f pilot_paper/config/pilot_env_py.yml
 
 # Make afresh 
 conda create -n pilot_py python=3.6 biopython
+conda activate pilot_py
+
 conda install -c anaconda opencv
 conda install -c anaconda pandas
 # Export to config
-conda env export -n pilot_py -f config/pilot_py.yml --from-history
+conda env export -n pilot_py -f pilot_paper/envs/pilot_py.yml
+
+# DLC ENV
 
 ```
 
@@ -237,6 +242,19 @@ for file in files:
         cap = cv.VideoCapture(file_full)
         fps = cap.get(cv.CAP_PROP_FPS)
         print(fps)
+
+# Do the same but on the cluster, and get total frame length    
+data_path = '/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all'
+files = os.listdir(data_path)
+files.sort() # sort files
+for file in files:
+    # get full path name
+    file_full = os.path.join(data_path, file)
+    # print 
+    if os.path.isfile(file_full):
+        cap = cv.VideoCapture(file_full)
+        vid_len = int(cap.get(cv.CAP_PROP_FRAME_COUNT))
+        print(vid_len)        
         
 # Play select frames of video
 start = 10000
