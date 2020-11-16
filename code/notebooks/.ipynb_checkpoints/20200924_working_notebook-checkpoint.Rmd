@@ -77,26 +77,16 @@ done
 
 ```{r}
 # Create vector of all body parts
-bparts = c("nose", "head", "left_eye", "right_eye","spine_1", "spine_2", "spine_3", "spine_4", "spine_5", "spine_6", "tail_fin")
+bparts = c("nose", "head", "left_eye", "right_eye","spine_1", "spine_2", "spine_3", "spine_4", "spine_5", "tail_fin")
 # Create pair-wise combinations
 bpart_combs = t(combn(bparts, 2))
 
-write.table(bpart_combs, here("pilot_paper", "data", "20201022_body_part_combinations.txt"),
+write.table(bpart_combs, here("data", "20201022_body_part_combinations.txt"),
             row.names = F,
             col.names = F,
             quote = F,
             sep = "\t")
 # Then manually adjusted file on text editor
-
-# Find:
-# ^
-# Replace:
-# - - 
-
-# Find:
-# \t
-# Replace:
-# \n  - 
 ```
 
 # Create conda environments for project
@@ -516,89 +506,11 @@ pilot_paper/code/scripts/20201111_split_videos.py \
   --quadrant q1 \
   --out_dir tmp
 # Works!  
-
-# Pull to local to test
-scp brettell@ebi:/hps/research1/birney/users/ian/pilot/split/novel_object/20190616_1622_icab_ho5_L_q3.mp4 ~/Desktop
-
-# Change names manually
-for i in $( find split/novel_object/* ) ; do
-  file_pref=$( echo $i | cut -f1 -d'.' ) ;
-  mv $i $file_pref\_novel_object.mp4 ;
-done  
-
-for i in $( find split/open_field/* ) ; do
-  file_pref=$( echo $i | cut -f1 -d'.' ) ;
-  mv $i $file_pref\_open_field.mp4 ;
-done  
 ```
 
 # Label frames on local
 
-## Create `DeepLabCut` conda env on cluster
-
 ```{bash}
-git clone https://github.com/AlexEMG/DeepLabCut.git
-conda env create -f DeepLabCut/conda-environments/DLC-CPU.yaml
-# Install 2.2 for multi-animal tracking
-pip install deeplabcut==2.2b8
-# export to snmk dir
-conda env export -n DLC-CPU -f pilot_paper/snmk/envs/DLC-CPU.yml
-# create working directory
-mkdir dlc
-```
-
-## Start DeepLabCut
-
-```{bash}
-ipython
-```
-
-```{python}
-import deeplabcut
-#deeplabcut.launch_dlc() to lauch GUI
-```
-
-## Create new project
-
-```{python}
-# create list of videos
-import os
-
-def get_files(dir_name):
-    list_of_file = os.listdir(dir_name)
-    complete_file_list = list()
-    for file in list_of_file:
-        complete_path = os.path.join(dir_name, file)
-        if os.path.isdir(complete_path):
-            complete_file_list = complete_file_list + get_files(complete_path)
-        else:
-            complete_file_list.append(complete_path)
-
-    return complete_file_list
-
-
-dir_name = '/hps/research1/birney/users/ian/pilot/split'
-files_list = get_files(dir_name)
-
-# Create project
-config_path=deeplabcut.create_new_project('pp_proj', 'ian_brettell', files_list, working_directory='/hps/research1/birney/users/ian/pilot/dlc', copy_videos=False, multianimal=True)
-```
-
-Project yaml file: `/hps/research1/birney/users/ian/pilot/dlc/pp_proj-ian_brettell-2020-11-12/config.yaml`
-
-## Extract frames
-
-**Note**: Set `numframes2pick: 2`
-
-```{python}
-deeplabcut.extract_frames(config_path, mode='automatic', algo='kmeans', userfeedback=False, crop=False)
-```
-
-## Label frames
-
-```{python}
 
 ```
-
-
 
