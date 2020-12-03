@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # Import libraries
+import pandas as pd
 import numpy as np
 import cv2 as cv
 import os
@@ -19,11 +20,18 @@ elif snakemake.wildcards.assay == "novel_object":
     start = int(samples_df.loc[snakemake.wildcards.sample, "no_start"])
     end = int(samples_df.loc[snakemake.wildcards.sample, "no_end"])
 
+# Get crop adjustment values
+
+adj_top = int(samples_df.loc[snakemake.wildcards.sample, "adj_top"])
+adj_bottom = int(samples_df.loc[snakemake.wildcards.sample, "adj_bottom"])
+adj_left = int(samples_df.loc[snakemake.wildcards.sample, "adj_left"])
+adj_right = int(samples_df.loc[snakemake.wildcards.sample, "adj_right"])
+
 # Get key variables
 in_file = snakemake.input[0]
 #start = int(snakemake.params.start)
 #end = int(snakemake.params.end)
-quadrant = snakemake.quadrant
+quadrant = snakemake.wildcards.quadrant
 out_file = snakemake.output[0]
 
 # Read video from file
@@ -50,23 +58,23 @@ tank_side = meta_list[4]
 # Get bounding box coords for target quadrant
 if quadrant == 'q1':
     top = 0
-    bottom = round(((hei - 1) / 2) + 10)
-    left = round((wid - 1) / 2)
+    bottom = round(((hei - 1) / 2) + adj_bottom)
+    left = round(((wid - 1) / 2) + adj_left)
     right = wid - 1
 elif quadrant == 'q2':
     top = 0
-    bottom = round(((hei - 1) / 2) + 10)
+    bottom = round(((hei - 1) / 2) + adj_bottom)
     left = 0
-    right = round(((wid - 1) / 2) + 10)
+    right = round(((wid - 1) / 2) + adj_right)
 elif quadrant == 'q3':
-    top = round(((hei - 1) / 2) + 5)
+    top = round(((hei - 1) / 2) + adj_top)
     bottom = hei - 1
     left = 0
-    right = round(((wid - 1) / 2) + 10)
+    right = round(((wid - 1) / 2) + adj_right)
 elif quadrant == 'q4':
-    top = round(((hei - 1) / 2) + 5)
+    top = round(((hei - 1) / 2) + adj_top)
     bottom = hei - 1
-    left = round(((wid - 1) / 2) + 5)
+    left = round(((wid - 1) / 2) + adj_left)
     right = wid  - 1
 else:
     print('Invalid quadrant')

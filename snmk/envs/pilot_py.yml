@@ -48,14 +48,18 @@ dependencies:
   - numpy=1.19.2=py36h68c22af_1
   - opencv=3.4.2=py36h6fd60c2_1
   - openssl=1.1.1h=h7b6447c_0
+  - pandas=1.1.3=py36he6710b0_0
   - pcre=8.44=he6710b0_0
   - pip=20.2.4=py_0
   - pixman=0.40.0=h7b6447c_0
   - py-opencv=3.4.2=py36hb342d67_1
   - python=3.6.11=h4d41432_2_cpython
+  - python-dateutil=2.8.1=py_0
   - python_abi=3.6=1_cp36m
+  - pytz=2020.1=py_0
   - readline=8.0=he28a2e2_2
   - setuptools=49.6.0=py36h9880bd3_2
+  - six=1.15.0=py_0
   - sqlite=3.33.0=h4cf870e_1
   - tk=8.6.10=hed695b0_1
   - wheel=0.35.1=pyh9f0ad1d_0

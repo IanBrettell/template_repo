@@ -1,16 +1,16 @@
 # Bash script to run on EBI cluster:
 
 # conda activate snakemake
-# snakemake \
-#   --jobs 5000 \
-#   --latency-wait 100 \
-#   --cluster-config pilot_paper/code/snakemake/cluster.json \
-#   --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
-#   --keep-going \
-#   --rerun-incomplete \
-#   --use-conda \
-#   -s pilot_paper/code/snakemake/snakefile.py \
-#   -pn
+#snakemake \
+#  --jobs 5000 \
+#  --latency-wait 100 \
+#  --cluster-config pilot_paper/snmk/config/cluster.json \
+#  --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
+#  --keep-going \
+#  --rerun-incomplete \
+#  --use-conda \
+#  -s pilot_paper/snmk/snakefile.py \
+#  -p
 
 # Import functions and packages
 
@@ -34,7 +34,7 @@ QUADRANTS = ["q1", "q2", "q3", "q4"]
 
 rule all:
     input:
-        expand("split/{assay}/{sample}_{quadrant}.avi",
+        expand("split/{assay}/{sample}_{quadrant}_{assay}.mp4",
             assay = ASSAYS,
             sample = SAMPLES.index,
             quadrant = QUADRANTS)
@@ -45,8 +45,21 @@ rule split:
     params:
         samples_file = config["samples_file"]
     output:
-        "split/{assay}/{sample}_{quadrant}.avi"
+        join(config["dlc_project_path"], "videos/{sample}_{quadrant}_{assay}.mp4")
     conda:
         config["python_env"]
     script:
         config["split_script"]
+
+rule analyse_videos:
+    input:
+        join(config["dlc_project_path"], "videos/{sample}_{quadrant}_{assay}.mp4")
+    params:
+        dlc_project_path = config["dlc_project_path"]
+    output:
+        full = join(config["dlc_project_path"], "videos/{sample}_{quadrant}_{assay}") + config["dlc_scorer_name"] + "_full.pickle",
+        meta = join(config["dlc_project_path"], "videos/{sample}_{quadrant}_{assay}") + config["dlc_scorer_name"] + "_meta.pickle"
+    conda:
+        config["dlc-cpu_env"]
+    script:
+        config["dlc_analyze_script"]

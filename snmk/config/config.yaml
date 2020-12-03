@@ -1,8 +1,16 @@
 input_dir:
     "/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all"
 samples_file:
-    "pilot_paper/snmk/config/samples_test.csv"
+    "pilot_paper/snmk/config/samples.csv"
 split_script:
     "scripts/20201111_split_videos.py"
 python_env:
     "envs/pilot_py.yml"
+dlc-cpu_env:
+    "envs/DLC-CPU.yml"
+dlc_project_path:
+    "dlc/pp_proj-ian_brettell-2020-11-17"
+dlc_analyze_script:
+    "scripts/20201119_dlc_analyse.py"
+dlc_scorer_name:
+    "DLC_resnet50_pp_projNov17shuffle1_50000"
