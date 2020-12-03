@@ -6,5 +6,9 @@
         "name" : "{rule}.{wildcards}",
         "output" : "log/{rule}_{wildcards}.out",
         "error" : "log/{rule}_{wildcards}.err"
+    },
+    "split" :
+    {
+        "memory" : "10000"
     }
 }
