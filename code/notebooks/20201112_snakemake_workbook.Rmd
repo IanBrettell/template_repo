@@ -44,7 +44,7 @@ conda env create -f DeepLabCut/conda-environments/DLC-CPU.yaml
 # Install 2.2 for multi-animal tracking
 pip install deeplabcut==2.2b8
 # export to snmk dir
-conda env export -n  
+conda env export -n DLC-CPU -f pilot_paper/snmk/envs/DLC-CPU.yml
 cp DeepLabCut/conda-environments/DLC-CPU.yaml pilot_paper/snmk/envs
 ```
 

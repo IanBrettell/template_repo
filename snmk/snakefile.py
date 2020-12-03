@@ -1,16 +1,16 @@
 # Bash script to run on EBI cluster:
 
 # conda activate snakemake
-#snakemake \
-#  --jobs 5000 \
-#  --latency-wait 100 \
-#  --cluster-config pilot_paper/snmk/config/cluster.json \
-#  --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
-#  --keep-going \
-#  --rerun-incomplete \
-#  --use-conda \
-#  -s pilot_paper/snmk/snakefile.py \
-#  -p
+# snakemake \
+#   --jobs 5000 \
+#   --latency-wait 100 \
+#   --cluster-config pilot_paper/snmk/config/cluster.json \
+#   --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
+#   --keep-going \
+#   --rerun-incomplete \
+#   --use-conda \
+#   -s pilot_paper/snmk/snakefile.py \
+#   -p
 
 # Import functions and packages
 

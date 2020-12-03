@@ -11,6 +11,8 @@ editor_options:
 
 Pilot videos here: `/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all`
 
+**NOTE** exclusion of `20190613_1156_icab_kaga_R` because file is corrupted.
+
 ## Install DeepLabCut on local
 
 Following tutorial here: <https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/installation.md>
@@ -539,6 +541,7 @@ done
 ```{bash}
 git clone https://github.com/AlexEMG/DeepLabCut.git
 conda env create -f DeepLabCut/conda-environments/DLC-CPU.yaml
+conda activate DLC-CPU
 # Install 2.2 for multi-animal tracking
 pip install deeplabcut==2.2b8
 # export to snmk dir
@@ -581,24 +584,131 @@ dir_name = '/hps/research1/birney/users/ian/pilot/split'
 files_list = get_files(dir_name)
 
 # Create project
-config_path=deeplabcut.create_new_project('pp_proj', 'ian_brettell', files_list, working_directory='/hps/research1/birney/users/ian/pilot/dlc', copy_videos=False, multianimal=True)
+config_path=deeplabcut.create_new_project('pp_proj', \
+                                          'ian_brettell', \
+                                          files_list, \
+                                          working_directory='/hps/research1/birney/users/ian/pilot/dlc', \
+                                          copy_videos=False, \
+                                          multianimal=True)
+
 ```
 
-Project yaml file: `/hps/research1/birney/users/ian/pilot/dlc/pp_proj-ian_brettell-2020-11-12/config.yaml`
+Project yaml file: `/hps/research1/birney/users/ian/pilot/dlc/pp_proj-ian_brettell-2020-11-17/config.yaml`
 
 ## Extract frames
 
 **Note**: Set `numframes2pick: 2`
 
 ```{python}
+# to get test frames
+deeplabcut.extract_frames(config_path, mode='automatic', algo='uniform', userfeedback=False, crop=False)
+# when satisfied with cropping margins, extract by kmeans and set `numframes2pick: 2`
 deeplabcut.extract_frames(config_path, mode='automatic', algo='kmeans', userfeedback=False, crop=False)
 ```
 
-## Label frames
+Check whether the quadrant splits need adjustment
 
-```{python}
+```{bash}
+mkdir tmp/to_send
 
+for i in $( find dlc/pp_proj-ian_brettell-2020-11-17/labeled-data/*[q1,q3]_open_field -type d ) ; do
+  target_file=$( find $i/* | head -1 ) ;
+  bname=$( basename $target_file ) ; 
+  meta=$( echo $i | cut -f4 -d'/' ) ;
+  new_basename=$( echo $meta\_$bname ) ;
+  cp $target_file tmp/to_send/$new_basename ;
+done  
+
+scp brettell@ebi:/hps/research1/birney/users/ian/pilot/tmp/to_send/* ~/Desktop/frames
 ```
 
+Put the following lines in `tmp/txt`:
+
+20190611_1331_icab_icab_R
+20190611_1454_icab_hni_R
+20190612_0952_icab_icab_R
+20190612_1053_icab_kaga_R
+20190612_1236_icab_kaga_R
+20190612_1425_icab_kaga_R
+20190612_1501_icab_icab_R
+20190612_1534_icab_hdr_R
+20190613_1511_icab_hdr_L
+20190614_1108_icab_ho5_L
+20190614_1208_icab_icab_L
+20190614_1456_icab_ho5_R
+20190615_1051_icab_hdr_L
+20190615_1145_icab_hni_R
+20190615_1210_icab_ho5_R
+20190615_1649_icab_icab_L
+20190616_1017_icab_kaga_R
+20190616_1325_icab_hni_R
+20190616_1506_icab_hni_L
+
+```{bash}
+for i in $( cat tmp/tmp.txt ) ; do
+  rm split/*/$i* ;
+done
+```
+
+Then re-run snakefile and repeat. **NOTE** for the next time we do this, make new `split_script.py` that only creates very short videos, and run that until you have the borders fully adjusted.
+
+## Label frames
+
+Pull project folder to local
+
+**NOTE**: it copied all the videos over as well. Figure out how to exclude next time.
+
+```{bash}
+scp -r brettell@ebi:/hps/research1/birney/users/ian/pilot/dlc/pp_proj-ian_brettell-2020-11-17 ~/Desktop/
+config.yaml
+```
+
+
+```{python}
+deeplabcut.label_frames(config_path)
+```
+
+## Train the network
+
+Upload project to Google Drive, and change `project_path` in `config.yaml` to the new path `/gdrive/MyDrive/pilot_paper/pp_proj-ian_brettell-2020-11-17`
+
+Notebook for the process is here: `/gdrive/MyDrive/pilot_paper/20201118_dlc.ipynb`
+
+## Analyse all videos using trained model
+
+### Send all directories to EBI cluster
+
+*BAD* way
+
+```{bash}
+# remove old directory
+rm -rf dlc/pp_proj-ian_brettell-2020-11-17
+# copy over whole directory from Google Drive
+rclone copy google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-11-17 dlc/pp_proj-ian_brettell-2020-11-17
+```
+
+*GOOD* way
+
+```{bash}
+rclone copy 
+```
+
+## Assemble and refine tracklets
+
+<https://github.com/DeepLabCut/DeepLabCut/blob/master/docs/functionDetails.md#madeeplabcut-critical-point---assemble--refine-tracklets>
+
+Docs require you to test using one of two tracker types: `box` or `skeleton`. 
+
+`box` seems to work much better. Uses a defined slack/margin specified at `boundingboxslack` and connects them across time with a greedy box overlap metric `iou_threshold`.
+
+Those parameters are set out in `<project>/dlc-models/<iteration>/<project-shuffle>/test/inference_cfg.yaml`
+
+## Extract outlier frames
+
+```{python}
+config_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-11-17/config.yaml'
+target_video = ['/Users/brettell/Desktop/pp_proj-ian_brettell-2020-11-17/videos/20190611_1410_icab_kaga_R_q4_novel_object.mp4']
+deeplabcut.extract_outlier_frames(config_path, target_video, outlieralgorithm='jump')
+```
 
 
