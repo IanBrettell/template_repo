@@ -12,6 +12,14 @@ editor_options:
 Pilot videos here: `/nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all`
 
 **NOTE** exclusion of `20190613_1156_icab_kaga_R` because file is corrupted.
+**NOTE** exclusion of `20190616_1227_icab_kaga_R_q3` because quadrant is empty.
+
+# Interactive shell on GPU
+
+```{bash, eval = F}
+bsub -M 10000 -P gpu -gpu - -Is bash
+```
+
 
 ## Install DeepLabCut on local
 
@@ -540,6 +548,7 @@ done
 
 ## Create `DeepLabCut` conda env on cluster
 
+### CPU
 ```{bash}
 git clone https://github.com/AlexEMG/DeepLabCut.git
 conda env create -f DeepLabCut/conda-environments/DLC-CPU.yaml
@@ -550,6 +559,16 @@ pip install deeplabcut==2.2b8
 conda env export -n DLC-CPU -f pilot_paper/snmk/envs/DLC-CPU.yml
 # create working directory
 mkdir dlc
+```
+
+### GPU
+```{bash}
+conda env create -f DeepLabCut/conda-environments/DLC-GPU.yaml
+conda activate DLC-GPU
+# Install 2.2 for multi-animal tracking
+pip install deeplabcut==2.2b8
+# export to snmk dir
+conda env export -n DLC-GPU -f pilot_paper/code/snakemake/envs/DLC-GPU.yml
 ```
 
 ## Start DeepLabCut
@@ -853,7 +872,8 @@ Can't find the `.pickle` file. Move to `/videos` so they're in the same director
 * `iou_threshold`: starts at `0.2`.
   - Intersection over Union threshold for linking two bounding boxes.
   - increased to `0.8` and it lost the animals earlier, and misplaced the centre.
-  - reduced to `0.1`
+  - reduced to `0.1` - better
+  - reduced to `0` - works fantastically!
 * `max_age`: starts at `100`
   - maximum duration of a tracklet and length
   - increased to `9999`
@@ -861,7 +881,8 @@ Can't find the `.pickle` file. Move to `/videos` so they're in the same director
   - reduce to `1`
 * `boundingboxslack`: starts at `0`
   - p/m pixels in width and height for increasing bounding boxes
-  - increased to `10` - almost no detections
+  - increased to `10` - improved it substantially.
+  - increased to `20` - pretty good, still a lot of missing
   
   
 Videos for training:
@@ -878,5 +899,294 @@ bsub \
       dlc/pp_proj-ian_brettell-2020-12-03"
 ```
 
+*20201208*
+
+# Iteration-1
+
+Metadata on status of videos: `pilot_paper/data/videos_to_analyse.csv`
+
+```{r}
+# Full list
+meta = read.csv(here::here("data", "videos_to_analyse.csv"),
+                header = T, na.strings = "")
+meta$analysed = ifelse(meta$completed == "yes", "yes", NA)
+# Read in current lines
+current = scan(here::here("data", "20201208_iteration1_samples.txt"),what = "character")
+meta$analysed = ifelse(meta$sample %in% current, "yes", NA)
+# Reorder
+meta = meta %>% dplyr::select(sample, analysed, completed)
+
+# 
+meta %>% 
+  dplyr::filter(is.na(completed)) %>% 
+  dplyr::select(sample)
+  
+```
 
 
+## Sync labels from local
+
+```{bash, eval = F}
+rclone sync \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/labeled-data \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/labeled-data
+```
+
+## After training, send back model and new videos
+
+```{bash, eval = F}
+# Pickles
+for i in $( cat data/20201208_iteration1_samples.txt ) ; do
+  rclone copy \
+    --include "$i*.pickle" \
+    google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/videos \
+    ~/Desktop/pp_proj-ian_brettell-2020-12-03/videos ;
+done
+  
+# Model
+rclone sync \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/dlc-models \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/dlc-models
+
+# Config
+rclone sync \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/config.yaml \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03
+  
+```
+
+### Iteration-2 
+
+20190615_1022_icab_ho5_L_q4_novel_object
+20190615_1305_icab_ho5_R_q2_novel_object
+20190612_1501_icab_icab_R_q4_novel_object
+20190615_1236_icab_hdr_R_q3_novel_object
+20190615_1210_icab_ho5_R_q2_novel_object
+20190616_1531_icab_hdr_L_q1_open_field
+20190615_1145_icab_hni_R_q4_open_field
+20190616_1256_icab_kaga_L_q2_novel_object
+20190615_1145_icab_hni_R_q2_novel_object
+20190616_1227_icab_kaga_R_q4_open_field
+20190616_1531_icab_hdr_L_q3_novel_object
+20190613_1054_icab_hdr_R_q3_novel_object
+20190614_1108_icab_ho5_L_q2_novel_object
+20190614_1553_icab_hni_L_q4_novel_object
+20190616_1622_icab_ho5_L_q3_novel_object
+20190612_1355_icab_ho5_R_q2_novel_object
+20190615_1714_icab_icab_L_q4_novel_object
+20190612_1123_icab_hni_R_q4_novel_object
+20190614_1108_icab_ho5_L_q3_novel_object
+20190614_1644_icab_hni_L_q4_open_field
+20190612_1604_icab_hni_R_q1_novel_object
+20190614_1335_icab_ho5_L_q4_open_field
+20190616_1556_icab_hdr_L_q1_novel_object
+20190615_1210_icab_ho5_R_q4_novel_object
+20190615_1051_icab_hdr_L_q2_novel_object
+20190616_1351_icab_ho5_L_q2_open_field
+20190615_1236_icab_hdr_R_q3_open_field
+20190614_1430_icab_hdr_L_q1_novel_object
+20190614_1335_icab_ho5_L_q1_open_field
+20190616_1651_icab_icab_L_q1_open_field
+
+Test video to experiment with:
+
+`20190615_1305_icab_ho5_R_q2_novel_object`
+
+In folder in project `analysing/iteration-2`
+
+Differences in `inference_cfg.yaml` cross-validated parameters:
+- when `rpck_train` is the parameter:
+  - `pafthreshold`: 0.053887747123252255
+- when `rpck_test` is the parameter:
+  - `pafthreshold`: 0.12506935309304157
+- when `pck_test` is the parameter:
+  - `pafthreshold`: 0.12506935309304157   
+- when `rmse_test` is the parameter:
+  - `pafthreshold`: 0.4007223082503693
+
+Comparing the tracklets, `rpck_test` and `rmse_test` look pretty similar, although for some reason `ref` is correctly labelled in `rpck_test`.
+
+`min_hits`: Higher spreads out the points more during errors.
+`boundingboxslack`: Didn't seem to make a difference between 0 and 20
+`max_age`: 9999 is better than 0 - the latter loses tracks
+
+So best parameters seem to be:
+
+`boundingboxslack`: 0
+`iou_threshold`: 0
+`max_age`: 9999
+`min_hits`: 0
+
+
+Bring over pickle:
+```{bash}
+rclone copy \
+  --include "20190615_1305_icab_ho5_R_q2_novel_objectDLC_resnet50_pp_projDec3shuffle1_60000*pickle" \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/videos \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-2              
+```
+
+
+
+Setting `max gap fill` to 0 creates spikes in the plots that make it very easy to identify the crossovers.
+
+## iteration-3
+
+### Refinement samples
+
+* 20190615_1452_icab_hdr_L_q4_novel_object.mp4
+* 20190615_1210_icab_ho5_R_q1_novel_object.mp4
+* 20190615_1452_icab_hdr_L_q2_novel_object.mp4
+* 20190611_1331_icab_icab_R_q2_novel_object.mp4
+* 20190616_1622_icab_ho5_L_q3_open_field.mp4
+
+### Sync labels from local
+
+```{bash, eval = F}
+rclone sync \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/labeled-data \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/labeled-data
+```
+
+### Sync models grom drive to cluster
+
+```{bash}
+rclone sync \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03 \
+  dlc/pp_proj-ian_brettell-2020-12-03
+```
+
+
+### Convert raw tracklets to h5 to extract outliers
+
+```{python}
+# load config file
+config_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/config.yaml'
+# set videofile_path
+videofile_path = ['/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/videos/20190613_1054_icab_hdr_R_q3_novel_object.mp4']
+# convert to tracklets
+deeplabcut.convert_detections2tracklets(config_path, videofile_path, videotype='mp4', shuffle=1, trainingsetindex=0, track_method='box')
+# get picklefile
+picklefile = []
+for file in videofile_path:
+  stripped_file = file.strip('.mp4')
+  picklefile.append(stripped_file + 'DLC_resnet50_pp_projDec3shuffle1_60000_bx.pickle')
+
+# convert raw tracks to h5
+for file in picklefile:
+  deeplabcut.convert_raw_tracks_to_h5(config_path, file)
+# extract outliers
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='jump')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='uncertain')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='fitting')
+# refine labels
+```
+
+### Copy over videos and analysis files
+
+```{bash}
+mkdir ~/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-3
+
+for i in $(cat ~/Documents/Repositories/pilot_paper/data/20201211_iteration-3_samples.txt ) ; do
+  rclone copy \
+    --include "$i*" \
+    google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/videos \
+    ~/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-3 ;
+done
+
+# and config
+rclone copy \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/config.yaml \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03
+  
+# and model
+rclone sync \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/dlc-models \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/dlc-models
+```
+
+### Create h5
+```{python}
+# load config file
+config_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/config.yaml'
+# set videofile_path
+sample_file_path = '/Users/brettell/Documents/Repositories/pilot_paper/data/20201211_iteration-3_samples.txt'
+analysis_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-3'
+# read in samples
+with open(sample_file_path, 'r') as f:
+  videofile_path = f.readlines()
+
+videofile_path = [x.strip() + '.mp4'  for x in videofile_path]  
+
+# add pickle file suffix
+pickle_suff = 'DLC_resnet50_pp_projDec3shuffle1_60000_bx.pickle'
+pickle_paths = [os.path.join(analysis_path, x.strip('.mp4') + pickle_suff) for x in videofile_path]  
+
+# convert raw tracks to h5
+for file in pickle_paths:
+  deeplabcut.convert_raw_tracks_to_h5(config_path, file)
+# extract outliers
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='jump')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='uncertain')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='fitting')
+# refine labels
+```
+
+## iteration-6
+
+`inference_cgf.yaml` parameters:
+
+`boundingboxslack` doesn't seem to make a difference.
+
+### Copy over videos
+
+```{bash}
+i=6
+
+for j in $(cat ~/Documents/Repositories/pilot_paper/data/20201213_iteration-$i\_samples.txt ) ; do
+  rclone copy \
+    --include "$j*" \
+    google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/videos \
+    ~/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-$i ;
+done
+
+# and config
+rclone copy \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/config.yaml \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03
+  
+# and model
+rclone sync \
+  google_drive_ebi:pilot_paper/pp_proj-ian_brettell-2020-12-03/dlc-models/iteration-$i \
+  ~/Desktop/pp_proj-ian_brettell-2020-12-03/dlc-models/iteration-$i
+```
+
+### Create h5
+```{python}
+import os
+# load config file
+config_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/config.yaml'
+# set iteration
+iteration = '6'
+# set videofile_path
+sample_file_path = '/Users/brettell/Documents/Repositories/pilot_paper/data/20201213_iteration-' + iteration + '_samples.txt'
+analysis_path = '/Users/brettell/Desktop/pp_proj-ian_brettell-2020-12-03/analysing/iteration-' + iteration
+# read in samples
+with open(sample_file_path, 'r') as f:
+  videofile_path = f.readlines()
+
+videofile_path = [x.strip() + '.mp4'  for x in videofile_path]  
+
+# add pickle file suffix
+pickle_suff = 'DLC_resnet50_pp_projDec3shuffle1_50000_bx.pickle'
+pickle_paths = [os.path.join(analysis_path, x.strip('.mp4') + pickle_suff) for x in videofile_path]  
+
+# convert raw tracks to h5
+for file in pickle_paths:
+  deeplabcut.convert_raw_tracks_to_h5(config_path, file)
+# extract outliers
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='jump')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='uncertain')
+deeplabcut.extract_outlier_frames(config_path, videofile_path, outlieralgorithm='fitting')
+# refine labels
+```

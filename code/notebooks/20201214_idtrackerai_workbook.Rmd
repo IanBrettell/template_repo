@@ -1,0 +1,99 @@
+---
+title: "idtracker.ai workbook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Install `idtrackerai` on Ubuntu VM
+
+## First get `Miniconda`
+
+From here: <https://www.anaconda.com/products/individual#linux> 
+
+```{bash, eval = F}
+https://www.anaconda.com/products/individual#linux
+
+
+# Re-install libxcb
+sudo apt-get install libxcb-xinerama0
+```
+
+**NOTE** exclusion of `20190613_1156_icab_kaga_R` because file is corrupted.
+**NOTE** exclusion of `20190616_1227_icab_kaga_R_q3` because quadrant is empty.
+
+Leaving *total number of videos* at *614.* ((78 - 1 corrupted) * 2 assays * 4 quadrants) - 2 empty videos)
+
+Parameters: 
+
+`bgsub` : True
+`intensity threshold`: 0:175
+`area thresholds` : 80:200
+`rangelst` : [1500,39458]
+
+Copy over to local
+
+```{bash}
+rclone copy google_drive_ebi:pilot_paper/idtrackerai/videos/session_test ~/Desktop/idtrackerai/session_test  
+```
+
+Copy over full videos to cluster
+
+```{bash}
+rclone copy /nfs/ftp/private/birney-res-ftp/upload/medaka/videos/ian_pilot/all google_drive_ebi:pilot_paper/idtrackerai/videos_full
+```
+
+Copy over full videos to local
+
+```{bash}
+# get list of all video files
+rclone lsf --include "*.avi" google_drive_ebi:pilot_paper/idtrackerai/videos_full
+
+# do batches of 5
+test=$(rclone lsf --include "*.avi" google_drive_ebi:pilot_paper/idtrackerai/videos_full | awk 'NR==1,NR==5')
+
+# copy 
+for i in $( echo $test ) ; do
+  rclone copy \
+    google_drive_ebi:pilot_paper/idtrackerai/videos_full/$i \
+    ~/Desktop/idtrackerai/videos_full ;
+done
+
+# remove when finished
+rm ~/Desktop/idtrackerai/videos_full/*.avi
+```
+
+Takes way to long. Try again with videos of pairs.
+
+Test on cluster
+
+```{bash}
+# On GPU
+sample=20190611_1410_icab_kaga_R_q1_novel_object
+input_video=$(echo split/novel_object/$sample'.mp4')
+
+idtrackerai terminal_mode \
+  --_video $input_video \
+  --_bgsub 'True' \
+  --_intensity [0,155] \
+  --_area [80,200] \
+  --_range [0,19642] \
+  --_nblobs 2 \
+  --_session $sample \
+  --exec track_video
+  
+# On CPU
+sample=20190611_1410_icab_kaga_R_q2_novel_object
+input_video=$(echo split/novel_object/$sample'.mp4')
+
+idtrackerai terminal_mode \
+  --_video $input_video \
+  --_bgsub 'True' \
+  --_intensity [0,155] \
+  --_area [80,200] \
+  --_range [0,19642] \
+  --_nblobs 2 \
+  --_session $sample \
+  --exec track_video
+```
+

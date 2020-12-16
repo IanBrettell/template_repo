@@ -54,13 +54,23 @@ cp DeepLabCut/conda-environments/DLC-CPU.yaml pilot_paper/snmk/envs
 snakemake \
   --jobs 5000 \
   --latency-wait 100 \
-  --cluster-config pilot_paper/snmk/config/cluster.json \
+  --cluster-config pilot_paper/code/snakemake/config/cluster.json \
   --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
   --keep-going \
   --rerun-incomplete \
   --use-conda \
-  -s pilot_paper/snmk/snakefile.py \
-  -p
+  -s pilot_paper/code/snakemake/snakefile.py \
+  -pn
   
-
+# For GPU jobs
+snakemake \
+  --jobs 5000 \
+  --latency-wait 100 \
+  --cluster-config pilot_paper/code/snakemake/config/cluster.json \
+  --cluster 'bsub -g /snakemake_bgenie -J {cluster.name} -P {cluster.project} -gpu {cluster.gpu} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}' \
+  --keep-going \
+  --rerun-incomplete \
+  --use-conda \
+  -s pilot_paper/code/snakemake/snakefile.py \
+  -pn
 ```

@@ -1,0 +1,421 @@
+---
+title: "Singularity setup"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Install version 3.7.0 on local
+
+Follow instructions here: <https://sylabs.io/guides/3.4/user-guide/quick_start.html>
+
+Download Go version 1.15.6
+
+Then set environment variable PATH to point to Go:
+
+```{bash}
+echo 'export PATH=/usr/local/go/bin:$PATH' >> ~/.bashrc && \
+  source ~/.bashrc
+```
+
+Download Singularity version 3.7.0 from GitHub
+
+```{bash}
+wget https://github.com/hpcng/singularity/releases/download/v3.7.0/singularity-3.7.0.tar.gz && \
+  tar -xzf singularity-3.7.0.tar.gz && \
+  cd singularity
+```
+
+Compile Singularity source code
+
+```{bash}
+./mconfig && \
+  make -C builddir && \
+  sudo make -C builddir install
+```
+
+Download Singularity Desktop MacOS beta (v0.1)
+
+From here: <https://sylabs.io/singularity-desktop-macos/>
+
+# Build container
+
+Authenicate remote login
+
+```{bash}
+singularity remote login
+```
+Key:
+eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA1NzAyMDcsImlhdCI6MTYwNzk3ODIwNywiaXNzIjoiaHR0cHM6Ly9hdXRoLnN5bGFicy5pby90b2tlbiIsImp0aSI6IjVmZDdjY2RmN2Y3NDU5Yjg4N2I3MmQ0YiIsInN1YiI6IjVmZDdjY2QxYjAyMWFmNWM2Yzg2ODkzMSJ9.Ij-2eKqGmkUGTGsS-ZfVOKH91q4827d5XaQi8tHUl90c0nJU5a86L_ox5IbQNd-OQsKtQodztiYjwTTGIkePp4y-3T2ypTUn5ZcZBsN5KcTIFfAqElQTnwHGridnjp4DQOzwwFTpus-4lW0cidHMGa2QjtNLsqQB3sy7I_LMs8baMydogQx3mUQUkDbR9a2soFDYerP2ZTISsZaUVuVVnJndkhD2CmYqdftV2Bvzis_WJf06jRtrMOiUQ9vMjoAoLH_7TfBbyreM12Ngh1vB3Gdi-8zY7b7xqTd6YfcjHJCWcznbGR79Jvaq6AKw8G6kJY-dAOm0PEp446vf4MyjIw
+
+FATAL:   Unable to submit build job: no authentication token, log in with `singularity remote login`
+
+Even though previously it had said:
+INFO:    API Key Verified!
+
+```{bash}
+sudo singularity build --remote idtrackerai_cont ~/Documents/Repositories/pilot_paper/envs/idtrackerai.def
+```
+
+
+
+# Send to cluster
+
+```{bash}
+bsub -P gpu -gpu - -Is "singularity shell idtrackerai_cont"
+```
+ERROR  : Unknown image format/type: idtrackerai_cont
+ABORT  : Retval = 255
+
+# Make on Linux
+
+`ubuntu_cont.def`:
+```{bash}
+Bootstrap: docker
+From: ubuntu:18.04
+
+%files
+    idtrackerai_gpu.yaml
+
+%post
+  apt-get update && apt-get -y upgrade
+  apt-get -y install \
+    build-essential \
+    wget \
+    bzip2 \
+    ca-certificates \
+    libglib2.0-0 \
+    libxext6 \
+    libsm6 \
+    libxrender1 \
+    git
+  rm -rf /var/lib/apt/lists/*
+  apt-get clean
+
+  # Install Miniconda
+
+  wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  /bin/bash Miniconda3-latest-Linux-x86_64.sh -bfp /opt/conda
+  export PATH="/opt/conda/bin:$PATH"
+  # Conda configuration of channels from .condarc file
+  conda config --file /.condarc --add channels defaults
+  conda config --file /.condarc --add channels conda-forge
+  conda update conda
+  #List installed environments
+  conda list
+
+  # Install conda env from idtrackerai_gpu.yaml file
+  echo ". /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+  echo "conda activate $(head -1 idtrackerai_gpu.yaml | cut -d' ' -f2)" >> $SINGULARITY_ENVIRONMENT
+  /opt/conda/bin/conda env create -n idtrackerai -f idtrackerai_gpu.yaml
+
+  # activate environment
+  #. /opt/conda/etc/profile.d/conda.sh
+  #conda activate idtrackerai
+
+```
+
+`idtrackerai_gpu.yaml`:
+```{yaml}
+name: idtrackerai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=1_gnu
+  - _tflow_select=2.1.0=gpu
+  - absl-py=0.11.0=py36h5fab9bb_0
+  - astor=0.8.1=pyh9f0ad1d_0
+  - c-ares=1.17.1=h36c2ea0_0
+  - ca-certificates=2020.12.5=ha878542_0
+  - certifi=2020.12.5=py36h5fab9bb_0
+  - gast=0.4.0=pyh9f0ad1d_0
+  - grpcio=1.34.0=py36h8e87921_0
+  - h5py=3.1.0=nompi_py36hc1bc4f5_100
+  - hdf5=1.10.6=nompi_h6a2412b_1112
+  - keras-applications=1.0.8=py_1
+  - krb5=1.17.2=h926e7f8_0
+  - ld_impl_linux-64=2.35.1=hea4e1c9_1
+  - libblas=3.9.0=3_openblas
+  - libcblas=3.9.0=3_openblas
+  - libcurl=7.71.1=hcdd3856_8
+  - libedit=3.1.20191231=he28a2e2_2
+  - libev=4.33=h516909a_1
+  - libffi=3.3=h58526e2_2
+  - libgcc-ng=9.3.0=h5dbcf3e_17
+  - libgfortran-ng=9.3.0=he4bcb1c_17
+  - libgfortran5=9.3.0=he4bcb1c_17
+  - libgomp=9.3.0=h5dbcf3e_17
+  - liblapack=3.9.0=3_openblas
+  - libnghttp2=1.41.0=h8cfc5f6_2
+  - libopenblas=0.3.12=pthreads_h4812303_1
+  - libpng=1.6.37=h21135ba_2
+  - libprotobuf=3.14.0=h780b84a_0
+  - libssh2=1.9.0=hab1572f_5
+  - libstdcxx-ng=9.3.0=h2ae2ef3_17
+  - markdown=3.3.3=pyh9f0ad1d_0
+  - mock=4.0.3=py36h5fab9bb_0
+  - ncurses=6.2=h58526e2_4
+  - numpy=1.19.4=py36h8732dcd_1
+  - openssl=1.1.1i=h7f98852_0
+  - pip=20.3.1=pyhd8ed1ab_0
+  - python=3.6.12=hffdb5ce_0_cpython
+  - python_abi=3.6=1_cp36m
+  - readline=8.0=he28a2e2_2
+  - setuptools=49.6.0=py36h9880bd3_2
+  - six=1.15.0=pyh9f0ad1d_0
+  - sqlite=3.34.0=h74cdb3f_0
+  - tensorboard=1.13.1=py36_0
+  - tensorflow=1.13.1=h76b4ce7_7
+  - tensorflow-base=1.13.1=py36h76b4ce7_7
+  - tensorflow-estimator=1.13.0=py_0
+  - tensorflow-gpu=1.13.1=h0d30ee6_0
+  - tk=8.6.10=h21135ba_1
+  - werkzeug=1.0.1=pyh9f0ad1d_0
+  - wheel=0.36.2=pyhd3deb0d_0
+  - xz=5.2.5=h516909a_1
+  - zipp=3.4.0=py_0
+  - zlib=1.2.11=h516909a_1010
+  - pip:
+    - cached-property==1.5.2
+    - chardet==3.0.4
+    - coloredlogs==15.0
+    - confapp==1.1.11
+    - cycler==0.10.0
+    - dask==2020.12.0
+    - filelock==3.0.12
+    - gdown==3.12.2
+    - humanfriendly==9.1
+    - idna==2.10
+    - idtrackerai==3.0.24
+    - idtrackerai-app==0.0.12
+    - importlib-metadata==3.3.0
+    - joblib==0.17.0
+    - keras-preprocessing==1.1.2
+    - kiwisolver==1.3.1
+    - matplotlib==3.3.3
+    - msgpack==1.0.1
+    - msgpack-numpy==0.4.7.1
+    - msgpack-python==0.5.6
+    - natsort==7.1.0
+    - numexpr==2.7.1
+    - opencv-python==3.4.5.20
+    - pandas==1.1.5
+    - pillow==8.0.1
+    - protobuf==3.14.0
+    - psutil==5.7.3
+    - pyforms-terminal==4.0.10
+    - pyparsing==2.4.7
+    - pysocks==1.7.1
+    - python-dateutil==2.8.1
+    - pytz==2020.4
+    - pyyaml==5.3.1
+    - requests==2.25.0
+    - scikit-learn==0.23.2
+    - scipy==1.5.4
+    - seaborn==0.11.0
+    - simplejson==3.17.2
+    - sklearn==0.0
+    - tables==3.6.1
+    - termcolor==1.1.0
+    - threadpoolctl==2.1.0
+    - tqdm==4.54.1
+    - typing-extensions==3.7.4.3
+    - urllib3==1.26.2
+    - xlib==0.21
+prefix: /nfs/research1/birney/users/brettell/anaconda3/envs/idtrackerai
+
+```
+
+## Build
+
+```{bash}
+sudo singularity build ubuntu_cont ubuntu_cont.def
+# Works
+```
+
+## Now try with CUDA
+
+# Try building on the GPU
+
+```{bash}
+# Login to GPU node
+bsub -M 10000 -P gpu -gpu - -Is bash
+# Create singularity conda env (to get the new version with the --remote flag)
+conda create -n singularity
+conda activate singularity
+conda install -c conda-forge singularity
+# Set token (label: idtracker_ebi_cluster_gpu)
+singularity remote login
+# Build with just ubuntu
+singularity build --remote cuda_gpu_2 idtracker_cont.def
+# works
+# Build doesn't work when given the conda .yaml
+#INFO:    Copying idtrackerai_gpu.yaml to #/tmp/rootfs-03f466ec-3ec3-11eb-a984-12bdfa016557/idtrackerai_gpu.yaml
+#FATAL:   container creation failed: unable to copy files to container fs: while copying #[idtrackerai_gpu.yaml] to /tmp/rootfs-03f466ec-3ec3-11eb-a984-12bdfa016557/idtrackerai_gpu.yaml: exit #status 1: /bin/cp: cannot stat 'idtrackerai_gpu.yaml': No such file or directory
+# Build by creating conda env from scratch
+singularity build --remote cuda_gpu_2 idtracker_cont.def
+```
+
+## Recipe file:
+
+```{bash}
+Bootstrap: docker
+From: nvidia/cuda:10.0-runtime-ubuntu18.04
+
+#%files
+#    /hps/research1/birney/users/ian/pilot/idtrackerai_gpu.yaml
+
+%post
+    apt-get update && apt-get -y upgrade
+    apt-get -y install \
+      build-essential \
+      wget \
+      bzip2 \
+      ca-certificates \
+      libglib2.0-0 \
+      libxext6 \
+      libsm6 \
+      libxrender1 \
+      git
+    rm -rf /var/lib/apt/lists/*
+    apt-get clean
+
+    # Install Miniconda
+
+    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    /bin/bash Miniconda3-latest-Linux-x86_64.sh -bfp /opt/conda
+    export PATH="/opt/conda/bin:$PATH"
+    # Conda configuration of channels from .condarc file
+    conda config --file /.condarc --add channels defaults
+    conda config --file /.condarc --add channels conda-forge
+    conda update conda
+    #List installed environments
+    #conda list
+
+#    # Install conda env from idtrackerai_gpu.yaml file
+#
+#    echo ". /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+#    echo "conda activate $(head -1 idtrackerai_gpu.yaml | cut -d' ' -f2)" >> $SINGULARITY_ENVIRONMENT
+#    /opt/conda/bin/conda env create -n idtrackerai -f /hps/research1/birney/users/ian/pilot/idtrackerai_gpu.yaml
+
+    # Install conda env within env
+
+    . /opt/conda/etc/profile.d/conda.sh
+    conda create -n idtrackerai python=3.6
+    conda activate idtrackerai
+    pip install idtrackerai
+    conda install tensorflow-gpu=1.13
+
+```
+
+Build SUCCESS!! But does it work...
+
+```{bash}
+bsub -P gpu -gpu - -Is "singularity shell cuda_gpu_2"
+#ERROR  : Unknown image format/type: cuda_gpu_2
+#ABORT  : Retval = 255
+
+# Try within singularity env (v 3.6.3)
+conda activate singularity
+singularity shell cuda_gpu_2
+#INFO:    Convert SIF file to sandbox...
+#ERROR  : Failed to create user namespace: user namespace disabled
+
+# Try making the container in the same singularity version as is installed on the cluster (v 2.6.0) - have to do it on local linux because building requires sudo privileges, as disovered by doing this on teh cluster:
+conda create -n singularity-2.6 singularity=2.6.0
+conda activate singularity-2.6
+singularity build idtracker.simg idtracker_cont.def
+#Using container recipe deffile: idtracker_cont.def
+#ERROR: You must be the root user to build from a Singularity recipe file
+
+# SO on local linux:
+conda create -c conda-forge -n singularity-2.6 singularity=2.6.0^C
+conda activate singularity-2.6
+sudo singularity build /home/parallels/idtracker.simg idtracker_cont.def
+# send to cluster
+scp ~/idtracker.simg brettell@ebi:/hps/research1/birney/users/ian/pilot  
+```
+
+Also saw that you can load v3.5 on the cluster
+```{bash}
+module load singularity/3.5.0
+bsub -P gpu -gpu - -Is "singularity shell cuda_gpu_2"
+
+sample=split/open_field/20190616_1717_icab_icab_L_q4_open_field
+input_video=$(echo $sample'.mp4')
+
+idtrackerai terminal_mode \
+  --_video $input_video \
+  --_bgsub 'True' \
+  --_intensity [0,160] \
+  --_area [80,200] \
+  --_range [0,18278] \
+  --_nblobs 2 \
+  --_session $sample \
+  --exec track_video
+  
+#locale.Error: unsupported locale setting 
+
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
+#Also need to re-do container to include activation of environment with %run
+%runscript
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate idtrackerai
+# This didn't activate the env on entering the shell
+
+# Adding this didn't fix the locale issue.
+    export LC_ALL=C
+    export LC_CTYPE=en_GB.UTF-8
+    
+# Try with this:
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+```
+
+Works, but doesn't engage GPU. Try what's written here: <http://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/>
+
+New `.def` file: `idtracker_cont2.def`
+
+```{bash}
+# Build new container
+module load singularity
+singularity build --remote idtrackerai_cont idtracker_cont2.def
+
+# Download NVIDIA driver for 418.67:
+mkdir gpu_drivers 
+wget -P gpu_drivers https://us.download.nvidia.com/tesla/418.67/NVIDIA-Linux-x86_64-418.67.run
+
+# Run script to extract files
+cd gpu_drivers 
+mkdir nvidia_418.67
+chmod +x ../pilot_paper/code/scripts/extractnvdriver.sh
+../pilot_paper/code/scripts/extractnvdriver.sh 418.67 gpu_drivers/nvidia_418.67
+cd ..
+# Success.
+
+# Run shell in the image
+conda activate snakemake # an error gets thrown if sending job from conda env base
+
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin \
+    idtrackerai_cont"
+    
+bsub -P gpu -gpu - -Is "singularity shell -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin idtrackerai_cont"    
+
+# Test for NVIDIA
+nvidia-smi
+
+# Test idtrackerai
+. activate idtrackerai
+idtrackerai terminal_mode
+
+
+```
+

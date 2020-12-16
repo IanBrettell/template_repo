@@ -11,7 +11,7 @@
 
 
 
-<title>R Notebook</title>
+<title>Singularity setup</title>
 
 <script>/*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */
 !function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.3",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.prevObject||this.constructor(null)},push:f,sort:c.sort,splice:c.splice},m.extend=m.fn.extend=function(){var a,b,c,d,e,f,g=arguments[0]||{},h=1,i=arguments.length,j=!1;for("boolean"==typeof g&&(j=g,g=arguments[h]||{},h++),"object"==typeof g||m.isFunction(g)||(g={}),h===i&&(g=this,h--);i>h;h++)if(null!=(e=arguments[h]))for(d in e)a=g[d],c=e[d],g!==c&&(j&&c&&(m.isPlainObject(c)||(b=m.isArray(c)))?(b?(b=!1,f=a&&m.isArray(a)?a:[]):f=a&&m.isPlainObject(a)?a:{},g[d]=m.extend(j,f,c)):void 0!==c&&(g[d]=c));return g},m.extend({expando:"jQuery"+(l+Math.random()).replace(/\D/g,""),isReady:!0,error:function(a){throw new Error(a)},noop:function(){},isFunction:function(a){return"function"===m.type(a)},isArray:Array.isArray||function(a){return"array"===m.type(a)},isWindow:function(a){return null!=a&&a==a.window},isNumeric:function(a){return!m.isArray(a)&&a-parseFloat(a)+1>=0},isEmptyObject:function(a){var b;for(b in a)return!1;return!0},isPlainObject:function(a){var b;if(!a||"object"!==m.type(a)||a.nodeType||m.isWindow(a))return!1;try{if(a.constructor&&!j.call(a,"constructor")&&!j.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}if(k.ownLast)for(b in a)return j.call(a,b);for(b in a);return void 0===b||j.call(a,b)},type:function(a){return null==a?a+"":"object"==typeof a||"function"==typeof a?h[i.call(a)]||"object":typeof a},globalEval:function(b){b&&m.trim(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(o,"ms-").replace(p,q)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toLowerCase()===b.toLowerCase()},each:function(a,b,c){var d,e=0,f=a.length,g=r(a);if(c){if(g){for(;f>e;e++)if(d=b.apply(a[e],c),d===!1)break}else for(e in a)if(d=b.apply(a[e],c),d===!1)break}else if(g){for(;f>e;e++)if(d=b.call(a[e],e,a[e]),d===!1)break}else for(e in a)if(d=b.call(a[e],e,a[e]),d===!1)break;return a},trim:function(a){return null==a?"":(a+"").replace(n,"")},makeArray:function(a,b){var c=b||[];return null!=a&&(r(Object(a))?m.merge(c,"string"==typeof a?[a]:a):f.call(c,a)),c},inArray:function(a,b,c){var d;if(b){if(g)return g.call(b,a,c);for(d=b.length,c=c?0>c?Math.max(0,d+c):c:0;d>c;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,b){var c=+b.length,d=0,e=a.length;while(c>d)a[e++]=b[d++];if(c!==c)while(void 0!==b[d])a[e++]=b[d++];return a.length=e,a},grep:function(a,b,c){for(var d,e=[],f=0,g=a.length,h=!c;g>f;f++)d=!b(a[f],f),d!==h&&e.push(a[f]);return e},map:function(a,b,c){var d,f=0,g=a.length,h=r(a),i=[];if(h)for(;g>f;f++)d=b(a[f],f,c),null!=d&&i.push(d);else for(f in a)d=b(a[f],f,c),null!=d&&i.push(d);return e.apply([],i)},guid:1,proxy:function(a,b){var c,e,f;return"string"==typeof b&&(f=a[b],b=a,a=f),m.isFunction(a)?(c=d.call(arguments,2),e=function(){return a.apply(b||this,c.concat(d.call(arguments)))},e.guid=a.guid=a.guid||m.guid++,e):void 0},now:function(){return+new Date},support:k}),m.each("Boolean Number String Function Array Date RegExp Object Error".split(" "),function(a,b){h["[object "+b+"]"]=b.toLowerCase()});function r(a){var b="length"in a&&a.length,c=m.type(a);return"function"===c||m.isWindow(a)?!1:1===a.nodeType&&b?!0:"array"===c||0===b||"number"==typeof b&&b>0&&b-1 in a}var s=function(a){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u="sizzle"+1*new Date,v=a.document,w=0,x=0,y=ha(),z=ha(),A=ha(),B=function(a,b){return a===b&&(l=!0),0},C=1<<31,D={}.hasOwnProperty,E=[],F=E.pop,G=E.push,H=E.push,I=E.slice,J=function(a,b){for(var c=0,d=a.length;d>c;c++)if(a[c]===b)return c;return-1},K="checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",L="[\\x20\\t\\r\\n\\f]",M="(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",N=M.replace("w","w#"),O="\\["+L+"*("+M+")(?:"+L+"*([*^$|!~]?=)"+L+"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+N+"))|)"+L+"*\\]",P=":("+M+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+O+")*)|.*)\\)|)",Q=new RegExp(L+"+","g"),R=new RegExp("^"+L+"+|((?:^|[^\\\\])(?:\\\\.)*)"+L+"+$","g"),S=new RegExp("^"+L+"*,"+L+"*"),T=new RegExp("^"+L+"*([>+~]|"+L+")"+L+"*"),U=new RegExp("="+L+"*([^\\]'\"]*?)"+L+"*\\]","g"),V=new RegExp(P),W=new RegExp("^"+N+"$"),X={ID:new RegExp("^#("+M+")"),CLASS:new RegExp("^\\.("+M+")"),TAG:new RegExp("^("+M.replace("w","w*")+")"),ATTR:new RegExp("^"+O),PSEUDO:new RegExp("^"+P),CHILD:new RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+L+"*(even|odd|(([+-]|)(\\d*)n|)"+L+"*(?:([+-]|)"+L+"*(\\d+)|))"+L+"*\\)|)","i"),bool:new RegExp("^(?:"+K+")$","i"),needsContext:new RegExp("^"+L+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+L+"*((?:-\\d)?\\d*)"+L+"*\\)|)(?=[^-]|$)","i")},Y=/^(?:input|select|textarea|button)$/i,Z=/^h\d$/i,$=/^[^{]+\{\s*\[native \w/,_=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,aa=/[+~]/,ba=/'|\\/g,ca=new RegExp("\\\\([\\da-f]{1,6}"+L+"?|("+L+")|.)","ig"),da=function(a,b,c){var d="0x"+b-65536;return d!==d||c?b:0>d?String.fromCharCode(d+65536):String.fromCharCode(d>>10|55296,1023&d|56320)},ea=function(){m()};try{H.apply(E=I.call(v.childNodes),v.childNodes),E[v.childNodes.length].nodeType}catch(fa){H={apply:E.length?function(a,b){G.apply(a,I.call(b))}:function(a,b){var c=a.length,d=0;while(a[c++]=b[d++]);a.length=c-1}}}function ga(a,b,d,e){var f,h,j,k,l,o,r,s,w,x;if((b?b.ownerDocument||b:v)!==n&&m(b),b=b||n,d=d||[],k=b.nodeType,"string"!=typeof a||!a||1!==k&&9!==k&&11!==k)return d;if(!e&&p){if(11!==k&&(f=_.exec(a)))if(j=f[1]){if(9===k){if(h=b.getElementById(j),!h||!h.parentNode)return d;if(h.id===j)return d.push(h),d}else if(b.ownerDocument&&(h=b.ownerDocument.getElementById(j))&&t(b,h)&&h.id===j)return d.push(h),d}else{if(f[2])return H.apply(d,b.getElementsByTagName(a)),d;if((j=f[3])&&c.getElementsByClassName)return H.apply(d,b.getElementsByClassName(j)),d}if(c.qsa&&(!q||!q.test(a))){if(s=r=u,w=b,x=1!==k&&a,1===k&&"object"!==b.nodeName.toLowerCase()){o=g(a),(r=b.getAttribute("id"))?s=r.replace(ba,"\\$&"):b.setAttribute("id",s),s="[id='"+s+"'] ",l=o.length;while(l--)o[l]=s+ra(o[l]);w=aa.test(a)&&pa(b.parentNode)||b,x=o.join(",")}if(x)try{return H.apply(d,w.querySelectorAll(x)),d}catch(y){}finally{r||b.removeAttribute("id")}}}return i(a.replace(R,"$1"),b,d,e)}function ha(){var a=[];function b(c,e){return a.push(c+" ")>d.cacheLength&&delete b[a.shift()],b[c+" "]=e}return b}function ia(a){return a[u]=!0,a}function ja(a){var b=n.createElement("div");try{return!!a(b)}catch(c){return!1}finally{b.parentNode&&b.parentNode.removeChild(b),b=null}}function ka(a,b){var c=a.split("|"),e=a.length;while(e--)d.attrHandle[c[e]]=b}function la(a,b){var c=b&&a,d=c&&1===a.nodeType&&1===b.nodeType&&(~b.sourceIndex||C)-(~a.sourceIndex||C);if(d)return d;if(c)while(c=c.nextSibling)if(c===b)return-1;return a?1:-1}function ma(a){return function(b){var c=b.nodeName.toLowerCase();return"input"===c&&b.type===a}}function na(a){return function(b){var c=b.nodeName.toLowerCase();return("input"===c||"button"===c)&&b.type===a}}function oa(a){return ia(function(b){return b=+b,ia(function(c,d){var e,f=a([],c.length,b),g=f.length;while(g--)c[e=f[g]]&&(c[e]=!(d[e]=c[e]))})})}function pa(a){return a&&"undefined"!=typeof a.getElementsByTagName&&a}c=ga.support={},f=ga.isXML=function(a){var b=a&&(a.ownerDocument||a).documentElement;return b?"HTML"!==b.nodeName:!1},m=ga.setDocument=function(a){var b,e,g=a?a.ownerDocument||a:v;return g!==n&&9===g.nodeType&&g.documentElement?(n=g,o=g.documentElement,e=g.defaultView,e&&e!==e.top&&(e.addEventListener?e.addEventListener("unload",ea,!1):e.attachEvent&&e.attachEvent("onunload",ea)),p=!f(g),c.attributes=ja(function(a){return a.className="i",!a.getAttribute("className")}),c.getElementsByTagName=ja(function(a){return a.appendChild(g.createComment("")),!a.getElementsByTagName("*").length}),c.getElementsByClassName=$.test(g.getElementsByClassName),c.getById=ja(function(a){return o.appendChild(a).id=u,!g.getElementsByName||!g.getElementsByName(u).length}),c.getById?(d.find.ID=function(a,b){if("undefined"!=typeof b.getElementById&&p){var c=b.getElementById(a);return c&&c.parentNode?[c]:[]}},d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){return a.getAttribute("id")===b}}):(delete d.find.ID,d.filter.ID=function(a){var b=a.replace(ca,da);return function(a){var c="undefined"!=typeof a.getAttributeNode&&a.getAttributeNode("id");return c&&c.value===b}}),d.find.TAG=c.getElementsByTagName?function(a,b){return"undefined"!=typeof b.getElementsByTagName?b.getElementsByTagName(a):c.qsa?b.querySelectorAll(a):void 0}:function(a,b){var c,d=[],e=0,f=b.getElementsByTagName(a);if("*"===a){while(c=f[e++])1===c.nodeType&&d.push(c);return d}return f},d.find.CLASS=c.getElementsByClassName&&function(a,b){return p?b.getElementsByClassName(a):void 0},r=[],q=[],(c.qsa=$.test(g.querySelectorAll))&&(ja(function(a){o.appendChild(a).innerHTML="<a id='"+u+"'></a><select id='"+u+"-\f]' msallowcapture=''><option selected=''></option></select>",a.querySelectorAll("[msallowcapture^='']").length&&q.push("[*^$]="+L+"*(?:''|\"\")"),a.querySelectorAll("[selected]").length||q.push("\\["+L+"*(?:value|"+K+")"),a.querySelectorAll("[id~="+u+"-]").length||q.push("~="),a.querySelectorAll(":checked").length||q.push(":checked"),a.querySelectorAll("a#"+u+"+*").length||q.push(".#.+[+~]")}),ja(function(a){var b=g.createElement("input");b.setAttribute("type","hidden"),a.appendChild(b).setAttribute("name","D"),a.querySelectorAll("[name=d]").length&&q.push("name"+L+"*[*^$|!~]?="),a.querySelectorAll(":enabled").length||q.push(":enabled",":disabled"),a.querySelectorAll("*,:x"),q.push(",.*:")})),(c.matchesSelector=$.test(s=o.matches||o.webkitMatchesSelector||o.mozMatchesSelector||o.oMatchesSelector||o.msMatchesSelector))&&ja(function(a){c.disconnectedMatch=s.call(a,"div"),s.call(a,"[s!='']:x"),r.push("!=",P)}),q=q.length&&new RegExp(q.join("|")),r=r.length&&new RegExp(r.join("|")),b=$.test(o.compareDocumentPosition),t=b||$.test(o.contains)?function(a,b){var c=9===a.nodeType?a.documentElement:a,d=b&&b.parentNode;return a===d||!(!d||1!==d.nodeType||!(c.contains?c.contains(d):a.compareDocumentPosition&&16&a.compareDocumentPosition(d)))}:function(a,b){if(b)while(b=b.parentNode)if(b===a)return!0;return!1},B=b?function(a,b){if(a===b)return l=!0,0;var d=!a.compareDocumentPosition-!b.compareDocumentPosition;return d?d:(d=(a.ownerDocument||a)===(b.ownerDocument||b)?a.compareDocumentPosition(b):1,1&d||!c.sortDetached&&b.compareDocumentPosition(a)===d?a===g||a.ownerDocument===v&&t(v,a)?-1:b===g||b.ownerDocument===v&&t(v,b)?1:k?J(k,a)-J(k,b):0:4&d?-1:1)}:function(a,b){if(a===b)return l=!0,0;var c,d=0,e=a.parentNode,f=b.parentNode,h=[a],i=[b];if(!e||!f)return a===g?-1:b===g?1:e?-1:f?1:k?J(k,a)-J(k,b):0;if(e===f)return la(a,b);c=a;while(c=c.parentNode)h.unshift(c);c=b;while(c=c.parentNode)i.unshift(c);while(h[d]===i[d])d++;return d?la(h[d],i[d]):h[d]===v?-1:i[d]===v?1:0},g):n},ga.matches=function(a,b){return ga(a,null,null,b)},ga.matchesSelector=function(a,b){if((a.ownerDocument||a)!==n&&m(a),b=b.replace(U,"='$1']"),!(!c.matchesSelector||!p||r&&r.test(b)||q&&q.test(b)))try{var d=s.call(a,b);if(d||c.disconnectedMatch||a.document&&11!==a.document.nodeType)return d}catch(e){}return ga(b,n,null,[a]).length>0},ga.contains=function(a,b){return(a.ownerDocument||a)!==n&&m(a),t(a,b)},ga.attr=function(a,b){(a.ownerDocument||a)!==n&&m(a);var e=d.attrHandle[b.toLowerCase()],f=e&&D.call(d.attrHandle,b.toLowerCase())?e(a,b,!p):void 0;return void 0!==f?f:c.attributes||!p?a.getAttribute(b):(f=a.getAttributeNode(b))&&f.specified?f.value:null},ga.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)},ga.uniqueSort=function(a){var b,d=[],e=0,f=0;if(l=!c.detectDuplicates,k=!c.sortStable&&a.slice(0),a.sort(B),l){while(b=a[f++])b===a[f]&&(e=d.push(f));while(e--)a.splice(d[e],1)}return k=null,a},e=ga.getText=function(a){var b,c="",d=0,f=a.nodeType;if(f){if(1===f||9===f||11===f){if("string"==typeof a.textContent)return a.textContent;for(a=a.firstChild;a;a=a.nextSibling)c+=e(a)}else if(3===f||4===f)return a.nodeValue}else while(b=a[d++])c+=e(b);return c},d=ga.selectors={cacheLength:50,createPseudo:ia,match:X,attrHandle:{},find:{},relative:{">":{dir:"parentNode",first:!0}," ":{dir:"parentNode"},"+":{dir:"previousSibling",first:!0},"~":{dir:"previousSibling"}},preFilter:{ATTR:function(a){return a[1]=a[1].replace(ca,da),a[3]=(a[3]||a[4]||a[5]||"").replace(ca,da),"~="===a[2]&&(a[3]=" "+a[3]+" "),a.slice(0,4)},CHILD:function(a){return a[1]=a[1].toLowerCase(),"nth"===a[1].slice(0,3)?(a[3]||ga.error(a[0]),a[4]=+(a[4]?a[5]+(a[6]||1):2*("even"===a[3]||"odd"===a[3])),a[5]=+(a[7]+a[8]||"odd"===a[3])):a[3]&&ga.error(a[0]),a},PSEUDO:function(a){var b,c=!a[6]&&a[2];return X.CHILD.test(a[0])?null:(a[3]?a[2]=a[4]||a[5]||"":c&&V.test(c)&&(b=g(c,!0))&&(b=c.indexOf(")",c.length-b)-c.length)&&(a[0]=a[0].slice(0,b),a[2]=c.slice(0,b)),a.slice(0,3))}},filter:{TAG:function(a){var b=a.replace(ca,da).toLowerCase();return"*"===a?function(){return!0}:function(a){return a.nodeName&&a.nodeName.toLowerCase()===b}},CLASS:function(a){var b=y[a+" "];return b||(b=new RegExp("(^|"+L+")"+a+"("+L+"|$)"))&&y(a,function(a){return b.test("string"==typeof a.className&&a.className||"undefined"!=typeof a.getAttribute&&a.getAttribute("class")||"")})},ATTR:function(a,b,c){return function(d){var e=ga.attr(d,a);return null==e?"!="===b:b?(e+="","="===b?e===c:"!="===b?e!==c:"^="===b?c&&0===e.indexOf(c):"*="===b?c&&e.indexOf(c)>-1:"$="===b?c&&e.slice(-c.length)===c:"~="===b?(" "+e.replace(Q," ")+" ").indexOf(c)>-1:"|="===b?e===c||e.slice(0,c.length+1)===c+"-":!1):!0}},CHILD:function(a,b,c,d,e){var f="nth"!==a.slice(0,3),g="last"!==a.slice(-4),h="of-type"===b;return 1===d&&0===e?function(a){return!!a.parentNode}:function(b,c,i){var j,k,l,m,n,o,p=f!==g?"nextSibling":"previousSibling",q=b.parentNode,r=h&&b.nodeName.toLowerCase(),s=!i&&!h;if(q){if(f){while(p){l=b;while(l=l[p])if(h?l.nodeName.toLowerCase()===r:1===l.nodeType)return!1;o=p="only"===a&&!o&&"nextSibling"}return!0}if(o=[g?q.firstChild:q.lastChild],g&&s){k=q[u]||(q[u]={}),j=k[a]||[],n=j[0]===w&&j[1],m=j[0]===w&&j[2],l=n&&q.childNodes[n];while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if(1===l.nodeType&&++m&&l===b){k[a]=[w,n,m];break}}else if(s&&(j=(b[u]||(b[u]={}))[a])&&j[0]===w)m=j[1];else while(l=++n&&l&&l[p]||(m=n=0)||o.pop())if((h?l.nodeName.toLowerCase()===r:1===l.nodeType)&&++m&&(s&&((l[u]||(l[u]={}))[a]=[w,m]),l===b))break;return m-=e,m===d||m%d===0&&m/d>=0}}},PSEUDO:function(a,b){var c,e=d.pseudos[a]||d.setFilters[a.toLowerCase()]||ga.error("unsupported pseudo: "+a);return e[u]?e(b):e.length>1?(c=[a,a,"",b],d.setFilters.hasOwnProperty(a.toLowerCase())?ia(function(a,c){var d,f=e(a,b),g=f.length;while(g--)d=J(a,f[g]),a[d]=!(c[d]=f[g])}):function(a){return e(a,0,c)}):e}},pseudos:{not:ia(function(a){var b=[],c=[],d=h(a.replace(R,"$1"));return d[u]?ia(function(a,b,c,e){var f,g=d(a,null,e,[]),h=a.length;while(h--)(f=g[h])&&(a[h]=!(b[h]=f))}):function(a,e,f){return b[0]=a,d(b,null,f,c),b[0]=null,!c.pop()}}),has:ia(function(a){return function(b){return ga(a,b).length>0}}),contains:ia(function(a){return a=a.replace(ca,da),function(b){return(b.textContent||b.innerText||e(b)).indexOf(a)>-1}}),lang:ia(function(a){return W.test(a||"")||ga.error("unsupported lang: "+a),a=a.replace(ca,da).toLowerCase(),function(b){var c;do if(c=p?b.lang:b.getAttribute("xml:lang")||b.getAttribute("lang"))return c=c.toLowerCase(),c===a||0===c.indexOf(a+"-");while((b=b.parentNode)&&1===b.nodeType);return!1}}),target:function(b){var c=a.location&&a.location.hash;return c&&c.slice(1)===b.id},root:function(a){return a===o},focus:function(a){return a===n.activeElement&&(!n.hasFocus||n.hasFocus())&&!!(a.type||a.href||~a.tabIndex)},enabled:function(a){return a.disabled===!1},disabled:function(a){return a.disabled===!0},checked:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&!!a.checked||"option"===b&&!!a.selected},selected:function(a){return a.parentNode&&a.parentNode.selectedIndex,a.selected===!0},empty:function(a){for(a=a.firstChild;a;a=a.nextSibling)if(a.nodeType<6)return!1;return!0},parent:function(a){return!d.pseudos.empty(a)},header:function(a){return Z.test(a.nodeName)},input:function(a){return Y.test(a.nodeName)},button:function(a){var b=a.nodeName.toLowerCase();return"input"===b&&"button"===a.type||"button"===b},text:function(a){var b;return"input"===a.nodeName.toLowerCase()&&"text"===a.type&&(null==(b=a.getAttribute("type"))||"text"===b.toLowerCase())},first:oa(function(){return[0]}),last:oa(function(a,b){return[b-1]}),eq:oa(function(a,b,c){return[0>c?c+b:c]}),even:oa(function(a,b){for(var c=0;b>c;c+=2)a.push(c);return a}),odd:oa(function(a,b){for(var c=1;b>c;c+=2)a.push(c);return a}),lt:oa(function(a,b,c){for(var d=0>c?c+b:c;--d>=0;)a.push(d);return a}),gt:oa(function(a,b,c){for(var d=0>c?c+b:c;++d<b;)a.push(d);return a})}},d.pseudos.nth=d.pseudos.eq;for(b in{radio:!0,checkbox:!0,file:!0,password:!0,image:!0})d.pseudos[b]=ma(b);for(b in{submit:!0,reset:!0})d.pseudos[b]=na(b);function qa(){}qa.prototype=d.filters=d.pseudos,d.setFilters=new qa,g=ga.tokenize=function(a,b){var c,e,f,g,h,i,j,k=z[a+" "];if(k)return b?0:k.slice(0);h=a,i=[],j=d.preFilter;while(h){(!c||(e=S.exec(h)))&&(e&&(h=h.slice(e[0].length)||h),i.push(f=[])),c=!1,(e=T.exec(h))&&(c=e.shift(),f.push({value:c,type:e[0].replace(R," ")}),h=h.slice(c.length));for(g in d.filter)!(e=X[g].exec(h))||j[g]&&!(e=j[g](e))||(c=e.shift(),f.push({value:c,type:g,matches:e}),h=h.slice(c.length));if(!c)break}return b?h.length:h?ga.error(a):z(a,i).slice(0)};function ra(a){for(var b=0,c=a.length,d="";c>b;b++)d+=a[b].value;return d}function sa(a,b,c){var d=b.dir,e=c&&"parentNode"===d,f=x++;return b.first?function(b,c,f){while(b=b[d])if(1===b.nodeType||e)return a(b,c,f)}:function(b,c,g){var h,i,j=[w,f];if(g){while(b=b[d])if((1===b.nodeType||e)&&a(b,c,g))return!0}else while(b=b[d])if(1===b.nodeType||e){if(i=b[u]||(b[u]={}),(h=i[d])&&h[0]===w&&h[1]===f)return j[2]=h[2];if(i[d]=j,j[2]=a(b,c,g))return!0}}}function ta(a){return a.length>1?function(b,c,d){var e=a.length;while(e--)if(!a[e](b,c,d))return!1;return!0}:a[0]}function ua(a,b,c){for(var d=0,e=b.length;e>d;d++)ga(a,b[d],c);return c}function va(a,b,c,d,e){for(var f,g=[],h=0,i=a.length,j=null!=b;i>h;h++)(f=a[h])&&(!c||c(f,d,e))&&(g.push(f),j&&b.push(h));return g}function wa(a,b,c,d,e,f){return d&&!d[u]&&(d=wa(d)),e&&!e[u]&&(e=wa(e,f)),ia(function(f,g,h,i){var j,k,l,m=[],n=[],o=g.length,p=f||ua(b||"*",h.nodeType?[h]:h,[]),q=!a||!f&&b?p:va(p,m,a,h,i),r=c?e||(f?a:o||d)?[]:g:q;if(c&&c(q,r,h,i),d){j=va(r,n),d(j,[],h,i),k=j.length;while(k--)(l=j[k])&&(r[n[k]]=!(q[n[k]]=l))}if(f){if(e||a){if(e){j=[],k=r.length;while(k--)(l=r[k])&&j.push(q[k]=l);e(null,r=[],j,i)}k=r.length;while(k--)(l=r[k])&&(j=e?J(f,l):m[k])>-1&&(f[j]=!(g[j]=l))}}else r=va(r===g?r.splice(o,r.length):r),e?e(null,g,r,i):H.apply(g,r)})}function xa(a){for(var b,c,e,f=a.length,g=d.relative[a[0].type],h=g||d.relative[" "],i=g?1:0,k=sa(function(a){return a===b},h,!0),l=sa(function(a){return J(b,a)>-1},h,!0),m=[function(a,c,d){var e=!g&&(d||c!==j)||((b=c).nodeType?k(a,c,d):l(a,c,d));return b=null,e}];f>i;i++)if(c=d.relative[a[i].type])m=[sa(ta(m),c)];else{if(c=d.filter[a[i].type].apply(null,a[i].matches),c[u]){for(e=++i;f>e;e++)if(d.relative[a[e].type])break;return wa(i>1&&ta(m),i>1&&ra(a.slice(0,i-1).concat({value:" "===a[i-2].type?"*":""})).replace(R,"$1"),c,e>i&&xa(a.slice(i,e)),f>e&&xa(a=a.slice(e)),f>e&&ra(a))}m.push(c)}return ta(m)}function ya(a,b){var c=b.length>0,e=a.length>0,f=function(f,g,h,i,k){var l,m,o,p=0,q="0",r=f&&[],s=[],t=j,u=f||e&&d.find.TAG("*",k),v=w+=null==t?1:Math.random()||.1,x=u.length;for(k&&(j=g!==n&&g);q!==x&&null!=(l=u[q]);q++){if(e&&l){m=0;while(o=a[m++])if(o(l,g,h)){i.push(l);break}k&&(w=v)}c&&((l=!o&&l)&&p--,f&&r.push(l))}if(p+=q,c&&q!==p){m=0;while(o=b[m++])o(r,s,g,h);if(f){if(p>0)while(q--)r[q]||s[q]||(s[q]=F.call(i));s=va(s)}H.apply(i,s),k&&!f&&s.length>0&&p+b.length>1&&ga.uniqueSort(i)}return k&&(w=v,j=t),r};return c?ia(f):f}return h=ga.compile=function(a,b){var c,d=[],e=[],f=A[a+" "];if(!f){b||(b=g(a)),c=b.length;while(c--)f=xa(b[c]),f[u]?d.push(f):e.push(f);f=A(a,ya(e,d)),f.selector=a}return f},i=ga.select=function(a,b,e,f){var i,j,k,l,m,n="function"==typeof a&&a,o=!f&&g(a=n.selector||a);if(e=e||[],1===o.length){if(j=o[0]=o[0].slice(0),j.length>2&&"ID"===(k=j[0]).type&&c.getById&&9===b.nodeType&&p&&d.relative[j[1].type]){if(b=(d.find.ID(k.matches[0].replace(ca,da),b)||[])[0],!b)return e;n&&(b=b.parentNode),a=a.slice(j.shift().value.length)}i=X.needsContext.test(a)?0:j.length;while(i--){if(k=j[i],d.relative[l=k.type])break;if((m=d.find[l])&&(f=m(k.matches[0].replace(ca,da),aa.test(j[0].type)&&pa(b.parentNode)||b))){if(j.splice(i,1),a=f.length&&ra(j),!a)return H.apply(e,f),e;break}}}return(n||h(a,o))(f,b,!p,e,aa.test(a)&&pa(b.parentNode)||b),e},c.sortStable=u.split("").sort(B).join("")===u,c.detectDuplicates=!!l,m(),c.sortDetached=ja(function(a){return 1&a.compareDocumentPosition(n.createElement("div"))}),ja(function(a){return a.innerHTML="<a href='#'></a>","#"===a.firstChild.getAttribute("href")})||ka("type|href|height|width",function(a,b,c){return c?void 0:a.getAttribute(b,"type"===b.toLowerCase()?1:2)}),c.attributes&&ja(function(a){return a.innerHTML="<input/>",a.firstChild.setAttribute("value",""),""===a.firstChild.getAttribute("value")})||ka("value",function(a,b,c){return c||"input"!==a.nodeName.toLowerCase()?void 0:a.defaultValue}),ja(function(a){return null==a.getAttribute("disabled")})||ka(K,function(a,b,c){var d;return c?void 0:a[b]===!0?b.toLowerCase():(d=a.getAttributeNode(b))&&d.specified?d.value:null}),ga}(a);m.find=s,m.expr=s.selectors,m.expr[":"]=m.expr.pseudos,m.unique=s.uniqueSort,m.text=s.getText,m.isXMLDoc=s.isXML,m.contains=s.contains;var t=m.expr.match.needsContext,u=/^<(\w+)\s*\/?>(?:<\/\1>|)$/,v=/^.[^:#\[\.,]*$/;function w(a,b,c){if(m.isFunction(b))return m.grep(a,function(a,d){return!!b.call(a,d,a)!==c});if(b.nodeType)return m.grep(a,function(a){return a===b!==c});if("string"==typeof b){if(v.test(b))return m.filter(b,a,c);b=m.filter(b,a)}return m.grep(a,function(a){return m.inArray(a,b)>=0!==c})}m.filter=function(a,b,c){var d=b[0];return c&&(a=":not("+a+")"),1===b.length&&1===d.nodeType?m.find.matchesSelector(d,a)?[d]:[]:m.find.matches(a,m.grep(b,function(a){return 1===a.nodeType}))},m.fn.extend({find:function(a){var b,c=[],d=this,e=d.length;if("string"!=typeof a)return this.pushStack(m(a).filter(function(){for(b=0;e>b;b++)if(m.contains(d[b],this))return!0}));for(b=0;e>b;b++)m.find(a,d[b],c);return c=this.pushStack(e>1?m.unique(c):c),c.selector=this.selector?this.selector+" "+a:a,c},filter:function(a){return this.pushStack(w(this,a||[],!1))},not:function(a){return this.pushStack(w(this,a||[],!0))},is:function(a){return!!w(this,"string"==typeof a&&t.test(a)?m(a):a||[],!1).length}});var x,y=a.document,z=/^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]*))$/,A=m.fn.init=function(a,b){var c,d;if(!a)return this;if("string"==typeof a){if(c="<"===a.charAt(0)&&">"===a.charAt(a.length-1)&&a.length>=3?[null,a,null]:z.exec(a),!c||!c[1]&&b)return!b||b.jquery?(b||x).find(a):this.constructor(b).find(a);if(c[1]){if(b=b instanceof m?b[0]:b,m.merge(this,m.parseHTML(c[1],b&&b.nodeType?b.ownerDocument||b:y,!0)),u.test(c[1])&&m.isPlainObject(b))for(c in b)m.isFunction(this[c])?this[c](b[c]):this.attr(c,b[c]);return this}if(d=y.getElementById(c[2]),d&&d.parentNode){if(d.id!==c[2])return x.find(a);this.length=1,this[0]=d}return this.context=y,this.selector=a,this}return a.nodeType?(this.context=this[0]=a,this.length=1,this):m.isFunction(a)?"undefined"!=typeof x.ready?x.ready(a):a(m):(void 0!==a.selector&&(this.selector=a.selector,this.context=a.context),m.makeArray(a,this))};A.prototype=m.fn,x=m(y);var B=/^(?:parents|prev(?:Until|All))/,C={children:!0,contents:!0,next:!0,prev:!0};m.extend({dir:function(a,b,c){var d=[],e=a[b];while(e&&9!==e.nodeType&&(void 0===c||1!==e.nodeType||!m(e).is(c)))1===e.nodeType&&d.push(e),e=e[b];return d},sibling:function(a,b){for(var c=[];a;a=a.nextSibling)1===a.nodeType&&a!==b&&c.push(a);return c}}),m.fn.extend({has:function(a){var b,c=m(a,this),d=c.length;return this.filter(function(){for(b=0;d>b;b++)if(m.contains(this,c[b]))return!0})},closest:function(a,b){for(var c,d=0,e=this.length,f=[],g=t.test(a)||"string"!=typeof a?m(a,b||this.context):0;e>d;d++)for(c=this[d];c&&c!==b;c=c.parentNode)if(c.nodeType<11&&(g?g.index(c)>-1:1===c.nodeType&&m.find.matchesSelector(c,a))){f.push(c);break}return this.pushStack(f.length>1?m.unique(f):f)},index:function(a){return a?"string"==typeof a?m.inArray(this[0],m(a)):m.inArray(a.jquery?a[0]:a,this):this[0]&&this[0].parentNode?this.first().prevAll().length:-1},add:function(a,b){return this.pushStack(m.unique(m.merge(this.get(),m(a,b))))},addBack:function(a){return this.add(null==a?this.prevObject:this.prevObject.filter(a))}});function D(a,b){do a=a[b];while(a&&1!==a.nodeType);return a}m.each({parent:function(a){var b=a.parentNode;return b&&11!==b.nodeType?b:null},parents:function(a){return m.dir(a,"parentNode")},parentsUntil:function(a,b,c){return m.dir(a,"parentNode",c)},next:function(a){return D(a,"nextSibling")},prev:function(a){return D(a,"previousSibling")},nextAll:function(a){return m.dir(a,"nextSibling")},prevAll:function(a){return m.dir(a,"previousSibling")},nextUntil:function(a,b,c){return m.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return m.dir(a,"previousSibling",c)},siblings:function(a){return m.sibling((a.parentNode||{}).firstChild,a)},children:function(a){return m.sibling(a.firstChild)},contents:function(a){return m.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:m.merge([],a.childNodes)}},function(a,b){m.fn[a]=function(c,d){var e=m.map(this,b,c);return"Until"!==a.slice(-5)&&(d=c),d&&"string"==typeof d&&(e=m.filter(d,e)),this.length>1&&(C[a]||(e=m.unique(e)),B.test(a)&&(e=e.reverse())),this.pushStack(e)}});var E=/\S+/g,F={};function G(a){var b=F[a]={};return m.each(a.match(E)||[],function(a,c){b[c]=!0}),b}m.Callbacks=function(a){a="string"==typeof a?F[a]||G(a):m.extend({},a);var b,c,d,e,f,g,h=[],i=!a.once&&[],j=function(l){for(c=a.memory&&l,d=!0,f=g||0,g=0,e=h.length,b=!0;h&&e>f;f++)if(h[f].apply(l[0],l[1])===!1&&a.stopOnFalse){c=!1;break}b=!1,h&&(i?i.length&&j(i.shift()):c?h=[]:k.disable())},k={add:function(){if(h){var d=h.length;!function f(b){m.each(b,function(b,c){var d=m.type(c);"function"===d?a.unique&&k.has(c)||h.push(c):c&&c.length&&"string"!==d&&f(c)})}(arguments),b?e=h.length:c&&(g=d,j(c))}return this},remove:function(){return h&&m.each(arguments,function(a,c){var d;while((d=m.inArray(c,h,d))>-1)h.splice(d,1),b&&(e>=d&&e--,f>=d&&f--)}),this},has:function(a){return a?m.inArray(a,h)>-1:!(!h||!h.length)},empty:function(){return h=[],e=0,this},disable:function(){return h=i=c=void 0,this},disabled:function(){return!h},lock:function(){return i=void 0,c||k.disable(),this},locked:function(){return!i},fireWith:function(a,c){return!h||d&&!i||(c=c||[],c=[a,c.slice?c.slice():c],b?i.push(c):j(c)),this},fire:function(){return k.fireWith(this,arguments),this},fired:function(){return!!d}};return k},m.extend({Deferred:function(a){var b=[["resolve","done",m.Callbacks("once memory"),"resolved"],["reject","fail",m.Callbacks("once memory"),"rejected"],["notify","progress",m.Callbacks("memory")]],c="pending",d={state:function(){return c},always:function(){return e.done(arguments).fail(arguments),this},then:function(){var a=arguments;return m.Deferred(function(c){m.each(b,function(b,f){var g=m.isFunction(a[b])&&a[b];e[f[1]](function(){var a=g&&g.apply(this,arguments);a&&m.isFunction(a.promise)?a.promise().done(c.resolve).fail(c.reject).progress(c.notify):c[f[0]+"With"](this===d?c.promise():this,g?[a]:arguments)})}),a=null}).promise()},promise:function(a){return null!=a?m.extend(a,d):d}},e={};return d.pipe=d.then,m.each(b,function(a,f){var g=f[2],h=f[3];d[f[1]]=g.add,h&&g.add(function(){c=h},b[1^a][2].disable,b[2][2].lock),e[f[0]]=function(){return e[f[0]+"With"](this===e?d:this,arguments),this},e[f[0]+"With"]=g.fireWith}),d.promise(e),a&&a.call(e,e),e},when:function(a){var b=0,c=d.call(arguments),e=c.length,f=1!==e||a&&m.isFunction(a.promise)?e:0,g=1===f?a:m.Deferred(),h=function(a,b,c){return function(e){b[a]=this,c[a]=arguments.length>1?d.call(arguments):e,c===i?g.notifyWith(b,c):--f||g.resolveWith(b,c)}},i,j,k;if(e>1)for(i=new Array(e),j=new Array(e),k=new Array(e);e>b;b++)c[b]&&m.isFunction(c[b].promise)?c[b].promise().done(h(b,k,c)).fail(g.reject).progress(h(b,j,i)):--f;return f||g.resolveWith(k,c),g.promise()}});var H;m.fn.ready=function(a){return m.ready.promise().done(a),this},m.extend({isReady:!1,readyWait:1,holdReady:function(a){a?m.readyWait++:m.ready(!0)},ready:function(a){if(a===!0?!--m.readyWait:!m.isReady){if(!y.body)return setTimeout(m.ready);m.isReady=!0,a!==!0&&--m.readyWait>0||(H.resolveWith(y,[m]),m.fn.triggerHandler&&(m(y).triggerHandler("ready"),m(y).off("ready")))}}});function I(){y.addEventListener?(y.removeEventListener("DOMContentLoaded",J,!1),a.removeEventListener("load",J,!1)):(y.detachEvent("onreadystatechange",J),a.detachEvent("onload",J))}function J(){(y.addEventListener||"load"===event.type||"complete"===y.readyState)&&(I(),m.ready())}m.ready.promise=function(b){if(!H)if(H=m.Deferred(),"complete"===y.readyState)setTimeout(m.ready);else if(y.addEventListener)y.addEventListener("DOMContentLoaded",J,!1),a.addEventListener("load",J,!1);else{y.attachEvent("onreadystatechange",J),a.attachEvent("onload",J);var c=!1;try{c=null==a.frameElement&&y.documentElement}catch(d){}c&&c.doScroll&&!function e(){if(!m.isReady){try{c.doScroll("left")}catch(a){return setTimeout(e,50)}I(),m.ready()}}()}return H.promise(b)};var K="undefined",L;for(L in m(k))break;k.ownLast="0"!==L,k.inlineBlockNeedsLayout=!1,m(function(){var a,b,c,d;c=y.getElementsByTagName("body")[0],c&&c.style&&(b=y.createElement("div"),d=y.createElement("div"),d.style.cssText="position:absolute;border:0;width:0;height:0;top:0;left:-9999px",c.appendChild(d).appendChild(b),typeof b.style.zoom!==K&&(b.style.cssText="display:inline;margin:0;border:0;padding:1px;width:1px;zoom:1",k.inlineBlockNeedsLayout=a=3===b.offsetWidth,a&&(c.style.zoom=1)),c.removeChild(d))}),function(){var a=y.createElement("div");if(null==k.deleteExpando){k.deleteExpando=!0;try{delete a.test}catch(b){k.deleteExpando=!1}}a=null}(),m.acceptData=function(a){var b=m.noData[(a.nodeName+" ").toLowerCase()],c=+a.nodeType||1;return 1!==c&&9!==c?!1:!b||b!==!0&&a.getAttribute("classid")===b};var M=/^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,N=/([A-Z])/g;function O(a,b,c){if(void 0===c&&1===a.nodeType){var d="data-"+b.replace(N,"-$1").toLowerCase();if(c=a.getAttribute(d),"string"==typeof c){try{c="true"===c?!0:"false"===c?!1:"null"===c?null:+c+""===c?+c:M.test(c)?m.parseJSON(c):c}catch(e){}m.data(a,b,c)}else c=void 0}return c}function P(a){var b;for(b in a)if(("data"!==b||!m.isEmptyObject(a[b]))&&"toJSON"!==b)return!1;
@@ -1791,100 +1791,460 @@ summary {
 
 
 
-<h1 class="title toc-ignore">R Notebook</h1>
+<h1 class="title toc-ignore">Singularity setup</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<div id="working-directory" class="section level1">
-<h1>Working directory</h1>
-<p><code>/hps/research1/birney/users/ian/pilot</code></p>
-</div>
-<div id="conda-env-setup" class="section level1">
-<h1>Conda env setup</h1>
-<div id="snakemake" class="section level2">
-<h2>Snakemake</h2>
+<div id="install-version-3.7.0-on-local" class="section level1">
+<h1>Install version 3.7.0 on local</h1>
+<p>Follow instructions here: <a href="https://sylabs.io/guides/3.4/user-guide/quick_start.html" class="uri">https://sylabs.io/guides/3.4/user-guide/quick_start.html</a></p>
+<p>Download Go version 1.15.6</p>
+<p>Then set environment variable PATH to point to Go:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuIyBpbnN0YWxsIG1hbWJhXG5jb25kYSBpbnN0YWxsIC1jIGNvbmRhLWZvcmdlIG1hbWJhXG4jIGNyZWF0ZSBzbmFrZW1ha2UgZW52aXJvbm1lbnRcbm1hbWJhIGNyZWF0ZSAtYyBjb25kYS1mb3JnZSAtYyBiaW9jb25kYSAtbiBzbmFrZW1ha2Ugc25ha2VtYWtlXG4jIGFjdGl2YXRlIHNuYWtlbWFrZSBlbnZpcm9ubWVudFxuY29uZGEgYWN0aXZhdGUgc25ha2VtYWtlXG4jIGV4cG9ydFxuY29uZGEgZW52IGV4cG9ydCAtbiBzbmFrZW1ha2UgLWYgcGlsb3RfcGFwZXIvc25tay9lbnZzL3NuYWtlbWFrZS55bWxcbmBgYCJ9 -->
-<pre class="bash"><code># install mamba
-conda install -c conda-forge mamba
-# create snakemake environment
-mamba create -c conda-forge -c bioconda -n snakemake snakemake
-# activate snakemake environment
-conda activate snakemake
-# export
-conda env export -n snakemake -f pilot_paper/snmk/envs/snakemake.yml</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuZWNobyAnZXhwb3J0IFBBVEg9L3Vzci9sb2NhbC9nby9iaW46JFBBVEgnID4+IH4vLmJhc2hyYyAmJiBcXFxuICBzb3VyY2Ugfi8uYmFzaHJjXG5gYGAifQ== -->
+<pre class="bash"><code>echo &#39;export PATH=/usr/local/go/bin:$PATH&#39; &gt;&gt; ~/.bashrc &amp;&amp; \
+  source ~/.bashrc</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Download Singularity version 3.7.0 from GitHub</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxud2dldCBodHRwczovL2dpdGh1Yi5jb20vaHBjbmcvc2luZ3VsYXJpdHkvcmVsZWFzZXMvZG93bmxvYWQvdjMuNy4wL3Npbmd1bGFyaXR5LTMuNy4wLnRhci5neiAmJiBcXFxuICB0YXIgLXh6ZiBzaW5ndWxhcml0eS0zLjcuMC50YXIuZ3ogJiYgXFxcbiAgY2Qgc2luZ3VsYXJpdHlcbmBgYCJ9 -->
+<pre class="bash"><code>wget https://github.com/hpcng/singularity/releases/download/v3.7.0/singularity-3.7.0.tar.gz &amp;&amp; \
+  tar -xzf singularity-3.7.0.tar.gz &amp;&amp; \
+  cd singularity</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Compile Singularity source code</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuLi9tY29uZmlnICYmIFxcXG4gIG1ha2UgLUMgYnVpbGRkaXIgJiYgXFxcbiAgc3VkbyBtYWtlIC1DIGJ1aWxkZGlyIGluc3RhbGxcbmBgYCJ9 -->
+<pre class="bash"><code>./mconfig &amp;&amp; \
+  make -C builddir &amp;&amp; \
+  sudo make -C builddir install</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Download Singularity Desktop MacOS beta (v0.1)</p>
+<p>From here: <a href="https://sylabs.io/singularity-desktop-macos/" class="uri">https://sylabs.io/singularity-desktop-macos/</a></p>
+</div>
+<div id="build-container" class="section level1">
+<h1>Build container</h1>
+<p>Authenicate remote login</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuc2luZ3VsYXJpdHkgcmVtb3RlIGxvZ2luXG5gYGAifQ== -->
+<pre class="bash"><code>singularity remote login</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Key: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA1NzAyMDcsImlhdCI6MTYwNzk3ODIwNywiaXNzIjoiaHR0cHM6Ly9hdXRoLnN5bGFicy5pby90b2tlbiIsImp0aSI6IjVmZDdjY2RmN2Y3NDU5Yjg4N2I3MmQ0YiIsInN1YiI6IjVmZDdjY2QxYjAyMWFmNWM2Yzg2ODkzMSJ9.Ij-2eKqGmkUGTGsS-ZfVOKH91q4827d5XaQi8tHUl90c0nJU5a86L_ox5IbQNd-OQsKtQodztiYjwTTGIkePp4y-3T2ypTUn5ZcZBsN5KcTIFfAqElQTnwHGridnjp4DQOzwwFTpus-4lW0cidHMGa2QjtNLsqQB3sy7I_LMs8baMydogQx3mUQUkDbR9a2soFDYerP2ZTISsZaUVuVVnJndkhD2CmYqdftV2Bvzis_WJf06jRtrMOiUQ9vMjoAoLH_7TfBbyreM12Ngh1vB3Gdi-8zY7b7xqTd6YfcjHJCWcznbGR79Jvaq6AKw8G6kJY-dAOm0PEp446vf4MyjIw</p>
+<p>FATAL: Unable to submit build job: no authentication token, log in with <code>singularity remote login</code></p>
+<p>Even though previously it had said: INFO: API Key Verified!</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuc3VkbyBzaW5ndWxhcml0eSBidWlsZCAtLXJlbW90ZSBpZHRyYWNrZXJhaV9jb250IH4vRG9jdW1lbnRzL1JlcG9zaXRvcmllcy9waWxvdF9wYXBlci9lbnZzL2lkdHJhY2tlcmFpLmRlZlxuYGBgIn0= -->
+<pre class="bash"><code>sudo singularity build --remote idtrackerai_cont ~/Documents/Repositories/pilot_paper/envs/idtrackerai.def</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="python" class="section level2">
-<h2>Python</h2>
+<div id="send-to-cluster" class="section level1">
+<h1>Send to cluster</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuY29uZGEgY3JlYXRlIC1uIHBpbG90X3B5IHB5dGhvbj0zLjYgYmlvcHl0aG9uXG5jb25kYSBhY3RpdmF0ZSBwaWxvdF9weVxuIyBhZGQgcGFja2FnZXNcbmNvbmRhIGluc3RhbGwgLWMgYW5hY29uZGEgb3BlbmN2XG5jb25kYSBpbnN0YWxsIC1jIGFuYWNvbmRhIHBhbmRhc1xuIyBleHBvcnQgeWFtbFxuY29uZGEgZW52IGV4cG9ydCAtbiBwaWxvdF9weSAtZiBwaWxvdF9wYXBlci9zbm1rL2VudnMvcGlsb3RfcHkueW1sXG5gYGAifQ== -->
-<pre class="bash"><code>conda create -n pilot_py python=3.6 biopython
-conda activate pilot_py
-# add packages
-conda install -c anaconda opencv
-conda install -c anaconda pandas
-# export yaml
-conda env export -n pilot_py -f pilot_paper/snmk/envs/pilot_py.yml</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuYnN1YiAtUCBncHUgLWdwdSAtIC1JcyBcInNpbmd1bGFyaXR5IHNoZWxsIGlkdHJhY2tlcmFpX2NvbnRcIlxuYGBgIn0= -->
+<pre class="bash"><code>bsub -P gpu -gpu - -Is &quot;singularity shell idtrackerai_cont&quot;</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>ERROR : Unknown image format/type: idtrackerai_cont ABORT : Retval = 255</p>
+</div>
+<div id="make-on-linux" class="section level1">
+<h1>Make on Linux</h1>
+<p><code>ubuntu_cont.def</code>:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuQm9vdHN0cmFwOiBkb2NrZXJcbkZyb206IHVidW50dToxOC4wNFxuXG4lZmlsZXNcbiAgICBpZHRyYWNrZXJhaV9ncHUueWFtbFxuXG4lcG9zdFxuICBhcHQtZ2V0IHVwZGF0ZSAmJiBhcHQtZ2V0IC15IHVwZ3JhZGVcbiAgYXB0LWdldCAteSBpbnN0YWxsIFxcXG4gICAgYnVpbGQtZXNzZW50aWFsIFxcXG4gICAgd2dldCBcXFxuICAgIGJ6aXAyIFxcXG4gICAgY2EtY2VydGlmaWNhdGVzIFxcXG4gICAgbGliZ2xpYjIuMC0wIFxcXG4gICAgbGlieGV4dDYgXFxcbiAgICBsaWJzbTYgXFxcbiAgICBsaWJ4cmVuZGVyMSBcXFxuICAgIGdpdFxuICBybSAtcmYgL3Zhci9saWIvYXB0L2xpc3RzLypcbiAgYXB0LWdldCBjbGVhblxuXG4gICMgSW5zdGFsbCBNaW5pY29uZGFcblxuICB3Z2V0IC1jIGh0dHBzOi8vcmVwby5hbmFjb25kYS5jb20vbWluaWNvbmRhL01pbmljb25kYTMtbGF0ZXN0LUxpbnV4LXg4Nl82NC5zaFxuICAvYmluL2Jhc2ggTWluaWNvbmRhMy1sYXRlc3QtTGludXgteDg2XzY0LnNoIC1iZnAgL29wdC9jb25kYVxuICBleHBvcnQgUEFUSD1cIi9vcHQvY29uZGEvYmluOiRQQVRIXCJcbiAgIyBDb25kYSBjb25maWd1cmF0aW9uIG9mIGNoYW5uZWxzIGZyb20gLmNvbmRhcmMgZmlsZVxuICBjb25kYSBjb25maWcgLS1maWxlIC8uY29uZGFyYyAtLWFkZCBjaGFubmVscyBkZWZhdWx0c1xuICBjb25kYSBjb25maWcgLS1maWxlIC8uY29uZGFyYyAtLWFkZCBjaGFubmVscyBjb25kYS1mb3JnZVxuICBjb25kYSB1cGRhdGUgY29uZGFcbiAgI0xpc3QgaW5zdGFsbGVkIGVudmlyb25tZW50c1xuICBjb25kYSBsaXN0XG5cbiAgIyBJbnN0YWxsIGNvbmRhIGVudiBmcm9tIGlkdHJhY2tlcmFpX2dwdS55YW1sIGZpbGVcbiAgZWNobyBcIi4gL29wdC9jb25kYS9ldGMvcHJvZmlsZS5kL2NvbmRhLnNoXCIgPj4gJFNJTkdVTEFSSVRZX0VOVklST05NRU5UXG4gIGVjaG8gXCJjb25kYSBhY3RpdmF0ZSAkKGhlYWQgLTEgaWR0cmFja2VyYWlfZ3B1LnlhbWwgfCBjdXQgLWQnICcgLWYyKVwiID4+ICRTSU5HVUxBUklUWV9FTlZJUk9OTUVOVFxuICAvb3B0L2NvbmRhL2Jpbi9jb25kYSBlbnYgY3JlYXRlIC1uIGlkdHJhY2tlcmFpIC1mIGlkdHJhY2tlcmFpX2dwdS55YW1sXG5cbiAgIyBhY3RpdmF0ZSBlbnZpcm9ubWVudFxuICAjLiAvb3B0L2NvbmRhL2V0Yy9wcm9maWxlLmQvY29uZGEuc2hcbiAgI2NvbmRhIGFjdGl2YXRlIGlkdHJhY2tlcmFpXG5cbmBgYCJ9 -->
+<pre class="bash"><code>Bootstrap: docker
+From: ubuntu:18.04
+
+%files
+    idtrackerai_gpu.yaml
+
+%post
+  apt-get update &amp;&amp; apt-get -y upgrade
+  apt-get -y install \
+    build-essential \
+    wget \
+    bzip2 \
+    ca-certificates \
+    libglib2.0-0 \
+    libxext6 \
+    libsm6 \
+    libxrender1 \
+    git
+  rm -rf /var/lib/apt/lists/*
+  apt-get clean
+
+  # Install Miniconda
+
+  wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  /bin/bash Miniconda3-latest-Linux-x86_64.sh -bfp /opt/conda
+  export PATH=&quot;/opt/conda/bin:$PATH&quot;
+  # Conda configuration of channels from .condarc file
+  conda config --file /.condarc --add channels defaults
+  conda config --file /.condarc --add channels conda-forge
+  conda update conda
+  #List installed environments
+  conda list
+
+  # Install conda env from idtrackerai_gpu.yaml file
+  echo &quot;. /opt/conda/etc/profile.d/conda.sh&quot; &gt;&gt; $SINGULARITY_ENVIRONMENT
+  echo &quot;conda activate $(head -1 idtrackerai_gpu.yaml | cut -d&#39; &#39; -f2)&quot; &gt;&gt; $SINGULARITY_ENVIRONMENT
+  /opt/conda/bin/conda env create -n idtrackerai -f idtrackerai_gpu.yaml
+
+  # activate environment
+  #. /opt/conda/etc/profile.d/conda.sh
+  #conda activate idtrackerai
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><code>idtrackerai_gpu.yaml</code>:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgeWFtbFxubmFtZTogaWR0cmFja2VyYWlcbmNoYW5uZWxzOlxuICAtIGNvbmRhLWZvcmdlXG4gIC0gZGVmYXVsdHNcbmRlcGVuZGVuY2llczpcbiAgLSBfbGliZ2NjX211dGV4PTAuMT1jb25kYV9mb3JnZVxuICAtIF9vcGVubXBfbXV0ZXg9NC41PTFfZ251XG4gIC0gX3RmbG93X3NlbGVjdD0yLjEuMD1ncHVcbiAgLSBhYnNsLXB5PTAuMTEuMD1weTM2aDVmYWI5YmJfMFxuICAtIGFzdG9yPTAuOC4xPXB5aDlmMGFkMWRfMFxuICAtIGMtYXJlcz0xLjE3LjE9aDM2YzJlYTBfMFxuICAtIGNhLWNlcnRpZmljYXRlcz0yMDIwLjEyLjU9aGE4Nzg1NDJfMFxuICAtIGNlcnRpZmk9MjAyMC4xMi41PXB5MzZoNWZhYjliYl8wXG4gIC0gZ2FzdD0wLjQuMD1weWg5ZjBhZDFkXzBcbiAgLSBncnBjaW89MS4zNC4wPXB5MzZoOGU4NzkyMV8wXG4gIC0gaDVweT0zLjEuMD1ub21waV9weTM2aGMxYmM0ZjVfMTAwXG4gIC0gaGRmNT0xLjEwLjY9bm9tcGlfaDZhMjQxMmJfMTExMlxuICAtIGtlcmFzLWFwcGxpY2F0aW9ucz0xLjAuOD1weV8xXG4gIC0ga3JiNT0xLjE3LjI9aDkyNmU3ZjhfMFxuICAtIGxkX2ltcGxfbGludXgtNjQ9Mi4zNS4xPWhlYTRlMWM5XzFcbiAgLSBsaWJibGFzPTMuOS4wPTNfb3BlbmJsYXNcbiAgLSBsaWJjYmxhcz0zLjkuMD0zX29wZW5ibGFzXG4gIC0gbGliY3VybD03LjcxLjE9aGNkZDM4NTZfOFxuICAtIGxpYmVkaXQ9My4xLjIwMTkxMjMxPWhlMjhhMmUyXzJcbiAgLSBsaWJldj00LjMzPWg1MTY5MDlhXzFcbiAgLSBsaWJmZmk9My4zPWg1ODUyNmUyXzJcbiAgLSBsaWJnY2Mtbmc9OS4zLjA9aDVkYmNmM2VfMTdcbiAgLSBsaWJnZm9ydHJhbi1uZz05LjMuMD1oZTRiY2IxY18xN1xuICAtIGxpYmdmb3J0cmFuNT05LjMuMD1oZTRiY2IxY18xN1xuICAtIGxpYmdvbXA9OS4zLjA9aDVkYmNmM2VfMTdcbiAgLSBsaWJsYXBhY2s9My45LjA9M19vcGVuYmxhc1xuICAtIGxpYm5naHR0cDI9MS40MS4wPWg4Y2ZjNWY2XzJcbiAgLSBsaWJvcGVuYmxhcz0wLjMuMTI9cHRocmVhZHNfaDQ4MTIzMDNfMVxuICAtIGxpYnBuZz0xLjYuMzc9aDIxMTM1YmFfMlxuICAtIGxpYnByb3RvYnVmPTMuMTQuMD1oNzgwYjg0YV8wXG4gIC0gbGlic3NoMj0xLjkuMD1oYWIxNTcyZl81XG4gIC0gbGlic3RkY3h4LW5nPTkuMy4wPWgyYWUyZWYzXzE3XG4gIC0gbWFya2Rvd249My4zLjM9cHloOWYwYWQxZF8wXG4gIC0gbW9jaz00LjAuMz1weTM2aDVmYWI5YmJfMFxuICAtIG5jdXJzZXM9Ni4yPWg1ODUyNmUyXzRcbiAgLSBudW1weT0xLjE5LjQ9cHkzNmg4NzMyZGNkXzFcbiAgLSBvcGVuc3NsPTEuMS4xaT1oN2Y5ODg1Ml8wXG4gIC0gcGlwPTIwLjMuMT1weWhkOGVkMWFiXzBcbiAgLSBweXRob249My42LjEyPWhmZmRiNWNlXzBfY3B5dGhvblxuICAtIHB5dGhvbl9hYmk9My42PTFfY3AzNm1cbiAgLSByZWFkbGluZT04LjA9aGUyOGEyZTJfMlxuICAtIHNldHVwdG9vbHM9NDkuNi4wPXB5MzZoOTg4MGJkM18yXG4gIC0gc2l4PTEuMTUuMD1weWg5ZjBhZDFkXzBcbiAgLSBzcWxpdGU9My4zNC4wPWg3NGNkYjNmXzBcbiAgLSB0ZW5zb3Jib2FyZD0xLjEzLjE9cHkzNl8wXG4gIC0gdGVuc29yZmxvdz0xLjEzLjE9aDc2YjRjZTdfN1xuICAtIHRlbnNvcmZsb3ctYmFzZT0xLjEzLjE9cHkzNmg3NmI0Y2U3XzdcbiAgLSB0ZW5zb3JmbG93LWVzdGltYXRvcj0xLjEzLjA9cHlfMFxuICAtIHRlbnNvcmZsb3ctZ3B1PTEuMTMuMT1oMGQzMGVlNl8wXG4gIC0gdGs9OC42LjEwPWgyMTEzNWJhXzFcbiAgLSB3ZXJremV1Zz0xLjAuMT1weWg5ZjBhZDFkXzBcbiAgLSB3aGVlbD0wLjM2LjI9cHloZDNkZWIwZF8wXG4gIC0geHo9NS4yLjU9aDUxNjkwOWFfMVxuICAtIHppcHA9My40LjA9cHlfMFxuICAtIHpsaWI9MS4yLjExPWg1MTY5MDlhXzEwMTBcbiAgLSBwaXA6XG4gICAgLSBjYWNoZWQtcHJvcGVydHk9PTEuNS4yXG4gICAgLSBjaGFyZGV0PT0zLjAuNFxuICAgIC0gY29sb3JlZGxvZ3M9PTE1LjBcbiAgICAtIGNvbmZhcHA9PTEuMS4xMVxuICAgIC0gY3ljbGVyPT0wLjEwLjBcbiAgICAtIGRhc2s9PTIwMjAuMTIuMFxuICAgIC0gZmlsZWxvY2s9PTMuMC4xMlxuICAgIC0gZ2Rvd249PTMuMTIuMlxuICAgIC0gaHVtYW5mcmllbmRseT09OS4xXG4gICAgLSBpZG5hPT0yLjEwXG4gICAgLSBpZHRyYWNrZXJhaT09My4wLjI0XG4gICAgLSBpZHRyYWNrZXJhaS1hcHA9PTAuMC4xMlxuICAgIC0gaW1wb3J0bGliLW1ldGFkYXRhPT0zLjMuMFxuICAgIC0gam9ibGliPT0wLjE3LjBcbiAgICAtIGtlcmFzLXByZXByb2Nlc3Npbmc9PTEuMS4yXG4gICAgLSBraXdpc29sdmVyPT0xLjMuMVxuICAgIC0gbWF0cGxvdGxpYj09My4zLjNcbiAgICAtIG1zZ3BhY2s9PTEuMC4xXG4gICAgLSBtc2dwYWNrLW51bXB5PT0wLjQuNy4xXG4gICAgLSBtc2dwYWNrLXB5dGhvbj09MC41LjZcbiAgICAtIG5hdHNvcnQ9PTcuMS4wXG4gICAgLSBudW1leHByPT0yLjcuMVxuICAgIC0gb3BlbmN2LXB5dGhvbj09My40LjUuMjBcbiAgICAtIHBhbmRhcz09MS4xLjVcbiAgICAtIHBpbGxvdz09OC4wLjFcbiAgICAtIHByb3RvYnVmPT0zLjE0LjBcbiAgICAtIHBzdXRpbD09NS43LjNcbiAgICAtIHB5Zm9ybXMtdGVybWluYWw9PTQuMC4xMFxuICAgIC0gcHlwYXJzaW5nPT0yLjQuN1xuICAgIC0gcHlzb2Nrcz09MS43LjFcbiAgICAtIHB5dGhvbi1kYXRldXRpbD09Mi44LjFcbiAgICAtIHB5dHo9PTIwMjAuNFxuICAgIC0gcHl5YW1sPT01LjMuMVxuICAgIC0gcmVxdWVzdHM9PTIuMjUuMFxuICAgIC0gc2Npa2l0LWxlYXJuPT0wLjIzLjJcbiAgICAtIHNjaXB5PT0xLjUuNFxuICAgIC0gc2VhYm9ybj09MC4xMS4wXG4gICAgLSBzaW1wbGVqc29uPT0zLjE3LjJcbiAgICAtIHNrbGVhcm49PTAuMFxuICAgIC0gdGFibGVzPT0zLjYuMVxuICAgIC0gdGVybWNvbG9yPT0xLjEuMFxuICAgIC0gdGhyZWFkcG9vbGN0bD09Mi4xLjBcbiAgICAtIHRxZG09PTQuNTQuMVxuICAgIC0gdHlwaW5nLWV4dGVuc2lvbnM9PTMuNy40LjNcbiAgICAtIHVybGxpYjM9PTEuMjYuMlxuICAgIC0geGxpYj09MC4yMVxucHJlZml4OiAvbmZzL3Jlc2VhcmNoMS9iaXJuZXkvdXNlcnMvYnJldHRlbGwvYW5hY29uZGEzL2VudnMvaWR0cmFja2VyYWlcblxuYGBgIn0= -->
+<pre class="yaml"><code>name: idtrackerai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=1_gnu
+  - _tflow_select=2.1.0=gpu
+  - absl-py=0.11.0=py36h5fab9bb_0
+  - astor=0.8.1=pyh9f0ad1d_0
+  - c-ares=1.17.1=h36c2ea0_0
+  - ca-certificates=2020.12.5=ha878542_0
+  - certifi=2020.12.5=py36h5fab9bb_0
+  - gast=0.4.0=pyh9f0ad1d_0
+  - grpcio=1.34.0=py36h8e87921_0
+  - h5py=3.1.0=nompi_py36hc1bc4f5_100
+  - hdf5=1.10.6=nompi_h6a2412b_1112
+  - keras-applications=1.0.8=py_1
+  - krb5=1.17.2=h926e7f8_0
+  - ld_impl_linux-64=2.35.1=hea4e1c9_1
+  - libblas=3.9.0=3_openblas
+  - libcblas=3.9.0=3_openblas
+  - libcurl=7.71.1=hcdd3856_8
+  - libedit=3.1.20191231=he28a2e2_2
+  - libev=4.33=h516909a_1
+  - libffi=3.3=h58526e2_2
+  - libgcc-ng=9.3.0=h5dbcf3e_17
+  - libgfortran-ng=9.3.0=he4bcb1c_17
+  - libgfortran5=9.3.0=he4bcb1c_17
+  - libgomp=9.3.0=h5dbcf3e_17
+  - liblapack=3.9.0=3_openblas
+  - libnghttp2=1.41.0=h8cfc5f6_2
+  - libopenblas=0.3.12=pthreads_h4812303_1
+  - libpng=1.6.37=h21135ba_2
+  - libprotobuf=3.14.0=h780b84a_0
+  - libssh2=1.9.0=hab1572f_5
+  - libstdcxx-ng=9.3.0=h2ae2ef3_17
+  - markdown=3.3.3=pyh9f0ad1d_0
+  - mock=4.0.3=py36h5fab9bb_0
+  - ncurses=6.2=h58526e2_4
+  - numpy=1.19.4=py36h8732dcd_1
+  - openssl=1.1.1i=h7f98852_0
+  - pip=20.3.1=pyhd8ed1ab_0
+  - python=3.6.12=hffdb5ce_0_cpython
+  - python_abi=3.6=1_cp36m
+  - readline=8.0=he28a2e2_2
+  - setuptools=49.6.0=py36h9880bd3_2
+  - six=1.15.0=pyh9f0ad1d_0
+  - sqlite=3.34.0=h74cdb3f_0
+  - tensorboard=1.13.1=py36_0
+  - tensorflow=1.13.1=h76b4ce7_7
+  - tensorflow-base=1.13.1=py36h76b4ce7_7
+  - tensorflow-estimator=1.13.0=py_0
+  - tensorflow-gpu=1.13.1=h0d30ee6_0
+  - tk=8.6.10=h21135ba_1
+  - werkzeug=1.0.1=pyh9f0ad1d_0
+  - wheel=0.36.2=pyhd3deb0d_0
+  - xz=5.2.5=h516909a_1
+  - zipp=3.4.0=py_0
+  - zlib=1.2.11=h516909a_1010
+  - pip:
+    - cached-property==1.5.2
+    - chardet==3.0.4
+    - coloredlogs==15.0
+    - confapp==1.1.11
+    - cycler==0.10.0
+    - dask==2020.12.0
+    - filelock==3.0.12
+    - gdown==3.12.2
+    - humanfriendly==9.1
+    - idna==2.10
+    - idtrackerai==3.0.24
+    - idtrackerai-app==0.0.12
+    - importlib-metadata==3.3.0
+    - joblib==0.17.0
+    - keras-preprocessing==1.1.2
+    - kiwisolver==1.3.1
+    - matplotlib==3.3.3
+    - msgpack==1.0.1
+    - msgpack-numpy==0.4.7.1
+    - msgpack-python==0.5.6
+    - natsort==7.1.0
+    - numexpr==2.7.1
+    - opencv-python==3.4.5.20
+    - pandas==1.1.5
+    - pillow==8.0.1
+    - protobuf==3.14.0
+    - psutil==5.7.3
+    - pyforms-terminal==4.0.10
+    - pyparsing==2.4.7
+    - pysocks==1.7.1
+    - python-dateutil==2.8.1
+    - pytz==2020.4
+    - pyyaml==5.3.1
+    - requests==2.25.0
+    - scikit-learn==0.23.2
+    - scipy==1.5.4
+    - seaborn==0.11.0
+    - simplejson==3.17.2
+    - sklearn==0.0
+    - tables==3.6.1
+    - termcolor==1.1.0
+    - threadpoolctl==2.1.0
+    - tqdm==4.54.1
+    - typing-extensions==3.7.4.3
+    - urllib3==1.26.2
+    - xlib==0.21
+prefix: /nfs/research1/birney/users/brettell/anaconda3/envs/idtrackerai
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="build" class="section level2">
+<h2>Build</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuc3VkbyBzaW5ndWxhcml0eSBidWlsZCB1YnVudHVfY29udCB1YnVudHVfY29udC5kZWZcbiMgV29ya3NcbmBgYCJ9 -->
+<pre class="bash"><code>sudo singularity build ubuntu_cont ubuntu_cont.def
+# Works</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="deeplabcut" class="section level2">
-<h2>DeepLabCut</h2>
+<div id="now-try-with-cuda" class="section level2">
+<h2>Now try with CUDA</h2>
+</div>
+</div>
+<div id="try-building-on-the-gpu" class="section level1">
+<h1>Try building on the GPU</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuZ2l0IGNsb25lIGh0dHBzOi8vZ2l0aHViLmNvbS9BbGV4RU1HL0RlZXBMYWJDdXQuZ2l0XG5jb25kYSBlbnYgY3JlYXRlIC1mIERlZXBMYWJDdXQvY29uZGEtZW52aXJvbm1lbnRzL0RMQy1DUFUueWFtbFxuIyBJbnN0YWxsIDIuMiBmb3IgbXVsdGktYW5pbWFsIHRyYWNraW5nXG5waXAgaW5zdGFsbCBkZWVwbGFiY3V0PT0yLjJiOFxuIyBleHBvcnQgdG8gc25tayBkaXJcbmNvbmRhIGVudiBleHBvcnQgLW4gRExDLUNQVSAtZiBwaWxvdF9wYXBlci9zbm1rL2VudnMvRExDLUNQVS55bWxcbmNwIERlZXBMYWJDdXQvY29uZGEtZW52aXJvbm1lbnRzL0RMQy1DUFUueWFtbCBwaWxvdF9wYXBlci9zbm1rL2VudnNcbmBgYCJ9 -->
-<pre class="bash"><code>git clone https://github.com/AlexEMG/DeepLabCut.git
-conda env create -f DeepLabCut/conda-environments/DLC-CPU.yaml
-# Install 2.2 for multi-animal tracking
-pip install deeplabcut==2.2b8
-# export to snmk dir
-conda env export -n DLC-CPU -f pilot_paper/snmk/envs/DLC-CPU.yml
-cp DeepLabCut/conda-environments/DLC-CPU.yaml pilot_paper/snmk/envs</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuIyBMb2dpbiB0byBHUFUgbm9kZVxuYnN1YiAtTSAxMDAwMCAtUCBncHUgLWdwdSAtIC1JcyBiYXNoXG4jIENyZWF0ZSBzaW5ndWxhcml0eSBjb25kYSBlbnYgKHRvIGdldCB0aGUgbmV3IHZlcnNpb24gd2l0aCB0aGUgLS1yZW1vdGUgZmxhZylcbmNvbmRhIGNyZWF0ZSAtbiBzaW5ndWxhcml0eVxuY29uZGEgYWN0aXZhdGUgc2luZ3VsYXJpdHlcbmNvbmRhIGluc3RhbGwgLWMgY29uZGEtZm9yZ2Ugc2luZ3VsYXJpdHlcbiMgU2V0IHRva2VuIChsYWJlbDogaWR0cmFja2VyX2ViaV9jbHVzdGVyX2dwdSlcbnNpbmd1bGFyaXR5IHJlbW90ZSBsb2dpblxuIyBCdWlsZCB3aXRoIGp1c3QgdWJ1bnR1XG5zaW5ndWxhcml0eSBidWlsZCAtLXJlbW90ZSBjdWRhX2dwdV8yIGlkdHJhY2tlcl9jb250LmRlZlxuIyB3b3Jrc1xuIyBCdWlsZCBkb2Vzbid0IHdvcmsgd2hlbiBnaXZlbiB0aGUgY29uZGEgLnlhbWxcbiNJTkZPOiAgICBDb3B5aW5nIGlkdHJhY2tlcmFpX2dwdS55YW1sIHRvICMvdG1wL3Jvb3Rmcy0wM2Y0NjZlYy0zZWMzLTExZWItYTk4NC0xMmJkZmEwMTY1NTcvaWR0cmFja2VyYWlfZ3B1LnlhbWxcbiNGQVRBTDogICBjb250YWluZXIgY3JlYXRpb24gZmFpbGVkOiB1bmFibGUgdG8gY29weSBmaWxlcyB0byBjb250YWluZXIgZnM6IHdoaWxlIGNvcHlpbmcgI1tpZHRyYWNrZXJhaV9ncHUueWFtbF0gdG8gL3RtcC9yb290ZnMtMDNmNDY2ZWMtM2VjMy0xMWViLWE5ODQtMTJiZGZhMDE2NTU3L2lkdHJhY2tlcmFpX2dwdS55YW1sOiBleGl0ICNzdGF0dXMgMTogL2Jpbi9jcDogY2Fubm90IHN0YXQgJ2lkdHJhY2tlcmFpX2dwdS55YW1sJzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeVxuIyBCdWlsZCBieSBjcmVhdGluZyBjb25kYSBlbnYgZnJvbSBzY3JhdGNoXG5zaW5ndWxhcml0eSBidWlsZCAtLXJlbW90ZSBjdWRhX2dwdV8yIGlkdHJhY2tlcl9jb250LmRlZlxuYGBgIn0= -->
+<pre class="bash"><code># Login to GPU node
+bsub -M 10000 -P gpu -gpu - -Is bash
+# Create singularity conda env (to get the new version with the --remote flag)
+conda create -n singularity
+conda activate singularity
+conda install -c conda-forge singularity
+# Set token (label: idtracker_ebi_cluster_gpu)
+singularity remote login
+# Build with just ubuntu
+singularity build --remote cuda_gpu_2 idtracker_cont.def
+# works
+# Build doesn&#39;t work when given the conda .yaml
+#INFO:    Copying idtrackerai_gpu.yaml to #/tmp/rootfs-03f466ec-3ec3-11eb-a984-12bdfa016557/idtrackerai_gpu.yaml
+#FATAL:   container creation failed: unable to copy files to container fs: while copying #[idtrackerai_gpu.yaml] to /tmp/rootfs-03f466ec-3ec3-11eb-a984-12bdfa016557/idtrackerai_gpu.yaml: exit #status 1: /bin/cp: cannot stat &#39;idtrackerai_gpu.yaml&#39;: No such file or directory
+# Build by creating conda env from scratch
+singularity build --remote cuda_gpu_2 idtracker_cont.def</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-</div>
-</div>
-<div id="bash-script" class="section level1">
-<h1>Bash script</h1>
+<div id="recipe-file" class="section level2">
+<h2>Recipe file:</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuc25ha2VtYWtlIFxcXG4gIC0tam9icyA1MDAwIFxcXG4gIC0tbGF0ZW5jeS13YWl0IDEwMCBcXFxuICAtLWNsdXN0ZXItY29uZmlnIHBpbG90X3BhcGVyL2NvZGUvc25ha2VtYWtlL2NvbmZpZy9jbHVzdGVyLmpzb24gXFxcbiAgLS1jbHVzdGVyICdic3ViIC1nIC9zbmFrZW1ha2VfYmdlbmllIC1KIHtjbHVzdGVyLm5hbWV9IC1uIHtjbHVzdGVyLm59IC1NIHtjbHVzdGVyLm1lbW9yeX0gLW8ge2NsdXN0ZXIub3V0cHV0fSAtZSB7Y2x1c3Rlci5lcnJvcn0nIFxcXG4gIC0ta2VlcC1nb2luZyBcXFxuICAtLXJlcnVuLWluY29tcGxldGUgXFxcbiAgLS11c2UtY29uZGEgXFxcbiAgLXMgcGlsb3RfcGFwZXIvY29kZS9zbmFrZW1ha2Uvc25ha2VmaWxlLnB5IFxcXG4gIC1wblxuICBcbiMgRm9yIEdQVSBqb2JzXG5zbmFrZW1ha2UgXFxcbiAgLS1qb2JzIDUwMDAgXFxcbiAgLS1sYXRlbmN5LXdhaXQgMTAwIFxcXG4gIC0tY2x1c3Rlci1jb25maWcgcGlsb3RfcGFwZXIvY29kZS9zbmFrZW1ha2UvY29uZmlnL2NsdXN0ZXIuanNvbiBcXFxuICAtLWNsdXN0ZXIgJ2JzdWIgLWcgL3NuYWtlbWFrZV9iZ2VuaWUgLUoge2NsdXN0ZXIubmFtZX0gLVAge2NsdXN0ZXIucHJvamVjdH0gLWdwdSB7Y2x1c3Rlci5ncHV9IC1uIHtjbHVzdGVyLm59IC1NIHtjbHVzdGVyLm1lbW9yeX0gLW8ge2NsdXN0ZXIub3V0cHV0fSAtZSB7Y2x1c3Rlci5lcnJvcn0nIFxcXG4gIC0ta2VlcC1nb2luZyBcXFxuICAtLXJlcnVuLWluY29tcGxldGUgXFxcbiAgLS11c2UtY29uZGEgXFxcbiAgLXMgcGlsb3RfcGFwZXIvY29kZS9zbmFrZW1ha2Uvc25ha2VmaWxlLnB5IFxcXG4gIC1wblxuYGBgIn0= -->
-<pre class="bash"><code>snakemake \
-  --jobs 5000 \
-  --latency-wait 100 \
-  --cluster-config pilot_paper/code/snakemake/config/cluster.json \
-  --cluster &#39;bsub -g /snakemake_bgenie -J {cluster.name} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}&#39; \
-  --keep-going \
-  --rerun-incomplete \
-  --use-conda \
-  -s pilot_paper/code/snakemake/snakefile.py \
-  -pn
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuQm9vdHN0cmFwOiBkb2NrZXJcbkZyb206IG52aWRpYS9jdWRhOjEwLjAtcnVudGltZS11YnVudHUxOC4wNFxuXG4jJWZpbGVzXG4jICAgIC9ocHMvcmVzZWFyY2gxL2Jpcm5leS91c2Vycy9pYW4vcGlsb3QvaWR0cmFja2VyYWlfZ3B1LnlhbWxcblxuJXBvc3RcbiAgICBhcHQtZ2V0IHVwZGF0ZSAmJiBhcHQtZ2V0IC15IHVwZ3JhZGVcbiAgICBhcHQtZ2V0IC15IGluc3RhbGwgXFxcbiAgICAgIGJ1aWxkLWVzc2VudGlhbCBcXFxuICAgICAgd2dldCBcXFxuICAgICAgYnppcDIgXFxcbiAgICAgIGNhLWNlcnRpZmljYXRlcyBcXFxuICAgICAgbGliZ2xpYjIuMC0wIFxcXG4gICAgICBsaWJ4ZXh0NiBcXFxuICAgICAgbGlic202IFxcXG4gICAgICBsaWJ4cmVuZGVyMSBcXFxuICAgICAgZ2l0XG4gICAgcm0gLXJmIC92YXIvbGliL2FwdC9saXN0cy8qXG4gICAgYXB0LWdldCBjbGVhblxuXG4gICAgIyBJbnN0YWxsIE1pbmljb25kYVxuXG4gICAgd2dldCAtYyBodHRwczovL3JlcG8uYW5hY29uZGEuY29tL21pbmljb25kYS9NaW5pY29uZGEzLWxhdGVzdC1MaW51eC14ODZfNjQuc2hcbiAgICAvYmluL2Jhc2ggTWluaWNvbmRhMy1sYXRlc3QtTGludXgteDg2XzY0LnNoIC1iZnAgL29wdC9jb25kYVxuICAgIGV4cG9ydCBQQVRIPVwiL29wdC9jb25kYS9iaW46JFBBVEhcIlxuICAgICMgQ29uZGEgY29uZmlndXJhdGlvbiBvZiBjaGFubmVscyBmcm9tIC5jb25kYXJjIGZpbGVcbiAgICBjb25kYSBjb25maWcgLS1maWxlIC8uY29uZGFyYyAtLWFkZCBjaGFubmVscyBkZWZhdWx0c1xuICAgIGNvbmRhIGNvbmZpZyAtLWZpbGUgLy5jb25kYXJjIC0tYWRkIGNoYW5uZWxzIGNvbmRhLWZvcmdlXG4gICAgY29uZGEgdXBkYXRlIGNvbmRhXG4gICAgI0xpc3QgaW5zdGFsbGVkIGVudmlyb25tZW50c1xuICAgICNjb25kYSBsaXN0XG5cbiMgICAgIyBJbnN0YWxsIGNvbmRhIGVudiBmcm9tIGlkdHJhY2tlcmFpX2dwdS55YW1sIGZpbGVcbiNcbiMgICAgZWNobyBcIi4gL29wdC9jb25kYS9ldGMvcHJvZmlsZS5kL2NvbmRhLnNoXCIgPj4gJFNJTkdVTEFSSVRZX0VOVklST05NRU5UXG4jICAgIGVjaG8gXCJjb25kYSBhY3RpdmF0ZSAkKGhlYWQgLTEgaWR0cmFja2VyYWlfZ3B1LnlhbWwgfCBjdXQgLWQnICcgLWYyKVwiID4+ICRTSU5HVUxBUklUWV9FTlZJUk9OTUVOVFxuIyAgICAvb3B0L2NvbmRhL2Jpbi9jb25kYSBlbnYgY3JlYXRlIC1uIGlkdHJhY2tlcmFpIC1mIC9ocHMvcmVzZWFyY2gxL2Jpcm5leS91c2Vycy9pYW4vcGlsb3QvaWR0cmFja2VyYWlfZ3B1LnlhbWxcblxuICAgICMgSW5zdGFsbCBjb25kYSBlbnYgd2l0aGluIGVudlxuXG4gICAgLiAvb3B0L2NvbmRhL2V0Yy9wcm9maWxlLmQvY29uZGEuc2hcbiAgICBjb25kYSBjcmVhdGUgLW4gaWR0cmFja2VyYWkgcHl0aG9uPTMuNlxuICAgIGNvbmRhIGFjdGl2YXRlIGlkdHJhY2tlcmFpXG4gICAgcGlwIGluc3RhbGwgaWR0cmFja2VyYWlcbiAgICBjb25kYSBpbnN0YWxsIHRlbnNvcmZsb3ctZ3B1PTEuMTNcblxuYGBgIn0= -->
+<pre class="bash"><code>Bootstrap: docker
+From: nvidia/cuda:10.0-runtime-ubuntu18.04
+
+#%files
+#    /hps/research1/birney/users/ian/pilot/idtrackerai_gpu.yaml
+
+%post
+    apt-get update &amp;&amp; apt-get -y upgrade
+    apt-get -y install \
+      build-essential \
+      wget \
+      bzip2 \
+      ca-certificates \
+      libglib2.0-0 \
+      libxext6 \
+      libsm6 \
+      libxrender1 \
+      git
+    rm -rf /var/lib/apt/lists/*
+    apt-get clean
+
+    # Install Miniconda
+
+    wget -c https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    /bin/bash Miniconda3-latest-Linux-x86_64.sh -bfp /opt/conda
+    export PATH=&quot;/opt/conda/bin:$PATH&quot;
+    # Conda configuration of channels from .condarc file
+    conda config --file /.condarc --add channels defaults
+    conda config --file /.condarc --add channels conda-forge
+    conda update conda
+    #List installed environments
+    #conda list
+
+#    # Install conda env from idtrackerai_gpu.yaml file
+#
+#    echo &quot;. /opt/conda/etc/profile.d/conda.sh&quot; &gt;&gt; $SINGULARITY_ENVIRONMENT
+#    echo &quot;conda activate $(head -1 idtrackerai_gpu.yaml | cut -d&#39; &#39; -f2)&quot; &gt;&gt; $SINGULARITY_ENVIRONMENT
+#    /opt/conda/bin/conda env create -n idtrackerai -f /hps/research1/birney/users/ian/pilot/idtrackerai_gpu.yaml
+
+    # Install conda env within env
+
+    . /opt/conda/etc/profile.d/conda.sh
+    conda create -n idtrackerai python=3.6
+    conda activate idtrackerai
+    pip install idtrackerai
+    conda install tensorflow-gpu=1.13
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Build SUCCESS!! But does it work…</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuYnN1YiAtUCBncHUgLWdwdSAtIC1JcyBcInNpbmd1bGFyaXR5IHNoZWxsIGN1ZGFfZ3B1XzJcIlxuI0VSUk9SICA6IFVua25vd24gaW1hZ2UgZm9ybWF0L3R5cGU6IGN1ZGFfZ3B1XzJcbiNBQk9SVCAgOiBSZXR2YWwgPSAyNTVcblxuIyBUcnkgd2l0aGluIHNpbmd1bGFyaXR5IGVudiAodiAzLjYuMylcbmNvbmRhIGFjdGl2YXRlIHNpbmd1bGFyaXR5XG5zaW5ndWxhcml0eSBzaGVsbCBjdWRhX2dwdV8yXG4jSU5GTzogICAgQ29udmVydCBTSUYgZmlsZSB0byBzYW5kYm94Li4uXG4jRVJST1IgIDogRmFpbGVkIHRvIGNyZWF0ZSB1c2VyIG5hbWVzcGFjZTogdXNlciBuYW1lc3BhY2UgZGlzYWJsZWRcblxuIyBUcnkgbWFraW5nIHRoZSBjb250YWluZXIgaW4gdGhlIHNhbWUgc2luZ3VsYXJpdHkgdmVyc2lvbiBhcyBpcyBpbnN0YWxsZWQgb24gdGhlIGNsdXN0ZXIgKHYgMi42LjApIC0gaGF2ZSB0byBkbyBpdCBvbiBsb2NhbCBsaW51eCBiZWNhdXNlIGJ1aWxkaW5nIHJlcXVpcmVzIHN1ZG8gcHJpdmlsZWdlcywgYXMgZGlzb3ZlcmVkIGJ5IGRvaW5nIHRoaXMgb24gdGVoIGNsdXN0ZXI6XG5jb25kYSBjcmVhdGUgLW4gc2luZ3VsYXJpdHktMi42IHNpbmd1bGFyaXR5PTIuNi4wXG5jb25kYSBhY3RpdmF0ZSBzaW5ndWxhcml0eS0yLjZcbnNpbmd1bGFyaXR5IGJ1aWxkIGlkdHJhY2tlci5zaW1nIGlkdHJhY2tlcl9jb250LmRlZlxuI1VzaW5nIGNvbnRhaW5lciByZWNpcGUgZGVmZmlsZTogaWR0cmFja2VyX2NvbnQuZGVmXG4jRVJST1I6IFlvdSBtdXN0IGJlIHRoZSByb290IHVzZXIgdG8gYnVpbGQgZnJvbSBhIFNpbmd1bGFyaXR5IHJlY2lwZSBmaWxlXG5cbiMgU08gb24gbG9jYWwgbGludXg6XG5jb25kYSBjcmVhdGUgLWMgY29uZGEtZm9yZ2UgLW4gc2luZ3VsYXJpdHktMi42IHNpbmd1bGFyaXR5PTIuNi4wXkNcbmNvbmRhIGFjdGl2YXRlIHNpbmd1bGFyaXR5LTIuNlxuc3VkbyBzaW5ndWxhcml0eSBidWlsZCAvaG9tZS9wYXJhbGxlbHMvaWR0cmFja2VyLnNpbWcgaWR0cmFja2VyX2NvbnQuZGVmXG4jIHNlbmQgdG8gY2x1c3Rlclxuc2NwIH4vaWR0cmFja2VyLnNpbWcgYnJldHRlbGxAZWJpOi9ocHMvcmVzZWFyY2gxL2Jpcm5leS91c2Vycy9pYW4vcGlsb3QgIFxuYGBgIn0= -->
+<pre class="bash"><code>bsub -P gpu -gpu - -Is &quot;singularity shell cuda_gpu_2&quot;
+#ERROR  : Unknown image format/type: cuda_gpu_2
+#ABORT  : Retval = 255
+
+# Try within singularity env (v 3.6.3)
+conda activate singularity
+singularity shell cuda_gpu_2
+#INFO:    Convert SIF file to sandbox...
+#ERROR  : Failed to create user namespace: user namespace disabled
+
+# Try making the container in the same singularity version as is installed on the cluster (v 2.6.0) - have to do it on local linux because building requires sudo privileges, as disovered by doing this on teh cluster:
+conda create -n singularity-2.6 singularity=2.6.0
+conda activate singularity-2.6
+singularity build idtracker.simg idtracker_cont.def
+#Using container recipe deffile: idtracker_cont.def
+#ERROR: You must be the root user to build from a Singularity recipe file
+
+# SO on local linux:
+conda create -c conda-forge -n singularity-2.6 singularity=2.6.0^C
+conda activate singularity-2.6
+sudo singularity build /home/parallels/idtracker.simg idtracker_cont.def
+# send to cluster
+scp ~/idtracker.simg brettell@ebi:/hps/research1/birney/users/ian/pilot  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Also saw that you can load v3.5 on the cluster</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxubW9kdWxlIGxvYWQgc2luZ3VsYXJpdHkvMy41LjBcbmJzdWIgLVAgZ3B1IC1ncHUgLSAtSXMgXCJzaW5ndWxhcml0eSBzaGVsbCBjdWRhX2dwdV8yXCJcblxuc2FtcGxlPXNwbGl0L29wZW5fZmllbGQvMjAxOTA2MTZfMTcxN19pY2FiX2ljYWJfTF9xNF9vcGVuX2ZpZWxkXG5pbnB1dF92aWRlbz0kKGVjaG8gJHNhbXBsZScubXA0JylcblxuaWR0cmFja2VyYWkgdGVybWluYWxfbW9kZSBcXFxuICAtLV92aWRlbyAkaW5wdXRfdmlkZW8gXFxcbiAgLS1fYmdzdWIgJ1RydWUnIFxcXG4gIC0tX2ludGVuc2l0eSBbMCwxNjBdIFxcXG4gIC0tX2FyZWEgWzgwLDIwMF0gXFxcbiAgLS1fcmFuZ2UgWzAsMTgyNzhdIFxcXG4gIC0tX25ibG9icyAyIFxcXG4gIC0tX3Nlc3Npb24gJHNhbXBsZSBcXFxuICAtLWV4ZWMgdHJhY2tfdmlkZW9cbiAgXG4jbG9jYWxlLkVycm9yOiB1bnN1cHBvcnRlZCBsb2NhbGUgc2V0dGluZyBcblxuZXhwb3J0IExDX0FMTD1cImVuX1VTLlVURi04XCJcbmV4cG9ydCBMQ19DVFlQRT1cImVuX1VTLlVURi04XCJcbnN1ZG8gZHBrZy1yZWNvbmZpZ3VyZSBsb2NhbGVzXG5cbiNBbHNvIG5lZWQgdG8gcmUtZG8gY29udGFpbmVyIHRvIGluY2x1ZGUgYWN0aXZhdGlvbiBvZiBlbnZpcm9ubWVudCB3aXRoICVydW5cbiVydW5zY3JpcHRcbiAgICAuIC9vcHQvY29uZGEvZXRjL3Byb2ZpbGUuZC9jb25kYS5zaFxuICAgIGNvbmRhIGFjdGl2YXRlIGlkdHJhY2tlcmFpXG4jIFRoaXMgZGlkbid0IGFjdGl2YXRlIHRoZSBlbnYgb24gZW50ZXJpbmcgdGhlIHNoZWxsXG5cbiMgQWRkaW5nIHRoaXMgZGlkbid0IGZpeCB0aGUgbG9jYWxlIGlzc3VlLlxuICAgIGV4cG9ydCBMQ19BTEw9Q1xuICAgIGV4cG9ydCBMQ19DVFlQRT1lbl9HQi5VVEYtOFxuICAgIFxuIyBUcnkgd2l0aCB0aGlzOlxuZXhwb3J0IExDX0FMTD1cImVuX1VTLlVURi04XCJcbmV4cG9ydCBMQ19DVFlQRT1cImVuX1VTLlVURi04XCJcbnN1ZG8gZHBrZy1yZWNvbmZpZ3VyZSBsb2NhbGVzXG5gYGAifQ== -->
+<pre class="bash"><code>module load singularity/3.5.0
+bsub -P gpu -gpu - -Is &quot;singularity shell cuda_gpu_2&quot;
+
+sample=split/open_field/20190616_1717_icab_icab_L_q4_open_field
+input_video=$(echo $sample&#39;.mp4&#39;)
+
+idtrackerai terminal_mode \
+  --_video $input_video \
+  --_bgsub &#39;True&#39; \
+  --_intensity [0,160] \
+  --_area [80,200] \
+  --_range [0,18278] \
+  --_nblobs 2 \
+  --_session $sample \
+  --exec track_video
   
-# For GPU jobs
-snakemake \
-  --jobs 5000 \
-  --latency-wait 100 \
-  --cluster-config pilot_paper/code/snakemake/config/cluster.json \
-  --cluster &#39;bsub -g /snakemake_bgenie -J {cluster.name} -P {cluster.project} -gpu {cluster.gpu} -n {cluster.n} -M {cluster.memory} -o {cluster.output} -e {cluster.error}&#39; \
-  --keep-going \
-  --rerun-incomplete \
-  --use-conda \
-  -s pilot_paper/code/snakemake/snakefile.py \
-  -pn</code></pre>
+#locale.Error: unsupported locale setting 
+
+export LC_ALL=&quot;en_US.UTF-8&quot;
+export LC_CTYPE=&quot;en_US.UTF-8&quot;
+sudo dpkg-reconfigure locales
+
+#Also need to re-do container to include activation of environment with %run
+%runscript
+    . /opt/conda/etc/profile.d/conda.sh
+    conda activate idtrackerai
+# This didn&#39;t activate the env on entering the shell
+
+# Adding this didn&#39;t fix the locale issue.
+    export LC_ALL=C
+    export LC_CTYPE=en_GB.UTF-8
+    
+# Try with this:
+export LC_ALL=&quot;en_US.UTF-8&quot;
+export LC_CTYPE=&quot;en_US.UTF-8&quot;
+sudo dpkg-reconfigure locales</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Works, but doesn’t engage GPU. Try what’s written here: <a href="http://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/" class="uri">http://gpucomputing.shef.ac.uk/education/creating_gpu_singularity/</a></p>
+<p>New <code>.def</code> file: <code>idtracker_cont2.def</code></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgYmFzaFxuIyBCdWlsZCBuZXcgY29udGFpbmVyXG5tb2R1bGUgbG9hZCBzaW5ndWxhcml0eVxuc2luZ3VsYXJpdHkgYnVpbGQgLS1yZW1vdGUgaWR0cmFja2VyYWlfY29udCBpZHRyYWNrZXJfY29udDIuZGVmXG5cbiMgRG93bmxvYWQgTlZJRElBIGRyaXZlciBmb3IgNDE4LjY3OlxubWtkaXIgZ3B1X2RyaXZlcnMgXG53Z2V0IC1QIGdwdV9kcml2ZXJzIGh0dHBzOi8vdXMuZG93bmxvYWQubnZpZGlhLmNvbS90ZXNsYS80MTguNjcvTlZJRElBLUxpbnV4LXg4Nl82NC00MTguNjcucnVuXG5cbiMgUnVuIHNjcmlwdCB0byBleHRyYWN0IGZpbGVzXG5jZCBncHVfZHJpdmVycyBcbm1rZGlyIG52aWRpYV80MTguNjdcbmNobW9kICt4IC4uL3BpbG90X3BhcGVyL2NvZGUvc2NyaXB0cy9leHRyYWN0bnZkcml2ZXIuc2hcbi4uL3BpbG90X3BhcGVyL2NvZGUvc2NyaXB0cy9leHRyYWN0bnZkcml2ZXIuc2ggNDE4LjY3IGdwdV9kcml2ZXJzL252aWRpYV80MTguNjdcbmNkIC4uXG4jIFN1Y2Nlc3MuXG5cbiMgUnVuIHNoZWxsIGluIHRoZSBpbWFnZVxuY29uZGEgYWN0aXZhdGUgc25ha2VtYWtlICMgYW4gZXJyb3IgZ2V0cyB0aHJvd24gaWYgc2VuZGluZyBqb2IgZnJvbSBjb25kYSBlbnYgYmFzZVxuXG5ic3ViIC1QIGdwdSAtZ3B1IC0gLUlzIFxcXG4gIFwic2luZ3VsYXJpdHkgc2hlbGwgXFxcbiAgICAtQiBncHVfZHJpdmVycy9udmlkaWFfNDE4LjY3Oi9udmxpYixncHVfZHJpdmVycy9udmlkaWFfNDE4LjY3Oi9udmJpbiBcXFxuICAgIGlkdHJhY2tlcmFpX2NvbnRcIlxuICAgIFxuYnN1YiAtUCBncHUgLWdwdSAtIC1JcyBcInNpbmd1bGFyaXR5IHNoZWxsIC1CIGdwdV9kcml2ZXJzL252aWRpYV80MTguNjc6L252bGliLGdwdV9kcml2ZXJzL252aWRpYV80MTguNjc6L252YmluIGlkdHJhY2tlcmFpX2NvbnRcIiAgICBcblxuIyBUZXN0IGZvciBOVklESUFcbm52aWRpYS1zbWlcblxuIyBUZXN0IGlkdHJhY2tlcmFpXG4uIGFjdGl2YXRlIGlkdHJhY2tlcmFpXG5pZHRyYWNrZXJhaSB0ZXJtaW5hbF9tb2RlXG5cblxuYGBgIn0= -->
+<pre class="bash"><code># Build new container
+module load singularity
+singularity build --remote idtrackerai_cont idtracker_cont2.def
+
+# Download NVIDIA driver for 418.67:
+mkdir gpu_drivers 
+wget -P gpu_drivers https://us.download.nvidia.com/tesla/418.67/NVIDIA-Linux-x86_64-418.67.run
+
+# Run script to extract files
+cd gpu_drivers 
+mkdir nvidia_418.67
+chmod +x ../pilot_paper/code/scripts/extractnvdriver.sh
+../pilot_paper/code/scripts/extractnvdriver.sh 418.67 gpu_drivers/nvidia_418.67
+cd ..
+# Success.
+
+# Run shell in the image
+conda activate snakemake # an error gets thrown if sending job from conda env base
+
+bsub -P gpu -gpu - -Is \
+  &quot;singularity shell \
+    -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin \
+    idtrackerai_cont&quot;
+    
+bsub -P gpu -gpu - -Is &quot;singularity shell -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin idtrackerai_cont&quot;    
+
+# Test for NVIDIA
+nvidia-smi
+
+# Test idtrackerai
+. activate idtrackerai
+idtrackerai terminal_mode
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+</div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCmVkaXRvcl9vcHRpb25zOiAKICBjaHVua19vdXRwdXRfdHlwZTogaW5saW5lCi0tLQoKIyBXb3JraW5nIGRpcmVjdG9yeQoKYC9ocHMvcmVzZWFyY2gxL2Jpcm5leS91c2Vycy9pYW4vcGlsb3RgCgojIENvbmRhIGVudiBzZXR1cAoKIyMgU25ha2VtYWtlCgpgYGB7YmFzaH0KIyBpbnN0YWxsIG1hbWJhCmNvbmRhIGluc3RhbGwgLWMgY29uZGEtZm9yZ2UgbWFtYmEKIyBjcmVhdGUgc25ha2VtYWtlIGVudmlyb25tZW50Cm1hbWJhIGNyZWF0ZSAtYyBjb25kYS1mb3JnZSAtYyBiaW9jb25kYSAtbiBzbmFrZW1ha2Ugc25ha2VtYWtlCiMgYWN0aXZhdGUgc25ha2VtYWtlIGVudmlyb25tZW50CmNvbmRhIGFjdGl2YXRlIHNuYWtlbWFrZQojIGV4cG9ydApjb25kYSBlbnYgZXhwb3J0IC1uIHNuYWtlbWFrZSAtZiBwaWxvdF9wYXBlci9zbm1rL2VudnMvc25ha2VtYWtlLnltbApgYGAKCiMjIFB5dGhvbgoKYGBge2Jhc2h9CmNvbmRhIGNyZWF0ZSAtbiBwaWxvdF9weSBweXRob249My42IGJpb3B5dGhvbgpjb25kYSBhY3RpdmF0ZSBwaWxvdF9weQojIGFkZCBwYWNrYWdlcwpjb25kYSBpbnN0YWxsIC1jIGFuYWNvbmRhIG9wZW5jdgpjb25kYSBpbnN0YWxsIC1jIGFuYWNvbmRhIHBhbmRhcwojIGV4cG9ydCB5YW1sCmNvbmRhIGVudiBleHBvcnQgLW4gcGlsb3RfcHkgLWYgcGlsb3RfcGFwZXIvc25tay9lbnZzL3BpbG90X3B5LnltbApgYGAKCiMjIERlZXBMYWJDdXQKCmBgYHtiYXNofQpnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL0FsZXhFTUcvRGVlcExhYkN1dC5naXQKY29uZGEgZW52IGNyZWF0ZSAtZiBEZWVwTGFiQ3V0L2NvbmRhLWVudmlyb25tZW50cy9ETEMtQ1BVLnlhbWwKIyBJbnN0YWxsIDIuMiBmb3IgbXVsdGktYW5pbWFsIHRyYWNraW5nCnBpcCBpbnN0YWxsIGRlZXBsYWJjdXQ9PTIuMmI4CiMgZXhwb3J0IHRvIHNubWsgZGlyCmNvbmRhIGVudiBleHBvcnQgLW4gRExDLUNQVSAtZiBwaWxvdF9wYXBlci9zbm1rL2VudnMvRExDLUNQVS55bWwKY3AgRGVlcExhYkN1dC9jb25kYS1lbnZpcm9ubWVudHMvRExDLUNQVS55YW1sIHBpbG90X3BhcGVyL3NubWsvZW52cwpgYGAKCiMgQmFzaCBzY3JpcHQKCmBgYHtiYXNofQpzbmFrZW1ha2UgXAogIC0tam9icyA1MDAwIFwKICAtLWxhdGVuY3ktd2FpdCAxMDAgXAogIC0tY2x1c3Rlci1jb25maWcgcGlsb3RfcGFwZXIvY29kZS9zbmFrZW1ha2UvY29uZmlnL2NsdXN0ZXIuanNvbiBcCiAgLS1jbHVzdGVyICdic3ViIC1nIC9zbmFrZW1ha2VfYmdlbmllIC1KIHtjbHVzdGVyLm5hbWV9IC1uIHtjbHVzdGVyLm59IC1NIHtjbHVzdGVyLm1lbW9yeX0gLW8ge2NsdXN0ZXIub3V0cHV0fSAtZSB7Y2x1c3Rlci5lcnJvcn0nIFwKICAtLWtlZXAtZ29pbmcgXAogIC0tcmVydW4taW5jb21wbGV0ZSBcCiAgLS11c2UtY29uZGEgXAogIC1zIHBpbG90X3BhcGVyL2NvZGUvc25ha2VtYWtlL3NuYWtlZmlsZS5weSBcCiAgLXBuCiAgCiMgRm9yIEdQVSBqb2JzCnNuYWtlbWFrZSBcCiAgLS1qb2JzIDUwMDAgXAogIC0tbGF0ZW5jeS13YWl0IDEwMCBcCiAgLS1jbHVzdGVyLWNvbmZpZyBwaWxvdF9wYXBlci9jb2RlL3NuYWtlbWFrZS9jb25maWcvY2x1c3Rlci5qc29uIFwKICAtLWNsdXN0ZXIgJ2JzdWIgLWcgL3NuYWtlbWFrZV9iZ2VuaWUgLUoge2NsdXN0ZXIubmFtZX0gLVAge2NsdXN0ZXIucHJvamVjdH0gLWdwdSB7Y2x1c3Rlci5ncHV9IC1uIHtjbHVzdGVyLm59IC1NIHtjbHVzdGVyLm1lbW9yeX0gLW8ge2NsdXN0ZXIub3V0cHV0fSAtZSB7Y2x1c3Rlci5lcnJvcn0nIFwKICAtLWtlZXAtZ29pbmcgXAogIC0tcmVydW4taW5jb21wbGV0ZSBcCiAgLS11c2UtY29uZGEgXAogIC1zIHBpbG90X3BhcGVyL2NvZGUvc25ha2VtYWtlL3NuYWtlZmlsZS5weSBcCiAgLXBuCmBgYAo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiU2luZ3VsYXJpdHkgc2V0dXAiCm91dHB1dDogaHRtbF9ub3RlYm9vawplZGl0b3Jfb3B0aW9uczogCiAgY2h1bmtfb3V0cHV0X3R5cGU6IGlubGluZQotLS0KCiMgSW5zdGFsbCB2ZXJzaW9uIDMuNy4wIG9uIGxvY2FsCgpGb2xsb3cgaW5zdHJ1Y3Rpb25zIGhlcmU6IDxodHRwczovL3N5bGFicy5pby9ndWlkZXMvMy40L3VzZXItZ3VpZGUvcXVpY2tfc3RhcnQuaHRtbD4KCkRvd25sb2FkIEdvIHZlcnNpb24gMS4xNS42CgpUaGVuIHNldCBlbnZpcm9ubWVudCB2YXJpYWJsZSBQQVRIIHRvIHBvaW50IHRvIEdvOgoKYGBge2Jhc2h9CmVjaG8gJ2V4cG9ydCBQQVRIPS91c3IvbG9jYWwvZ28vYmluOiRQQVRIJyA+PiB+Ly5iYXNocmMgJiYgXAogIHNvdXJjZSB+Ly5iYXNocmMKYGBgCgpEb3dubG9hZCBTaW5ndWxhcml0eSB2ZXJzaW9uIDMuNy4wIGZyb20gR2l0SHViCgpgYGB7YmFzaH0Kd2dldCBodHRwczovL2dpdGh1Yi5jb20vaHBjbmcvc2luZ3VsYXJpdHkvcmVsZWFzZXMvZG93bmxvYWQvdjMuNy4wL3Npbmd1bGFyaXR5LTMuNy4wLnRhci5neiAmJiBcCiAgdGFyIC14emYgc2luZ3VsYXJpdHktMy43LjAudGFyLmd6ICYmIFwKICBjZCBzaW5ndWxhcml0eQpgYGAKCkNvbXBpbGUgU2luZ3VsYXJpdHkgc291cmNlIGNvZGUKCmBgYHtiYXNofQouL21jb25maWcgJiYgXAogIG1ha2UgLUMgYnVpbGRkaXIgJiYgXAogIHN1ZG8gbWFrZSAtQyBidWlsZGRpciBpbnN0YWxsCmBgYAoKRG93bmxvYWQgU2luZ3VsYXJpdHkgRGVza3RvcCBNYWNPUyBiZXRhICh2MC4xKQoKRnJvbSBoZXJlOiA8aHR0cHM6Ly9zeWxhYnMuaW8vc2luZ3VsYXJpdHktZGVza3RvcC1tYWNvcy8+CgojIEJ1aWxkIGNvbnRhaW5lcgoKQXV0aGVuaWNhdGUgcmVtb3RlIGxvZ2luCgpgYGB7YmFzaH0Kc2luZ3VsYXJpdHkgcmVtb3RlIGxvZ2luCmBgYApLZXk6CmV5SmhiR2NpT2lKU1V6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpsZUhBaU9qRTJNVEExTnpBeU1EY3NJbWxoZENJNk1UWXdOemszT0RJd055d2lhWE56SWpvaWFIUjBjSE02THk5aGRYUm9Mbk41YkdGaWN5NXBieTkwYjJ0bGJpSXNJbXAwYVNJNklqVm1aRGRqWTJSbU4yWTNORFU1WWpnNE4ySTNNbVEwWWlJc0luTjFZaUk2SWpWbVpEZGpZMlF4WWpBeU1XRm1OV00yWXpnMk9Ea3pNU0o5LklqLTJlS3FHbWtVR1RHc1MtWmZWT0tIOTFxNDgyN2Q1WGFRaTh0SFVsOTBjMG5KVTVhODZMX294NUliUU5kLU9Rc0t0UW9kenRpWWp3VFRHSWtlUHA0eS0zVDJ5cFRVbjVaY1pCc041S2NUSUZmQXFFbFFUbndIR3JpZG5qcDREUU96d3dGVHB1cy00bFcwY2lkSE1HYTJRanROTHNxUUIzc3k3SV9MTXM4YmFNeWRvZ1F4M21VUVVrRGJSOWEyc29GRFllclAyWlRJU3NaYVVWdVZWbkpuZGtoRDJDbVlxZGZ0VjJCdnppc19XSmYwNmpSdHJNT2lVUTl2TWpvQW9MSF83VGZCYnlyZU0xMk5naDF2QjNHZGktOHpZN2I3eHFUZDZZZmNqSEpDV2N6bmJHUjc5SnZhcTZBS3c4RzZrSlktZEFPbTBQRXA0NDZ2ZjRNeWpJdwoKRkFUQUw6ICAgVW5hYmxlIHRvIHN1Ym1pdCBidWlsZCBqb2I6IG5vIGF1dGhlbnRpY2F0aW9uIHRva2VuLCBsb2cgaW4gd2l0aCBgc2luZ3VsYXJpdHkgcmVtb3RlIGxvZ2luYAoKRXZlbiB0aG91Z2ggcHJldmlvdXNseSBpdCBoYWQgc2FpZDoKSU5GTzogICAgQVBJIEtleSBWZXJpZmllZCEKCmBgYHtiYXNofQpzdWRvIHNpbmd1bGFyaXR5IGJ1aWxkIC0tcmVtb3RlIGlkdHJhY2tlcmFpX2NvbnQgfi9Eb2N1bWVudHMvUmVwb3NpdG9yaWVzL3BpbG90X3BhcGVyL2VudnMvaWR0cmFja2VyYWkuZGVmCmBgYAoKCgojIFNlbmQgdG8gY2x1c3RlcgoKYGBge2Jhc2h9CmJzdWIgLVAgZ3B1IC1ncHUgLSAtSXMgInNpbmd1bGFyaXR5IHNoZWxsIGlkdHJhY2tlcmFpX2NvbnQiCmBgYApFUlJPUiAgOiBVbmtub3duIGltYWdlIGZvcm1hdC90eXBlOiBpZHRyYWNrZXJhaV9jb250CkFCT1JUICA6IFJldHZhbCA9IDI1NQoKIyBNYWtlIG9uIExpbnV4CgpgdWJ1bnR1X2NvbnQuZGVmYDoKYGBge2Jhc2h9CkJvb3RzdHJhcDogZG9ja2VyCkZyb206IHVidW50dToxOC4wNAoKJWZpbGVzCiAgICBpZHRyYWNrZXJhaV9ncHUueWFtbAoKJXBvc3QKICBhcHQtZ2V0IHVwZGF0ZSAmJiBhcHQtZ2V0IC15IHVwZ3JhZGUKICBhcHQtZ2V0IC15IGluc3RhbGwgXAogICAgYnVpbGQtZXNzZW50aWFsIFwKICAgIHdnZXQgXAogICAgYnppcDIgXAogICAgY2EtY2VydGlmaWNhdGVzIFwKICAgIGxpYmdsaWIyLjAtMCBcCiAgICBsaWJ4ZXh0NiBcCiAgICBsaWJzbTYgXAogICAgbGlieHJlbmRlcjEgXAogICAgZ2l0CiAgcm0gLXJmIC92YXIvbGliL2FwdC9saXN0cy8qCiAgYXB0LWdldCBjbGVhbgoKICAjIEluc3RhbGwgTWluaWNvbmRhCgogIHdnZXQgLWMgaHR0cHM6Ly9yZXBvLmFuYWNvbmRhLmNvbS9taW5pY29uZGEvTWluaWNvbmRhMy1sYXRlc3QtTGludXgteDg2XzY0LnNoCiAgL2Jpbi9iYXNoIE1pbmljb25kYTMtbGF0ZXN0LUxpbnV4LXg4Nl82NC5zaCAtYmZwIC9vcHQvY29uZGEKICBleHBvcnQgUEFUSD0iL29wdC9jb25kYS9iaW46JFBBVEgiCiAgIyBDb25kYSBjb25maWd1cmF0aW9uIG9mIGNoYW5uZWxzIGZyb20gLmNvbmRhcmMgZmlsZQogIGNvbmRhIGNvbmZpZyAtLWZpbGUgLy5jb25kYXJjIC0tYWRkIGNoYW5uZWxzIGRlZmF1bHRzCiAgY29uZGEgY29uZmlnIC0tZmlsZSAvLmNvbmRhcmMgLS1hZGQgY2hhbm5lbHMgY29uZGEtZm9yZ2UKICBjb25kYSB1cGRhdGUgY29uZGEKICAjTGlzdCBpbnN0YWxsZWQgZW52aXJvbm1lbnRzCiAgY29uZGEgbGlzdAoKICAjIEluc3RhbGwgY29uZGEgZW52IGZyb20gaWR0cmFja2VyYWlfZ3B1LnlhbWwgZmlsZQogIGVjaG8gIi4gL29wdC9jb25kYS9ldGMvcHJvZmlsZS5kL2NvbmRhLnNoIiA+PiAkU0lOR1VMQVJJVFlfRU5WSVJPTk1FTlQKICBlY2hvICJjb25kYSBhY3RpdmF0ZSAkKGhlYWQgLTEgaWR0cmFja2VyYWlfZ3B1LnlhbWwgfCBjdXQgLWQnICcgLWYyKSIgPj4gJFNJTkdVTEFSSVRZX0VOVklST05NRU5UCiAgL29wdC9jb25kYS9iaW4vY29uZGEgZW52IGNyZWF0ZSAtbiBpZHRyYWNrZXJhaSAtZiBpZHRyYWNrZXJhaV9ncHUueWFtbAoKICAjIGFjdGl2YXRlIGVudmlyb25tZW50CiAgIy4gL29wdC9jb25kYS9ldGMvcHJvZmlsZS5kL2NvbmRhLnNoCiAgI2NvbmRhIGFjdGl2YXRlIGlkdHJhY2tlcmFpCgpgYGAKCmBpZHRyYWNrZXJhaV9ncHUueWFtbGA6CmBgYHt5YW1sfQpuYW1lOiBpZHRyYWNrZXJhaQpjaGFubmVsczoKICAtIGNvbmRhLWZvcmdlCiAgLSBkZWZhdWx0cwpkZXBlbmRlbmNpZXM6CiAgLSBfbGliZ2NjX211dGV4PTAuMT1jb25kYV9mb3JnZQogIC0gX29wZW5tcF9tdXRleD00LjU9MV9nbnUKICAtIF90Zmxvd19zZWxlY3Q9Mi4xLjA9Z3B1CiAgLSBhYnNsLXB5PTAuMTEuMD1weTM2aDVmYWI5YmJfMAogIC0gYXN0b3I9MC44LjE9cHloOWYwYWQxZF8wCiAgLSBjLWFyZXM9MS4xNy4xPWgzNmMyZWEwXzAKICAtIGNhLWNlcnRpZmljYXRlcz0yMDIwLjEyLjU9aGE4Nzg1NDJfMAogIC0gY2VydGlmaT0yMDIwLjEyLjU9cHkzNmg1ZmFiOWJiXzAKICAtIGdhc3Q9MC40LjA9cHloOWYwYWQxZF8wCiAgLSBncnBjaW89MS4zNC4wPXB5MzZoOGU4NzkyMV8wCiAgLSBoNXB5PTMuMS4wPW5vbXBpX3B5MzZoYzFiYzRmNV8xMDAKICAtIGhkZjU9MS4xMC42PW5vbXBpX2g2YTI0MTJiXzExMTIKICAtIGtlcmFzLWFwcGxpY2F0aW9ucz0xLjAuOD1weV8xCiAgLSBrcmI1PTEuMTcuMj1oOTI2ZTdmOF8wCiAgLSBsZF9pbXBsX2xpbnV4LTY0PTIuMzUuMT1oZWE0ZTFjOV8xCiAgLSBsaWJibGFzPTMuOS4wPTNfb3BlbmJsYXMKICAtIGxpYmNibGFzPTMuOS4wPTNfb3BlbmJsYXMKICAtIGxpYmN1cmw9Ny43MS4xPWhjZGQzODU2XzgKICAtIGxpYmVkaXQ9My4xLjIwMTkxMjMxPWhlMjhhMmUyXzIKICAtIGxpYmV2PTQuMzM9aDUxNjkwOWFfMQogIC0gbGliZmZpPTMuMz1oNTg1MjZlMl8yCiAgLSBsaWJnY2Mtbmc9OS4zLjA9aDVkYmNmM2VfMTcKICAtIGxpYmdmb3J0cmFuLW5nPTkuMy4wPWhlNGJjYjFjXzE3CiAgLSBsaWJnZm9ydHJhbjU9OS4zLjA9aGU0YmNiMWNfMTcKICAtIGxpYmdvbXA9OS4zLjA9aDVkYmNmM2VfMTcKICAtIGxpYmxhcGFjaz0zLjkuMD0zX29wZW5ibGFzCiAgLSBsaWJuZ2h0dHAyPTEuNDEuMD1oOGNmYzVmNl8yCiAgLSBsaWJvcGVuYmxhcz0wLjMuMTI9cHRocmVhZHNfaDQ4MTIzMDNfMQogIC0gbGlicG5nPTEuNi4zNz1oMjExMzViYV8yCiAgLSBsaWJwcm90b2J1Zj0zLjE0LjA9aDc4MGI4NGFfMAogIC0gbGlic3NoMj0xLjkuMD1oYWIxNTcyZl81CiAgLSBsaWJzdGRjeHgtbmc9OS4zLjA9aDJhZTJlZjNfMTcKICAtIG1hcmtkb3duPTMuMy4zPXB5aDlmMGFkMWRfMAogIC0gbW9jaz00LjAuMz1weTM2aDVmYWI5YmJfMAogIC0gbmN1cnNlcz02LjI9aDU4NTI2ZTJfNAogIC0gbnVtcHk9MS4xOS40PXB5MzZoODczMmRjZF8xCiAgLSBvcGVuc3NsPTEuMS4xaT1oN2Y5ODg1Ml8wCiAgLSBwaXA9MjAuMy4xPXB5aGQ4ZWQxYWJfMAogIC0gcHl0aG9uPTMuNi4xMj1oZmZkYjVjZV8wX2NweXRob24KICAtIHB5dGhvbl9hYmk9My42PTFfY3AzNm0KICAtIHJlYWRsaW5lPTguMD1oZTI4YTJlMl8yCiAgLSBzZXR1cHRvb2xzPTQ5LjYuMD1weTM2aDk4ODBiZDNfMgogIC0gc2l4PTEuMTUuMD1weWg5ZjBhZDFkXzAKICAtIHNxbGl0ZT0zLjM0LjA9aDc0Y2RiM2ZfMAogIC0gdGVuc29yYm9hcmQ9MS4xMy4xPXB5MzZfMAogIC0gdGVuc29yZmxvdz0xLjEzLjE9aDc2YjRjZTdfNwogIC0gdGVuc29yZmxvdy1iYXNlPTEuMTMuMT1weTM2aDc2YjRjZTdfNwogIC0gdGVuc29yZmxvdy1lc3RpbWF0b3I9MS4xMy4wPXB5XzAKICAtIHRlbnNvcmZsb3ctZ3B1PTEuMTMuMT1oMGQzMGVlNl8wCiAgLSB0az04LjYuMTA9aDIxMTM1YmFfMQogIC0gd2Vya3pldWc9MS4wLjE9cHloOWYwYWQxZF8wCiAgLSB3aGVlbD0wLjM2LjI9cHloZDNkZWIwZF8wCiAgLSB4ej01LjIuNT1oNTE2OTA5YV8xCiAgLSB6aXBwPTMuNC4wPXB5XzAKICAtIHpsaWI9MS4yLjExPWg1MTY5MDlhXzEwMTAKICAtIHBpcDoKICAgIC0gY2FjaGVkLXByb3BlcnR5PT0xLjUuMgogICAgLSBjaGFyZGV0PT0zLjAuNAogICAgLSBjb2xvcmVkbG9ncz09MTUuMAogICAgLSBjb25mYXBwPT0xLjEuMTEKICAgIC0gY3ljbGVyPT0wLjEwLjAKICAgIC0gZGFzaz09MjAyMC4xMi4wCiAgICAtIGZpbGVsb2NrPT0zLjAuMTIKICAgIC0gZ2Rvd249PTMuMTIuMgogICAgLSBodW1hbmZyaWVuZGx5PT05LjEKICAgIC0gaWRuYT09Mi4xMAogICAgLSBpZHRyYWNrZXJhaT09My4wLjI0CiAgICAtIGlkdHJhY2tlcmFpLWFwcD09MC4wLjEyCiAgICAtIGltcG9ydGxpYi1tZXRhZGF0YT09My4zLjAKICAgIC0gam9ibGliPT0wLjE3LjAKICAgIC0ga2VyYXMtcHJlcHJvY2Vzc2luZz09MS4xLjIKICAgIC0ga2l3aXNvbHZlcj09MS4zLjEKICAgIC0gbWF0cGxvdGxpYj09My4zLjMKICAgIC0gbXNncGFjaz09MS4wLjEKICAgIC0gbXNncGFjay1udW1weT09MC40LjcuMQogICAgLSBtc2dwYWNrLXB5dGhvbj09MC41LjYKICAgIC0gbmF0c29ydD09Ny4xLjAKICAgIC0gbnVtZXhwcj09Mi43LjEKICAgIC0gb3BlbmN2LXB5dGhvbj09My40LjUuMjAKICAgIC0gcGFuZGFzPT0xLjEuNQogICAgLSBwaWxsb3c9PTguMC4xCiAgICAtIHByb3RvYnVmPT0zLjE0LjAKICAgIC0gcHN1dGlsPT01LjcuMwogICAgLSBweWZvcm1zLXRlcm1pbmFsPT00LjAuMTAKICAgIC0gcHlwYXJzaW5nPT0yLjQuNwogICAgLSBweXNvY2tzPT0xLjcuMQogICAgLSBweXRob24tZGF0ZXV0aWw9PTIuOC4xCiAgICAtIHB5dHo9PTIwMjAuNAogICAgLSBweXlhbWw9PTUuMy4xCiAgICAtIHJlcXVlc3RzPT0yLjI1LjAKICAgIC0gc2Npa2l0LWxlYXJuPT0wLjIzLjIKICAgIC0gc2NpcHk9PTEuNS40CiAgICAtIHNlYWJvcm49PTAuMTEuMAogICAgLSBzaW1wbGVqc29uPT0zLjE3LjIKICAgIC0gc2tsZWFybj09MC4wCiAgICAtIHRhYmxlcz09My42LjEKICAgIC0gdGVybWNvbG9yPT0xLjEuMAogICAgLSB0aHJlYWRwb29sY3RsPT0yLjEuMAogICAgLSB0cWRtPT00LjU0LjEKICAgIC0gdHlwaW5nLWV4dGVuc2lvbnM9PTMuNy40LjMKICAgIC0gdXJsbGliMz09MS4yNi4yCiAgICAtIHhsaWI9PTAuMjEKcHJlZml4OiAvbmZzL3Jlc2VhcmNoMS9iaXJuZXkvdXNlcnMvYnJldHRlbGwvYW5hY29uZGEzL2VudnMvaWR0cmFja2VyYWkKCmBgYAoKIyMgQnVpbGQKCmBgYHtiYXNofQpzdWRvIHNpbmd1bGFyaXR5IGJ1aWxkIHVidW50dV9jb250IHVidW50dV9jb250LmRlZgojIFdvcmtzCmBgYAoKIyMgTm93IHRyeSB3aXRoIENVREEKCiMgVHJ5IGJ1aWxkaW5nIG9uIHRoZSBHUFUKCmBgYHtiYXNofQojIExvZ2luIHRvIEdQVSBub2RlCmJzdWIgLU0gMTAwMDAgLVAgZ3B1IC1ncHUgLSAtSXMgYmFzaAojIENyZWF0ZSBzaW5ndWxhcml0eSBjb25kYSBlbnYgKHRvIGdldCB0aGUgbmV3IHZlcnNpb24gd2l0aCB0aGUgLS1yZW1vdGUgZmxhZykKY29uZGEgY3JlYXRlIC1uIHNpbmd1bGFyaXR5CmNvbmRhIGFjdGl2YXRlIHNpbmd1bGFyaXR5CmNvbmRhIGluc3RhbGwgLWMgY29uZGEtZm9yZ2Ugc2luZ3VsYXJpdHkKIyBTZXQgdG9rZW4gKGxhYmVsOiBpZHRyYWNrZXJfZWJpX2NsdXN0ZXJfZ3B1KQpzaW5ndWxhcml0eSByZW1vdGUgbG9naW4KIyBCdWlsZCB3aXRoIGp1c3QgdWJ1bnR1CnNpbmd1bGFyaXR5IGJ1aWxkIC0tcmVtb3RlIGN1ZGFfZ3B1XzIgaWR0cmFja2VyX2NvbnQuZGVmCiMgd29ya3MKIyBCdWlsZCBkb2Vzbid0IHdvcmsgd2hlbiBnaXZlbiB0aGUgY29uZGEgLnlhbWwKI0lORk86ICAgIENvcHlpbmcgaWR0cmFja2VyYWlfZ3B1LnlhbWwgdG8gIy90bXAvcm9vdGZzLTAzZjQ2NmVjLTNlYzMtMTFlYi1hOTg0LTEyYmRmYTAxNjU1Ny9pZHRyYWNrZXJhaV9ncHUueWFtbAojRkFUQUw6ICAgY29udGFpbmVyIGNyZWF0aW9uIGZhaWxlZDogdW5hYmxlIHRvIGNvcHkgZmlsZXMgdG8gY29udGFpbmVyIGZzOiB3aGlsZSBjb3B5aW5nICNbaWR0cmFja2VyYWlfZ3B1LnlhbWxdIHRvIC90bXAvcm9vdGZzLTAzZjQ2NmVjLTNlYzMtMTFlYi1hOTg0LTEyYmRmYTAxNjU1Ny9pZHRyYWNrZXJhaV9ncHUueWFtbDogZXhpdCAjc3RhdHVzIDE6IC9iaW4vY3A6IGNhbm5vdCBzdGF0ICdpZHRyYWNrZXJhaV9ncHUueWFtbCc6IE5vIHN1Y2ggZmlsZSBvciBkaXJlY3RvcnkKIyBCdWlsZCBieSBjcmVhdGluZyBjb25kYSBlbnYgZnJvbSBzY3JhdGNoCnNpbmd1bGFyaXR5IGJ1aWxkIC0tcmVtb3RlIGN1ZGFfZ3B1XzIgaWR0cmFja2VyX2NvbnQuZGVmCmBgYAoKIyMgUmVjaXBlIGZpbGU6CgpgYGB7YmFzaH0KQm9vdHN0cmFwOiBkb2NrZXIKRnJvbTogbnZpZGlhL2N1ZGE6MTAuMC1ydW50aW1lLXVidW50dTE4LjA0CgojJWZpbGVzCiMgICAgL2hwcy9yZXNlYXJjaDEvYmlybmV5L3VzZXJzL2lhbi9waWxvdC9pZHRyYWNrZXJhaV9ncHUueWFtbAoKJXBvc3QKICAgIGFwdC1nZXQgdXBkYXRlICYmIGFwdC1nZXQgLXkgdXBncmFkZQogICAgYXB0LWdldCAteSBpbnN0YWxsIFwKICAgICAgYnVpbGQtZXNzZW50aWFsIFwKICAgICAgd2dldCBcCiAgICAgIGJ6aXAyIFwKICAgICAgY2EtY2VydGlmaWNhdGVzIFwKICAgICAgbGliZ2xpYjIuMC0wIFwKICAgICAgbGlieGV4dDYgXAogICAgICBsaWJzbTYgXAogICAgICBsaWJ4cmVuZGVyMSBcCiAgICAgIGdpdAogICAgcm0gLXJmIC92YXIvbGliL2FwdC9saXN0cy8qCiAgICBhcHQtZ2V0IGNsZWFuCgogICAgIyBJbnN0YWxsIE1pbmljb25kYQoKICAgIHdnZXQgLWMgaHR0cHM6Ly9yZXBvLmFuYWNvbmRhLmNvbS9taW5pY29uZGEvTWluaWNvbmRhMy1sYXRlc3QtTGludXgteDg2XzY0LnNoCiAgICAvYmluL2Jhc2ggTWluaWNvbmRhMy1sYXRlc3QtTGludXgteDg2XzY0LnNoIC1iZnAgL29wdC9jb25kYQogICAgZXhwb3J0IFBBVEg9Ii9vcHQvY29uZGEvYmluOiRQQVRIIgogICAgIyBDb25kYSBjb25maWd1cmF0aW9uIG9mIGNoYW5uZWxzIGZyb20gLmNvbmRhcmMgZmlsZQogICAgY29uZGEgY29uZmlnIC0tZmlsZSAvLmNvbmRhcmMgLS1hZGQgY2hhbm5lbHMgZGVmYXVsdHMKICAgIGNvbmRhIGNvbmZpZyAtLWZpbGUgLy5jb25kYXJjIC0tYWRkIGNoYW5uZWxzIGNvbmRhLWZvcmdlCiAgICBjb25kYSB1cGRhdGUgY29uZGEKICAgICNMaXN0IGluc3RhbGxlZCBlbnZpcm9ubWVudHMKICAgICNjb25kYSBsaXN0CgojICAgICMgSW5zdGFsbCBjb25kYSBlbnYgZnJvbSBpZHRyYWNrZXJhaV9ncHUueWFtbCBmaWxlCiMKIyAgICBlY2hvICIuIC9vcHQvY29uZGEvZXRjL3Byb2ZpbGUuZC9jb25kYS5zaCIgPj4gJFNJTkdVTEFSSVRZX0VOVklST05NRU5UCiMgICAgZWNobyAiY29uZGEgYWN0aXZhdGUgJChoZWFkIC0xIGlkdHJhY2tlcmFpX2dwdS55YW1sIHwgY3V0IC1kJyAnIC1mMikiID4+ICRTSU5HVUxBUklUWV9FTlZJUk9OTUVOVAojICAgIC9vcHQvY29uZGEvYmluL2NvbmRhIGVudiBjcmVhdGUgLW4gaWR0cmFja2VyYWkgLWYgL2hwcy9yZXNlYXJjaDEvYmlybmV5L3VzZXJzL2lhbi9waWxvdC9pZHRyYWNrZXJhaV9ncHUueWFtbAoKICAgICMgSW5zdGFsbCBjb25kYSBlbnYgd2l0aGluIGVudgoKICAgIC4gL29wdC9jb25kYS9ldGMvcHJvZmlsZS5kL2NvbmRhLnNoCiAgICBjb25kYSBjcmVhdGUgLW4gaWR0cmFja2VyYWkgcHl0aG9uPTMuNgogICAgY29uZGEgYWN0aXZhdGUgaWR0cmFja2VyYWkKICAgIHBpcCBpbnN0YWxsIGlkdHJhY2tlcmFpCiAgICBjb25kYSBpbnN0YWxsIHRlbnNvcmZsb3ctZ3B1PTEuMTMKCmBgYAoKQnVpbGQgU1VDQ0VTUyEhIEJ1dCBkb2VzIGl0IHdvcmsuLi4KCmBgYHtiYXNofQpic3ViIC1QIGdwdSAtZ3B1IC0gLUlzICJzaW5ndWxhcml0eSBzaGVsbCBjdWRhX2dwdV8yIgojRVJST1IgIDogVW5rbm93biBpbWFnZSBmb3JtYXQvdHlwZTogY3VkYV9ncHVfMgojQUJPUlQgIDogUmV0dmFsID0gMjU1CgojIFRyeSB3aXRoaW4gc2luZ3VsYXJpdHkgZW52ICh2IDMuNi4zKQpjb25kYSBhY3RpdmF0ZSBzaW5ndWxhcml0eQpzaW5ndWxhcml0eSBzaGVsbCBjdWRhX2dwdV8yCiNJTkZPOiAgICBDb252ZXJ0IFNJRiBmaWxlIHRvIHNhbmRib3guLi4KI0VSUk9SICA6IEZhaWxlZCB0byBjcmVhdGUgdXNlciBuYW1lc3BhY2U6IHVzZXIgbmFtZXNwYWNlIGRpc2FibGVkCgojIFRyeSBtYWtpbmcgdGhlIGNvbnRhaW5lciBpbiB0aGUgc2FtZSBzaW5ndWxhcml0eSB2ZXJzaW9uIGFzIGlzIGluc3RhbGxlZCBvbiB0aGUgY2x1c3RlciAodiAyLjYuMCkgLSBoYXZlIHRvIGRvIGl0IG9uIGxvY2FsIGxpbnV4IGJlY2F1c2UgYnVpbGRpbmcgcmVxdWlyZXMgc3VkbyBwcml2aWxlZ2VzLCBhcyBkaXNvdmVyZWQgYnkgZG9pbmcgdGhpcyBvbiB0ZWggY2x1c3RlcjoKY29uZGEgY3JlYXRlIC1uIHNpbmd1bGFyaXR5LTIuNiBzaW5ndWxhcml0eT0yLjYuMApjb25kYSBhY3RpdmF0ZSBzaW5ndWxhcml0eS0yLjYKc2luZ3VsYXJpdHkgYnVpbGQgaWR0cmFja2VyLnNpbWcgaWR0cmFja2VyX2NvbnQuZGVmCiNVc2luZyBjb250YWluZXIgcmVjaXBlIGRlZmZpbGU6IGlkdHJhY2tlcl9jb250LmRlZgojRVJST1I6IFlvdSBtdXN0IGJlIHRoZSByb290IHVzZXIgdG8gYnVpbGQgZnJvbSBhIFNpbmd1bGFyaXR5IHJlY2lwZSBmaWxlCgojIFNPIG9uIGxvY2FsIGxpbnV4Ogpjb25kYSBjcmVhdGUgLWMgY29uZGEtZm9yZ2UgLW4gc2luZ3VsYXJpdHktMi42IHNpbmd1bGFyaXR5PTIuNi4wXkMKY29uZGEgYWN0aXZhdGUgc2luZ3VsYXJpdHktMi42CnN1ZG8gc2luZ3VsYXJpdHkgYnVpbGQgL2hvbWUvcGFyYWxsZWxzL2lkdHJhY2tlci5zaW1nIGlkdHJhY2tlcl9jb250LmRlZgojIHNlbmQgdG8gY2x1c3RlcgpzY3Agfi9pZHRyYWNrZXIuc2ltZyBicmV0dGVsbEBlYmk6L2hwcy9yZXNlYXJjaDEvYmlybmV5L3VzZXJzL2lhbi9waWxvdCAgCmBgYAoKQWxzbyBzYXcgdGhhdCB5b3UgY2FuIGxvYWQgdjMuNSBvbiB0aGUgY2x1c3RlcgpgYGB7YmFzaH0KbW9kdWxlIGxvYWQgc2luZ3VsYXJpdHkvMy41LjAKYnN1YiAtUCBncHUgLWdwdSAtIC1JcyAic2luZ3VsYXJpdHkgc2hlbGwgY3VkYV9ncHVfMiIKCnNhbXBsZT1zcGxpdC9vcGVuX2ZpZWxkLzIwMTkwNjE2XzE3MTdfaWNhYl9pY2FiX0xfcTRfb3Blbl9maWVsZAppbnB1dF92aWRlbz0kKGVjaG8gJHNhbXBsZScubXA0JykKCmlkdHJhY2tlcmFpIHRlcm1pbmFsX21vZGUgXAogIC0tX3ZpZGVvICRpbnB1dF92aWRlbyBcCiAgLS1fYmdzdWIgJ1RydWUnIFwKICAtLV9pbnRlbnNpdHkgWzAsMTYwXSBcCiAgLS1fYXJlYSBbODAsMjAwXSBcCiAgLS1fcmFuZ2UgWzAsMTgyNzhdIFwKICAtLV9uYmxvYnMgMiBcCiAgLS1fc2Vzc2lvbiAkc2FtcGxlIFwKICAtLWV4ZWMgdHJhY2tfdmlkZW8KICAKI2xvY2FsZS5FcnJvcjogdW5zdXBwb3J0ZWQgbG9jYWxlIHNldHRpbmcgCgpleHBvcnQgTENfQUxMPSJlbl9VUy5VVEYtOCIKZXhwb3J0IExDX0NUWVBFPSJlbl9VUy5VVEYtOCIKc3VkbyBkcGtnLXJlY29uZmlndXJlIGxvY2FsZXMKCiNBbHNvIG5lZWQgdG8gcmUtZG8gY29udGFpbmVyIHRvIGluY2x1ZGUgYWN0aXZhdGlvbiBvZiBlbnZpcm9ubWVudCB3aXRoICVydW4KJXJ1bnNjcmlwdAogICAgLiAvb3B0L2NvbmRhL2V0Yy9wcm9maWxlLmQvY29uZGEuc2gKICAgIGNvbmRhIGFjdGl2YXRlIGlkdHJhY2tlcmFpCiMgVGhpcyBkaWRuJ3QgYWN0aXZhdGUgdGhlIGVudiBvbiBlbnRlcmluZyB0aGUgc2hlbGwKCiMgQWRkaW5nIHRoaXMgZGlkbid0IGZpeCB0aGUgbG9jYWxlIGlzc3VlLgogICAgZXhwb3J0IExDX0FMTD1DCiAgICBleHBvcnQgTENfQ1RZUEU9ZW5fR0IuVVRGLTgKICAgIAojIFRyeSB3aXRoIHRoaXM6CmV4cG9ydCBMQ19BTEw9ImVuX1VTLlVURi04IgpleHBvcnQgTENfQ1RZUEU9ImVuX1VTLlVURi04IgpzdWRvIGRwa2ctcmVjb25maWd1cmUgbG9jYWxlcwpgYGAKCldvcmtzLCBidXQgZG9lc24ndCBlbmdhZ2UgR1BVLiBUcnkgd2hhdCdzIHdyaXR0ZW4gaGVyZTogPGh0dHA6Ly9ncHVjb21wdXRpbmcuc2hlZi5hYy51ay9lZHVjYXRpb24vY3JlYXRpbmdfZ3B1X3Npbmd1bGFyaXR5Lz4KCk5ldyBgLmRlZmAgZmlsZTogYGlkdHJhY2tlcl9jb250Mi5kZWZgCgpgYGB7YmFzaH0KIyBCdWlsZCBuZXcgY29udGFpbmVyCm1vZHVsZSBsb2FkIHNpbmd1bGFyaXR5CnNpbmd1bGFyaXR5IGJ1aWxkIC0tcmVtb3RlIGlkdHJhY2tlcmFpX2NvbnQgaWR0cmFja2VyX2NvbnQyLmRlZgoKIyBEb3dubG9hZCBOVklESUEgZHJpdmVyIGZvciA0MTguNjc6Cm1rZGlyIGdwdV9kcml2ZXJzIAp3Z2V0IC1QIGdwdV9kcml2ZXJzIGh0dHBzOi8vdXMuZG93bmxvYWQubnZpZGlhLmNvbS90ZXNsYS80MTguNjcvTlZJRElBLUxpbnV4LXg4Nl82NC00MTguNjcucnVuCgojIFJ1biBzY3JpcHQgdG8gZXh0cmFjdCBmaWxlcwpjZCBncHVfZHJpdmVycyAKbWtkaXIgbnZpZGlhXzQxOC42NwpjaG1vZCAreCAuLi9waWxvdF9wYXBlci9jb2RlL3NjcmlwdHMvZXh0cmFjdG52ZHJpdmVyLnNoCi4uL3BpbG90X3BhcGVyL2NvZGUvc2NyaXB0cy9leHRyYWN0bnZkcml2ZXIuc2ggNDE4LjY3IGdwdV9kcml2ZXJzL252aWRpYV80MTguNjcKY2QgLi4KIyBTdWNjZXNzLgoKIyBSdW4gc2hlbGwgaW4gdGhlIGltYWdlCmNvbmRhIGFjdGl2YXRlIHNuYWtlbWFrZSAjIGFuIGVycm9yIGdldHMgdGhyb3duIGlmIHNlbmRpbmcgam9iIGZyb20gY29uZGEgZW52IGJhc2UKCmJzdWIgLVAgZ3B1IC1ncHUgLSAtSXMgXAogICJzaW5ndWxhcml0eSBzaGVsbCBcCiAgICAtQiBncHVfZHJpdmVycy9udmlkaWFfNDE4LjY3Oi9udmxpYixncHVfZHJpdmVycy9udmlkaWFfNDE4LjY3Oi9udmJpbiBcCiAgICBpZHRyYWNrZXJhaV9jb250IgogICAgCmJzdWIgLVAgZ3B1IC1ncHUgLSAtSXMgInNpbmd1bGFyaXR5IHNoZWxsIC1CIGdwdV9kcml2ZXJzL252aWRpYV80MTguNjc6L252bGliLGdwdV9kcml2ZXJzL252aWRpYV80MTguNjc6L252YmluIGlkdHJhY2tlcmFpX2NvbnQiICAgIAoKIyBUZXN0IGZvciBOVklESUEKbnZpZGlhLXNtaQoKIyBUZXN0IGlkdHJhY2tlcmFpCi4gYWN0aXZhdGUgaWR0cmFja2VyYWkKaWR0cmFja2VyYWkgdGVybWluYWxfbW9kZQoKCmBgYAoK</div>
 
 
 
@@ -1931,7 +2291,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("20201112_snakemake_workbook.Rmd");
+  window.initializeSourceEmbed("20201215_singularity_notebook.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
