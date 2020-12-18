@@ -385,7 +385,10 @@ New `.def` file: `idtracker_cont2.def`
 ```{bash}
 # Build new container
 module load singularity
-singularity build --remote idtrackerai_cont idtracker_cont2.def
+
+singularity build \
+  --remote sing_conts/idtrackerai_cont \
+  pilot_paper/envs/20201216_idtracker_cont.def
 
 # Download NVIDIA driver for 418.67:
 mkdir gpu_drivers 
@@ -395,7 +398,7 @@ wget -P gpu_drivers https://us.download.nvidia.com/tesla/418.67/NVIDIA-Linux-x86
 cd gpu_drivers 
 mkdir nvidia_418.67
 chmod +x ../pilot_paper/code/scripts/extractnvdriver.sh
-../pilot_paper/code/scripts/extractnvdriver.sh 418.67 gpu_drivers/nvidia_418.67
+../pilot_paper/code/scripts/extractnvdriver.sh 418.67 nvidia_418.67
 cd ..
 # Success.
 
@@ -405,10 +408,8 @@ conda activate snakemake # an error gets thrown if sending job from conda env ba
 bsub -P gpu -gpu - -Is \
   "singularity shell \
     -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin \
-    idtrackerai_cont"
+    sing_conts/idtrackerai_cont"
     
-bsub -P gpu -gpu - -Is "singularity shell -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin idtrackerai_cont"    
-
 # Test for NVIDIA
 nvidia-smi
 
@@ -416,6 +417,96 @@ nvidia-smi
 . activate idtrackerai
 idtrackerai terminal_mode
 
+# WORKS!
 
+# move to singularity container folder
+mkdir sing_conts
+mv idtrackerai_cont sing_conts
+
+# But trying to run the job stalls as if it's running on a CPU.
+```
+
+## Try different NVIDIA driver
+
+```{bash}
+# Build new container
+module load singularity
+
+singularity build \
+  --remote sing_conts/idtrackerai_cont \
+  pilot_paper/envs/20201216_idtracker_cont.def
+
+# Download NVIDIA driver for 410.129:
+mkdir gpu_drivers 
+wget -P gpu_drivers https://us.download.nvidia.com/tesla/410.129/NVIDIA-Linux-x86_64-410.129-diagnostic.run
+
+# Run script to extract files
+cd gpu_drivers 
+mkdir nvidia_410.129
+chmod +x ../pilot_paper/code/scripts/extractnvdriver_diagnostic.sh
+../pilot_paper/code/scripts/extractnvdriver_diagnostic.sh 410.129 nvidia_410.129
+cd ..
+# Success.
+
+# Run shell in the image
+conda activate snakemake # an error gets thrown if sending job from conda env base
+
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    -B gpu_drivers/nvidia_410.129:/nvlib,gpu_drivers/nvidia_410.129:/nvbin \
+    sing_conts/idtrackerai_cont"
+    
+# Test for NVIDIA
+nvidia-smi
+#NVIDIA-SMI couldn't find libnvidia-ml.so library in your system. Please make sure that the NVIDIA Display Driver is properly installed and present in your system.
+# Test idtrackerai
+. activate idtrackerai
+```
+
+```{bash}
+# Build new container
+module load singularity
+
+singularity build \
+  --remote sing_conts/idtrackerai_cont_test \
+  pilot_paper/envs/20201217_idtrackerai_test.def
+
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin \
+    sing_conts/idtrackerai_cont"
+    
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    -B gpu_drivers/nvidia_418.67:/nvlib,gpu_drivers/nvidia_418.67:/nvbin \
+    sing_conts/idtrackerai_cont_test"    
+# Works, but doesn't run
+
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    sing_conts/idtrackerai_cont"
+    
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    sing_conts/idtrackerai_cont_test"
+    
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    test_latest.sif"
+    
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    test2_latest.sif"
+    
+bsub -P gpu -gpu - -Is \
+  "singularity shell \
+    --nv \
+    test3_latest.sif"       
 ```
 

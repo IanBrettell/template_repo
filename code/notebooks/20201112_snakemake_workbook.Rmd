@@ -71,6 +71,7 @@ snakemake \
   --keep-going \
   --rerun-incomplete \
   --use-conda \
+  --use-singularity \
   -s pilot_paper/code/snakemake/snakefile.py \
   -pn
 ```
